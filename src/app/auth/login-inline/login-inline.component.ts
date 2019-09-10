@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../../../services/api.service';
+import { ApiService } from '../../core/services/api.service';
 import { AuthService } from '../service/auth.service';
 
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
@@ -33,11 +33,11 @@ export class LoginInlineComponent implements OnInit {
 
     onSubmit() {
         const value = this.loginForm.getRawValue();
-        this.auth.authUser(this.createAuthData(value)).subscribe(
-            res => {
-                this.router.navigate(['/']);
-            }
-        );
+        // this.auth.authUser(this.createAuthData(value)).subscribe(
+        //     res => {
+        //         this.router.navigate(['/']);
+        //     }
+        // );
     }
 
     onKeyEnter() {

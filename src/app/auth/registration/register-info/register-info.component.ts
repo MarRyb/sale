@@ -1,8 +1,9 @@
 import { Component, EventEmitter, OnInit, Output, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from '../../../../services/api.service';
-import { GeoService } from 'src/app/services/geo.service';
+import { ApiService } from '../../../core/services/api.service';
+import { AuthService } from '../../service/auth.service';
+import { GeoService } from '../../service/geo.service';
 import { takeWhile } from 'rxjs/operators';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker/bs-datepicker.config';
 
@@ -28,10 +29,10 @@ export class RegisterInfoComponent implements OnInit, OnDestroy {
     public selectedCountry: { id: number, name: string } = { id: null, name: 'Выберите страну' };
 
     constructor(
-        private flashMessage: FlashMessageService,
         private api: ApiService,
         private geoService: GeoService,
         private fb: FormBuilder,
+        public authService: AuthService,
         public router: Router
     ) {
         this.bsConfig = Object.assign({}, { containerClass: 'theme-red', locale: 'ru', rangeInputFormat: 'DD.MM.YYYY' });
@@ -39,7 +40,7 @@ export class RegisterInfoComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.initForm();
-        this.getCountries();
+        // this.getCountries();
         this.registerChangeGeo();
     }
 
@@ -81,7 +82,7 @@ export class RegisterInfoComponent implements OnInit, OnDestroy {
                 .forEach(controlName => controls[controlName].markAsTouched());
             return;
         } else {
-            this.api.registerUser(this.userInfoForm.value)
+            this.authService.registerUser(this.userInfoForm.value)
                 .pipe(
                     takeWhile(() => this.alive))
                 .subscribe(
@@ -94,12 +95,12 @@ export class RegisterInfoComponent implements OnInit, OnDestroy {
                     err => {
                         // console.log(err.error.error.code, err.error.error.exception[0].message);
                         if (+(err.error.error.code === 400 && err.error.error.exception[0].message === 'This email already exists')) {
-                            this.flashMessage.show('Такой емейл уже зарегистрирован');
+                            alert('Такой емейл уже зарегистрирован');
                         } else if (+(err.error.error.code === 500 && err.error.error.exception[0].message === 'Not valid phone number')) {
-                            this.flashMessage.show('Неправильный номер телефона');
+                            alert('Неправильный номер телефона');
                             // tslint:disable-next-line:max-line-length
                         } else if (+(err.error.error.code === 400 && err.error.error.exception[0].message === 'This phone already exists')) {
-                            this.flashMessage.show('Такой номер уже зарегистрирован');
+                            alert('Такой номер уже зарегистрирован');
                         }
                     });
         }
@@ -109,35 +110,35 @@ export class RegisterInfoComponent implements OnInit, OnDestroy {
         this.userInfoForm.get('country')
             .valueChanges.pipe(
                 takeWhile(() => this.alive))
-            .subscribe(value => this.selectCountry(value));
+            // .subscribe(value => this.selectCountry(value));
         this.userInfoForm.get('region')
             .valueChanges.pipe(
                 takeWhile(() => this.alive))
-            .subscribe(value => this.selectRegion(value));
+            // .subscribe(value => this.selectRegion(value));
     }
 
-    getCountries() {
-        this.geoService.getCountries().pipe(
-            takeWhile(() => this.alive)).subscribe(countries => this.countries = countries);
-    }
+    // getCountries() {
+    //     this.geoService.getCountries().pipe(
+    //         takeWhile(() => this.alive)).subscribe(countries => this.countries = countries);
+    // }
 
-    private selectCountry(countryId: number) {
-        if (Number(countryId) >= 0) {
-            this.geoService.getRegions(countryId).pipe(
-                takeWhile(() => this.alive))
-                .subscribe(regions => this.regions = regions);
-            this.isDisabledRegion = false;
-        }
-    }
+    // private selectCountry(countryId: number) {
+    //     if (Number(countryId) >= 0) {
+    //         this.geoService.getRegions(countryId).pipe(
+    //             takeWhile(() => this.alive))
+    //             .subscribe(regions => this.regions = regions);
+    //         this.isDisabledRegion = false;
+    //     }
+    // }
 
-    private selectRegion(regionId: number) {
-        if (Number(regionId) >= 0) {
-            this.geoService.getCities(regionId).pipe(
-                takeWhile(() => this.alive))
-                .subscribe(cities => this.cities = cities);
-            this.isDisabledCity = false;
-        }
-    }
+    // private selectRegion(regionId: number) {
+    //     if (Number(regionId) >= 0) {
+    //         this.geoService.getCities(regionId).pipe(
+    //             takeWhile(() => this.alive))
+    //             .subscribe(cities => this.cities = cities);
+    //         this.isDisabledCity = false;
+    //     }
+    // }
 
     ngOnDestroy() {
         this.alive = false;

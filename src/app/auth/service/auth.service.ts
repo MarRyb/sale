@@ -2,12 +2,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { take } from 'rxjs/operators';
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { Store } from '@ngrx/store';
-import { LOGIN_SUCCESS, LoginAction, IPayloadRefreshTokenChat } from '../../../actions/auth.actions';
+// import { LOGIN_SUCCESS, LoginAction, IPayloadRefreshTokenChat } from '../../../actions/auth.actions';
 import { Actions, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
-import { AuthChatUser } from 'src/app/components/chat/models/chat-auth-user';
+// import { AuthChatUser } from 'src/app/components/chat/models/chat-auth-user';
 
 @Injectable({
     providedIn: 'root'
@@ -24,22 +24,22 @@ export class AuthService {
     ) {
     }
 
-    authUser(data: { userName: any; pass: any; }) {
-        const param = { ...data, guid: this.guid() };
-        this.store.dispatch(new LoginAction(param));
-        return this.action$.pipe(ofType(LOGIN_SUCCESS), take(1));
-    }
+    // authUser(data: { userName: any; pass: any; }) {
+    //     const param = { ...data, guid: this.guid() };
+    //     this.store.dispatch(new LoginAction(param));
+    //     return this.action$.pipe(ofType(LOGIN_SUCCESS), take(1));
+    // }
 
-    authChat(data: AuthChatUser): Observable<any> {
-        return this.http.post(`${this.chatURL}api/v1/auth`, {
-            email: data.email,
-            password: data.password,
-        });
-    }
+    // authChat(data: AuthChatUser): Observable<any> {
+    //     return this.http.post(`${this.chatURL}api/v1/auth`, {
+    //         email: data.email,
+    //         password: data.password,
+    //     });
+    // }
 
-    refreshTokenChat(payload: { userId: number, refreshToken: string }): Observable<IPayloadRefreshTokenChat> {
-        return this.http.post<IPayloadRefreshTokenChat>(`${this.chatURL}api/v1/token`, payload);
-    }
+    // refreshTokenChat(payload: { userId: number, refreshToken: string }): Observable<IPayloadRefreshTokenChat> {
+    //     return this.http.post<IPayloadRefreshTokenChat>(`${this.chatURL}api/v1/token`, payload);
+    // }
 
     forgetPassWithMail(email: any) {
         return this.http.post(`${this.openApiUrl}users/send_password_email`, {
@@ -76,5 +76,9 @@ export class AuthService {
         return guid;
     }
 
+    registerUser(data) {
+        const req = this.openApiUrl + 'registration';
+        return this.http.post(req, data)    ;
+    }
 }
 
