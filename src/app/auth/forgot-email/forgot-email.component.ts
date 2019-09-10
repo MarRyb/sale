@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../service/auth.service';
-import { FlashMessageService } from '../../../services/flash-message.service';
 import { Router } from '@angular/router';
 import { takeWhile, tap } from 'rxjs/operators';
 
@@ -16,7 +15,6 @@ export class ForgotEmailComponent implements OnInit {
     private alive = true;
 
     constructor(private fb: FormBuilder,
-        private flashMessage: FlashMessageService,
         private router: Router,
         private authService: AuthService) {
     }
@@ -42,7 +40,6 @@ export class ForgotEmailComponent implements OnInit {
                 tap(
                     res => {
                         this.emailSend = true;
-                        this.flashMessage.show('Письмо для восстановления пароля отправлено на Ваш email', 'success');
                     },
                     err => {
                         const errors = this.getErrosCode(err.error.error.code) || 'Что-то пошло не так';

@@ -1,9 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { ApiService } from '../../../../services/api.service';
-import { FlashMessageService } from '../../../../services/flash-message.service';
 import { GeoService } from 'src/app/services/geo.service';
 import { takeWhile } from 'rxjs/operators';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker/bs-datepicker.config';

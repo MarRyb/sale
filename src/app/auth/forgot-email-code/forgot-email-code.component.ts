@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FlashMessageService } from '../../../services/flash-message.service';
 import { AuthService } from '../service/auth.service';
 import { RegisterService } from '../service/register.service';
 
@@ -17,7 +16,6 @@ export class ForgotEmailCodeComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
-              private flashMessage: FlashMessageService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private registerService: RegisterService,

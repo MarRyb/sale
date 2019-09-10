@@ -1,12 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../../../services/api.service';
 import { AuthService } from '../service/auth.service';
-import { FlashMessageService } from '../../../services/flash-message.service';
-import { Location } from '@angular/common';
 
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
     selector: 'app-login-inline',
@@ -23,7 +20,6 @@ export class LoginInlineComponent implements OnInit {
         private router: Router,
         private api: ApiService,
         private auth: AuthService,
-        private flashMessage: FlashMessageService,
         private fb: FormBuilder
     ) { }
 

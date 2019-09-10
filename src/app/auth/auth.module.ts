@@ -3,12 +3,10 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgFlashMessagesModule } from 'ng-flash-messages';
 // import { CookieModule } from 'ngx-cookie';
 import { NgxfUploaderModule } from 'ngxf-uploader';
 import { NgxLocalStorageModule } from 'ngx-localstorage';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { AppRoutingModule } from '../../app-routing.module';
 
 import { RegisterInfoComponent } from './registration/register-info/register-info.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -28,13 +26,11 @@ defineLocale('ru', ruLocale);
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgFlashMessagesModule.forRoot(),
     // CookieModule.forRoot(),
     BsDatepickerModule.forRoot(),
     NgxLocalStorageModule.forRoot(),
     HttpClientModule,
     NgxfUploaderModule,
-    AppRoutingModule,
     RecaptchaModule.forRoot({
         siteKey: environment.recaptcha_key,
     }),
