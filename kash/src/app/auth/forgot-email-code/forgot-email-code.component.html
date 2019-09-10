@@ -1,0 +1,25 @@
+<div class="row log-in">
+  <div class="col-sm-12 ">
+    <h4 class="text-center mb-3">
+      Напомнить пароль
+    </h4>
+
+    <p class="text-center mb-3">
+      Пожалуйста, введите пароль отправленный Вам на E-Mail
+    </p>
+    <form [formGroup]="codeForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input type="password"
+               class="form-control"
+               formControlName="code"
+               placeholder="Ваш пароль"
+        >
+        <div class="text-danger" *ngIf="codeForm.get('code').errors && codeForm.get('code').touched">
+          Введите корректный пароль
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn v-btn-red mx-auto d-block" [disabled]="codeForm.invalid"><i class="fa fa-mail"></i>Авторизоваться</button>
+      </div>
+    </form>
+</div>

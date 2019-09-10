@@ -1,0 +1,192 @@
+<div class="row"
+    *ngIf="!registerStatus">
+    <div class="col-12">
+
+        <h4 class="text-center mb-3">Регистрация</h4>
+
+
+        <form [formGroup]="userInfoForm"
+            novalidate
+            (ngSubmit)="submit()">
+
+            <div class="form-group row" >
+                <label class="col-md-4 col-form-label"
+                    for="email">
+                    <span>*</span>Введите Ваш email
+                </label>
+                <div class="col-md-8">
+                    <input type="email"
+                        class="form-control"
+                        id="email"
+                        formControlName="email"
+                        placeholder="Email">
+                </div>
+            </div>
+
+            <div class="form-group row" formGroupName = "firstName">
+                <label class="col-md-4 col-form-label"
+                    for="first_name">
+                    <span>*</span>Ваше имя:
+                </label>
+
+                <div class="col-md-8">
+                    <input id="first_name"
+                        type="text"
+                        class="form-control"
+                        placeholder="Имя"
+                        formControlName="name">
+                </div>
+            </div>
+
+            <div class="form-group row" formGroupName = "lastName">
+                <label class="col-md-4 col-form-label"
+                    for="last_name">
+                    <span>*</span>Ваша фамилия:
+                </label>
+
+                <div class="col-md-8">
+                    <input id="last_name"
+                        type="text"
+                        class="form-control"
+                        name="last_name"
+                        formControlName="name"
+                        placeholder="Фамилия">
+                </div>
+            </div>
+
+            <div class="form-group row" formGroupName = "birthday">
+                <label class="col-md-4 col-form-label"
+                    for="date">
+                    <span>*</span>Ваш день рождения:
+                </label>
+                <div class="col-md-8">
+                    <input type="text"
+                        id="date"
+                        class="form-control"
+                        #dp="bsDatepicker"
+                        bsDatepicker
+                        [bsConfig]="bsConfig"
+                        [bsValue]=""
+                        formControlName="date"
+                        name="birthday"
+                        placeholder="День рождения">
+                </div>
+            </div>
+
+            <div class="form-group row" formGroupName = "sex">
+                <label class="col-md-4 col-form-label">
+                    <span>*</span>Ваш пол:
+                </label>
+
+                <div class="col-md-8">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input"
+                            id="sex0"
+                            formControlName="sex"
+                            type="radio"
+                            name="sex"
+                            value="0">
+                        <label class="form-check-label"
+                            for="sex0">Женщина</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input"
+                            id="sex1"
+                            formControlName="sex"
+                            type="radio"
+                            name="sex"
+                            value="1">
+                        <label class="form-check-label"
+                            for="sex1">Мужчина</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label"
+                    for="country">
+                    <span>*</span>Страна проживания:
+                </label>
+
+                <div class="col-md-8">
+                    <select class="custom-select form-control"
+                        id="country"
+                        name="country"
+                        formControlName="country">
+                        <option value=""
+                            disabled>Выберите страну</option>
+                        <option *ngFor="let countri of countries"
+                            [ngValue]="countri.id">{{countri.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label"
+                    for="city">
+                    <span>*</span>Регион проживания:
+                </label>
+
+                <div class="col-md-8">
+                    <select class="custom-select form-control"
+                        id="region"
+                        name="region"
+                        formControlName="region">
+                        <option value=""
+                            disabled>Выберите регион</option>
+                        <option *ngFor="let regio of regions"
+                            [ngValue]="regio.id">{{regio.name}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label"
+                    for="city">
+                    <span>*</span>Город проживания:
+                </label>
+
+                <div class="col-md-8">
+                    <select class="custom-select form-control"
+                        id="city"
+                        name="city"
+                        formControlName="city">
+                        <option value=""
+                            disabled>Выберите город</option>
+                        <option *ngFor="let cit of cities"
+                            [ngValue]="cit.id">{{cit.name}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group col-md-5 offset-md-4">
+                <recaptcha formControlName="recaptcha"></recaptcha>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-auto mx-auto">
+                    <button class="btn v-btn-red w-auto px-2"
+                        type="submit "
+                        [disabled]="!userInfoForm.valid">Зарегистрироваться</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="form-group">
+            <p>
+                Поля, отмеченные звездочкой (*) обязательны для заполнения.<br />
+                Есть вопросы, предложения - свяжитесь с администрацией - <a href="mailto:support@vpotoke.com">support@vpotoke.com</a>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<div class="row"
+    *ngIf="registerStatus">
+    <div class="col-12">
+        <p class="text-center w-100 mb-0 text-lg">
+            Спасибо за регистрацию, на Вашу почту уже выслана ссылка для создания пароля.
+            Перейдите по ссылки из письма и введите свой пароль.
+        </p>
+    </div>
+</div>

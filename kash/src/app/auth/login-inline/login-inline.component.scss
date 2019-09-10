@@ -1,0 +1,73 @@
+:host {
+    width: 100%;
+
+    .log-in {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 0 auto;
+        justify-content: space-between;
+        background: url("../../../../assets/img/log-bg.png");
+        background-color: white;
+        background-repeat: no-repeat;
+        background-size: contain;
+        padding: 65px 50px;
+
+        p {
+            max-width: 100%;
+        }
+
+        .left-part {
+            width: 300px;
+        }
+
+        .right-part {
+            width: 300px;
+
+            p {
+                padding-left: 10px;
+            }
+        }
+
+        .forgot {
+            margin-top: 10px;
+            color: #2c3049;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+
+        .invalid-feedback {
+            font-size: .5em;
+        }
+    }
+
+    .header {
+        height: 50px;
+    }
+
+    .content {
+        height: 230px;
+    }
+
+    .footer {
+        height: 100px;
+    }
+
+    .copyright-login {
+        margin-top: 20px;
+        text-align: center;
+        line-height: 0.3em;
+    }
+
+    @media (max-width: 550px) {
+        .log-in {
+            flex-direction: column-reverse;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .log-in {
+            max-width: 900px;
+        }
+    }
+}

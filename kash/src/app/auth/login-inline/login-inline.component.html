@@ -1,0 +1,80 @@
+<div class="log-in col-xl-6 col-lg-10 col-md-10 col-sm-12">
+    <div class="left-part text-center">
+        <p class="text text-red header">Социальная сеть Vpotoke!</p>
+        <div class="content">
+            <p>Смотрите позитивные видео и фото Ваших друзей, слушайте музыку! Пользуйтесь торговой платформой,
+                размещайте объявления, находите нужное Вам, знакомьтесь по интересам!</p>
+        </div>
+        <div class="footer">
+            <button class="btn v-btn-red"
+                routerLink="/registration">
+                Зарегистрироваться
+            </button>
+        </div>
+    </div>
+
+    <form [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+        (keydown.enter)="onKeyEnter()"
+        class="right-part">
+        <p class="text-center text text-red header">Войти: </p>
+
+        <div class="content">
+            <!-- <p class="text-left mt-1">Введите email</p> -->
+            <div class="col-sm-12">
+                <form [formGroup]="loginForm"
+                    (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <div class="col-12 px-0">
+                            <input type="email"
+                                class="form-control"
+                                formControlName="email"
+                                placeholder="Ваш еmail"
+                                [(ngModel)]="emailItem"
+                                [ngClass]="{'is-invalid': loginForm.get('email').errors && loginForm.get('email').touched}">
+                            <small class="text-danger"
+                                *ngIf="loginForm.get('email').errors && loginForm.get('email').touched">
+                                Введите email
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group mb-0 position-relative">
+                        <input type="password"
+                            class="form-control"
+                            formControlName="pass"
+                            placeholder="Ваш пароль"
+                            [ngClass]="{'is-invalid':  loginForm.get('pass').errors && loginForm.get('pass').touched}">
+                        <small class="text-danger"
+                            *ngIf=" loginForm.get('pass').errors && loginForm.get('pass').touched">
+                            Введите пароль
+                        </small>
+                    </div>
+
+                    <a routerLink="/forgot-password"
+                        class="forgot mb-2 d-block">НАПОМНИТЬ ПАРОЛЬ</a>
+
+                    <div class="form-group form-row">
+                        <div class="col-sm-12 form-check pl-4 mb-2">
+                            <input type="checkbox"
+                                class="form-check-input"
+                                formControlName="rememberMe">
+                            <label class="form-check-label">Запомнить меня</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="col-sm-12">
+                <button class="btn v-btn-red d-block mx-auto"
+                    [disabled]="!loginForm.valid">Войти</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+<div class="copyright-login">
+    <p>Vpotoke &copy; 2019</p>
+    <p>служба поддержки: <a href="mailto:support@vpotoke.com">support@vpotoke.com</a></p>
+</div>
