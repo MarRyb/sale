@@ -4,7 +4,6 @@
   display: flex
   flex-direction: column
   width: 100%
-  box-sizing: border-box
   margin: 0 auto
   position: fixed
   top: 0
@@ -23,15 +22,19 @@
     margin: 0 auto
     height: 60px
     .header_logo
-      -webkit-box-flex: 0
       flex: 0 0 30%
       +flex-position()
 
     .header_user
+      display: flex
+      flex: 0 0 20%
+      justify-content: flex-end
       img
         width: 48px
         height: 48px
         border-radius: 50%
         border: 1px solid #b30706
         background-size: contain
-        margin-right: 15px
+    .empty-header
+      width: 50%
+      flex: 0 0 50%
