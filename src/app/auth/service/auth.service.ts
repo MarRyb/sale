@@ -3,9 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { take } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { Store } from '@ngrx/store';
 // import { LOGIN_SUCCESS, LoginAction, IPayloadRefreshTokenChat } from '../../../actions/auth.actions';
-import { Actions, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 // import { AuthChatUser } from 'src/app/components/chat/models/chat-auth-user';
 
@@ -19,8 +17,6 @@ export class AuthService {
 
     constructor(
         private http: HttpClient,
-        private store: Store<any>,
-        private action$: Actions,
     ) {
     }
 

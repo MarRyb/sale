@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { tap, takeWhile } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../service/auth.service';
@@ -23,7 +22,6 @@ export class UpdatePasswordComponent implements OnInit, OnDestroy {
 
     constructor(
         private fb: FormBuilder,
-        private store: Store<any>,
         private route: ActivatedRoute,
         private router: Router,
         private authService: AuthService

@@ -55,3 +55,4 @@ export class LoginInlineComponent implements OnInit {
     }
 
 }
+
