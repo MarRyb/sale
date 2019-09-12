@@ -40,11 +40,11 @@
                     <div class="form-group mb-0 position-relative">
                         <input type="password"
                             class="form-control"
-                            formControlName="pass"
+                            formControlName="password"
                             placeholder="Ваш пароль"
-                            [ngClass]="{'is-invalid':  loginForm.get('pass').errors && loginForm.get('pass').touched}">
+                            [ngClass]="{'is-invalid':  loginForm.get('password').errors && loginForm.get('password').touched}">
                         <small class="text-danger"
-                            *ngIf=" loginForm.get('pass').errors && loginForm.get('pass').touched">
+                            *ngIf=" loginForm.get('password').errors && loginForm.get('password').touched">
                             Введите пароль
                         </small>
                     </div>
@@ -70,6 +70,8 @@
                     [disabled]="!loginForm.valid">Войти</button>
             </div>
         </div>
+        <div class="text text-red text-center text-notification" *ngFor="let item of errorArray">
+            {{item.message}}
+        </div>
     </form>
-
 </div>

@@ -5,6 +5,8 @@ import { take } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 // import { LOGIN_SUCCESS, LoginAction, IPayloadRefreshTokenChat } from '../../../actions/auth.actions';
 import { Observable, of } from 'rxjs';
+import { ApiService } from '../../core/services/api.service';
+
 // import { AuthChatUser } from 'src/app/components/chat/models/chat-auth-user';
 
 @Injectable({
@@ -14,17 +16,19 @@ export class AuthService {
 
     chatURL = environment.chatURL;
     openApiUrl = environment.openApiURL;
+    client_id = environment.client_id;
+    client_secret = environment.client_secret;
 
     constructor(
         private http: HttpClient,
+        private api: ApiService
     ) {
     }
 
-    // authUser(data: { userName: any; pass: any; }) {
-    //     const param = { ...data, guid: this.guid() };
-    //     this.store.dispatch(new LoginAction(param));
-    //     return this.action$.pipe(ofType(LOGIN_SUCCESS), take(1));
-    // }
+    authUser(data: { username: any; password: any; }): Observable<any> {
+        const param = { ...data, guid: this.guid(), client_id: this.client_id, client_secret: this.client_secret, grant_type: 'password'};
+        return this.api.get('oauth/v2/token', param);
+    }
 
     // authChat(data: AuthChatUser): Observable<any> {
     //     return this.http.post(`${this.chatURL}api/v1/auth`, {

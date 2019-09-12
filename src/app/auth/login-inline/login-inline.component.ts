@@ -14,7 +14,8 @@ export class LoginInlineComponent implements OnInit {
 
     public loginForm: FormGroup;
     public phoneItem: any;
-    public emailItem: any;
+		public emailItem: any;
+		public errorArray = [];
 
     constructor(
         private router: Router,
@@ -26,18 +27,22 @@ export class LoginInlineComponent implements OnInit {
     ngOnInit() {
         this.loginForm = this.fb.group({
             email: ['', Validators.required],
-            pass: ['', Validators.required],
+            password: ['', Validators.required],
             rememberMe: [''],
         });
     }
 
     onSubmit() {
         const value = this.loginForm.getRawValue();
-        // this.auth.authUser(this.createAuthData(value)).subscribe(
-        //     res => {
-        //         this.router.navigate(['/']);
-        //     }
-        // );
+        this.auth.authUser(this.createAuthData(value)).subscribe(
+            res => {
+                this.router.navigate(['/']);
+						},
+						error => {
+							this.errorArray = error.error.error.exception;
+							return this.errorArray;
+
+						});
     }
 
     onKeyEnter() {
@@ -49,8 +54,8 @@ export class LoginInlineComponent implements OnInit {
 
     createAuthData(value) {
         return ({
-            userName: value.email.toLowerCase().replace(/\s/g, ''),
-            pass: value.pass
+            username: value.email.toLowerCase().replace(/\s/g, ''),
+            password: value.password
         });
     }
 
