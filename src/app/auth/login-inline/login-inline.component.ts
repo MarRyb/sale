@@ -36,6 +36,7 @@ export class LoginInlineComponent implements OnInit {
         const value = this.loginForm.getRawValue();
         this.auth.authUser(this.createAuthData(value)).subscribe(
             res => {
+								localStorage.setItem('auth', JSON.stringify(res));
                 this.router.navigate(['/']);
 						},
 						error => {

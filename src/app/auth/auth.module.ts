@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { CookieModule } from 'ngx-cookie';
 import { NgxfUploaderModule } from 'ngxf-uploader';
-import { NgxLocalStorageModule } from 'ngx-localstorage';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { RegisterInfoComponent } from './registration/register-info/register-info.component';
@@ -19,6 +18,9 @@ import { RecaptchaModule } from './recaptcha/recaptcha.module';
 import { environment } from 'src/environments/environment';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { defineLocale, ruLocale } from 'ngx-bootstrap';
+import { AuthRoutingModule } from './auth-router.module';
+
+
 defineLocale('ru', ruLocale);
 @NgModule({
   imports: [
@@ -28,12 +30,12 @@ defineLocale('ru', ruLocale);
     ReactiveFormsModule,
     // CookieModule.forRoot(),
     BsDatepickerModule.forRoot(),
-    NgxLocalStorageModule.forRoot(),
     HttpClientModule,
     NgxfUploaderModule,
     RecaptchaModule.forRoot({
         siteKey: environment.recaptcha_key,
     }),
+    AuthRoutingModule
   ],
   declarations: [
     RegistrationComponent,
