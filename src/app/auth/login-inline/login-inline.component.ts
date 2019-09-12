@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 @Component({
     selector: 'app-login-inline',
     templateUrl: './login-inline.component.html',
-    styleUrls: ['./login-inline.component.scss']
+    styleUrls: ['./login-inline.component.sass']
 })
 export class LoginInlineComponent implements OnInit {
 

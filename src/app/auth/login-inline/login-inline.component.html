@@ -6,10 +6,10 @@
                 размещайте объявления, находите нужное Вам, знакомьтесь по интересам!</p>
         </div>
         <div class="footer">
-            <button class="btn v-btn-red"
-                routerLink="/registration">
+            <button class="btn v-btn-red">
                 Зарегистрироваться
             </button>
+            <!-- routerLink="/registration" -->
         </div>
     </div>
 
@@ -20,7 +20,6 @@
         <p class="text-center text text-red header">Войти: </p>
 
         <div class="content">
-            <!-- <p class="text-left mt-1">Введите email</p> -->
             <div class="col-sm-12">
                 <form [formGroup]="loginForm"
                     (ngSubmit)="onSubmit()">
@@ -65,7 +64,7 @@
             </div>
         </div>
 
-        <div class="footer">
+        <div class="footer text-center">
             <div class="col-sm-12">
                 <button class="btn v-btn-red d-block mx-auto"
                     [disabled]="!loginForm.valid">Войти</button>
@@ -73,8 +72,4 @@
         </div>
     </form>
 
-</div>
-<div class="copyright-login">
-    <p>Vpotoke &copy; 2019</p>
-    <p>служба поддержки: <a href="mailto:support@vpotoke.com">support@vpotoke.com</a></p>
 </div>

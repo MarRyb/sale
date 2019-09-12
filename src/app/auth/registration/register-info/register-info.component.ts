@@ -12,7 +12,7 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker/bs-datepicker.confi
 @Component({
     selector: 'app-register-info',
     templateUrl: './register-info.component.html',
-    styleUrls: ['./register-info.component.scss']
+    styleUrls: ['./register-info.component.sass']
 })
 export class RegisterInfoComponent implements OnInit, OnDestroy {
 

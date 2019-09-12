@@ -8,7 +8,7 @@ import { AuthService } from '../service/auth.service';
 @Component({
     selector: 'app-update-password',
     templateUrl: './update-password.component.html',
-    styleUrls: ['./update-password.component.scss']
+    styleUrls: ['./update-password.component.sass']
 })
 export class UpdatePasswordComponent implements OnInit, OnDestroy {
     updatePasswordForm: FormGroup;
