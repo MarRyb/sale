@@ -14,4 +14,12 @@ export class AppComponent implements OnInit{
   title = 'kash';
 
   ngOnInit(){}
+  
+  onActivate() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
 }
