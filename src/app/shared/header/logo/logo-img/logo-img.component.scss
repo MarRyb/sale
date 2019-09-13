@@ -1,0 +1,12 @@
+:host {
+  pointer-events: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  .logo-img-bg {
+    transition: fill .1s cubic-bezier(0.4, 0.0, 1, 1), fill-opacity .1s cubic-bezier(0.4, 0.0, 1, 1);
+    fill: #b30706;
+    // fill-opacity: .8;
+  }
+}

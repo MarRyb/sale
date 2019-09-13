@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .logo-img {
+    width: 127px;
+    height: 49px;
+  }
+
+  @media (max-width: 1024px) {
+    //   .all-feed-img {
+    //     width: 158px;
+    //   }
+  }
+
+  @media (max-width: 768px) {
+    .logo-img {
+      width: 90px;
+      height: 40px;
+    }
+
+    //   .all-feed-img {
+    //     width: 100%;
+    //     height: 55px
+    //   }
+  }
+}
