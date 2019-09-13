@@ -2,31 +2,29 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
-// import { UserGeo, City, Region, Country } from '../components/profile/edit-profile/user-geo.model';
+import { ApiService } from '../../core/services/api.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class GeoService {
-    public apiURL = environment.apiURL;
-    public openAPIUrl = environment.openApiURL;
-
+    
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private api: ApiService
     ) { }
 
+    getCountries(): Observable<any> {
+        return this.api.get('open_api/v1/info/country');
+    }
 
-    // getCountries(): Observable<Country[]> {
-    //     return this.http.get<Country[]>(`${this.openAPIUrl}info/country`);
-    // }
+    getRegions(countryId: number): Observable<any> {
+        return this.api.get(`open_api/v1/info/regions/${countryId}`);
+    }
 
-    // getRegions(countryId: number): Observable<Region[]> {
-    //     return this.http.get<Region[]>(`${this.openAPIUrl}info/regions/${countryId}`);
-    // }
-
-    // getCities(regionId: number): Observable<City[]> {
-    //     return this.http.get<City[]>(`${this.openAPIUrl}info/cities/${regionId}`);
-    // }
+    getCities(regionId: number): Observable<any> {
+        return this.api.get(`open_api/v1/info/cities/${regionId}`);
+    }
 
     // getGeo(): Observable<UserGeo> {
     //     return this.http.get<UserGeo>(`${this.apiURL}profile/geo/`);

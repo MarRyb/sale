@@ -40,7 +40,7 @@ export class RegisterInfoComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.initForm();
-        // this.getCountries();
+        this.getCountries();
         this.registerChangeGeo();
     }
 
@@ -110,35 +110,35 @@ export class RegisterInfoComponent implements OnInit, OnDestroy {
         this.userInfoForm.get('country')
             .valueChanges.pipe(
                 takeWhile(() => this.alive))
-            // .subscribe(value => this.selectCountry(value));
+            .subscribe(value => this.selectCountry(value));
         this.userInfoForm.get('region')
             .valueChanges.pipe(
                 takeWhile(() => this.alive))
-            // .subscribe(value => this.selectRegion(value));
+            .subscribe(value => this.selectRegion(value));
     }
 
-    // getCountries() {
-    //     this.geoService.getCountries().pipe(
-    //         takeWhile(() => this.alive)).subscribe(countries => this.countries = countries);
-    // }
+    getCountries() {
+        this.geoService.getCountries().pipe(
+            takeWhile(() => this.alive)).subscribe(countries => this.countries = countries);
+    }
 
-    // private selectCountry(countryId: number) {
-    //     if (Number(countryId) >= 0) {
-    //         this.geoService.getRegions(countryId).pipe(
-    //             takeWhile(() => this.alive))
-    //             .subscribe(regions => this.regions = regions);
-    //         this.isDisabledRegion = false;
-    //     }
-    // }
+    private selectCountry(countryId: number) {
+        if (Number(countryId) >= 0) {
+            this.geoService.getRegions(countryId).pipe(
+                takeWhile(() => this.alive))
+                .subscribe(regions => this.regions = regions);
+            this.isDisabledRegion = false;
+        }
+    }
 
-    // private selectRegion(regionId: number) {
-    //     if (Number(regionId) >= 0) {
-    //         this.geoService.getCities(regionId).pipe(
-    //             takeWhile(() => this.alive))
-    //             .subscribe(cities => this.cities = cities);
-    //         this.isDisabledCity = false;
-    //     }
-    // }
+    private selectRegion(regionId: number) {
+        if (Number(regionId) >= 0) {
+            this.geoService.getCities(regionId).pipe(
+                takeWhile(() => this.alive))
+                .subscribe(cities => this.cities = cities);
+            this.isDisabledCity = false;
+        }
+    }
 
     ngOnDestroy() {
         this.alive = false;
