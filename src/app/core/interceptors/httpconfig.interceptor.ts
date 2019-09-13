@@ -19,7 +19,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
     const accessToken = localStorage.getItem('auth')
 
     if (accessToken) {
-      headersConfig['Authorization'] = "Bearer " + JSON.parse(accessToken);
+      headersConfig['Authorization'] = "Bearer " + JSON.parse(accessToken).access_token;
     }
 
     const request = req.clone({

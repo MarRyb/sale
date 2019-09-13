@@ -77,8 +77,9 @@ export class AuthService {
     }
 
     registerUser(data) {
-        const req = this.openApiUrl + 'registration';
-        return this.http.post(req, data)    ;
+        // const req = this.openApiUrl + 'registration';
+        return this.api.post('open_api/v1/registration', data);
+        // return this.http.post(req, data)    ;
     }
 }
 

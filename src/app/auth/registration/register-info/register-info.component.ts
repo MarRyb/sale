@@ -88,7 +88,7 @@ export class RegisterInfoComponent implements OnInit, OnDestroy {
                 .subscribe(
                     response => {
                         setTimeout(() => {
-                            this.router.navigate(['']);
+                            this.router.navigate(['/signin']);
                         }, 5000);
                         return this.registerStatus = true;
                     },
