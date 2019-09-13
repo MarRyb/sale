@@ -42,6 +42,12 @@ form
   margin-bottom: 0
   font-size: 14px
 
+.col-form-label
+  padding-top: calc(.375rem + 1px)
+  padding-bottom: calc(.375rem + 1px)
+  font-size: inherit
+  line-height: 1.5
+
 .form-row
   display: flex
   flex-wrap: wrap
@@ -50,6 +56,26 @@ form
   .form-check
     padding-left: 1.5rem !important
 
+.col-12
+  flex: 0 0 100%
+  max-width: 100%
+
+.col-md-4
+  flex: 0 0 33.333333%
+  max-width: 33.333333%
+  width: 100%
+  padding-right: 15px
+  padding-left: 15px
+
+.col-md-8
+  flex: 0 0 66.666667%
+  max-width: 66.666667%
+  width: 100%
+  padding-right: 15px
+  padding-left: 15px
+
+.offset-md-4
+  margin-left: 33.333333%
 
 .form-check-input
   position: absolute
@@ -128,6 +154,11 @@ form
 .container-fluid
   padding-top: 120px
 
+
+.ml-auto, .mx-auto
+  margin-left: auto
+  margin-right: auto
+
 .main-block-container
   min-height: auto
   margin-top: 15px
@@ -148,7 +179,39 @@ form
     background-size: contain
     padding: 65px 50px
 
+.row
+  display: flex
+  flex-wrap: wrap
+  margin-right: -15px
+  margin-left: -15px
+
 .text
   &.text-red
     color: #bc0000
     word-break: normal
+
+
+h4
+  font-size: 24px
+  margin-bottom: 16px
+
+h1, h2, h3, h4, h5, h6
+  font-weight: 300
+  margin-top: 0
+
+.form-check
+  position: relative
+  display: block
+  padding-left: 1.25rem
+
+.form-check-inline
+  display: inline-flex
+  align-items: center
+  padding-left: 0
+  margin-right: .75rem
+
+.form-check-inline .form-check-input
+  position: static
+  margin-top: 0
+  margin-right: .3125rem
+  margin-left: 0
