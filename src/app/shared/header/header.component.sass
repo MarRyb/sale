@@ -29,6 +29,7 @@
       display: flex
       flex: 0 0 20%
       justify-content: flex-end
+      align-items: flex-end
       img
         width: 48px
         height: 48px
@@ -38,3 +39,29 @@
     .empty-header
       width: 50%
       flex: 0 0 50%
+
+.user-settings
+  display: block
+  margin-bottom: 8px
+  cursor: pointer
+  &:before
+    display: block
+    content: ' '
+    width: 0
+    height: 0
+    border-style: solid
+    border-width: 0 6px 6px 6px
+    border-color: transparent transparent #b30606 transparent
+
+.user-menu
+  position: relative
+  user-select: none
+
+  app-popover
+    position: absolute
+    left: auto
+    right: 0px
+    top: 100%
+    transform: translateY(0px)
+    bottom: auto
+    width: 200px

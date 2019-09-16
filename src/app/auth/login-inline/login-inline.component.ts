@@ -4,7 +4,7 @@ import { ApiService } from '../../core/services/api.service';
 import { AuthService } from '../service/auth.service';
 
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-
+import { CurrentUserService } from './../../core/services/current-user.service';
 @Component({
     selector: 'app-login-inline',
     templateUrl: './login-inline.component.html',
@@ -21,7 +21,8 @@ export class LoginInlineComponent implements OnInit {
         private router: Router,
         private api: ApiService,
         private auth: AuthService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private currentUserService: CurrentUserService
     ) { }
 
     ngOnInit() {
@@ -36,7 +37,8 @@ export class LoginInlineComponent implements OnInit {
         const value = this.loginForm.getRawValue();
         this.auth.authUser(this.createAuthData(value)).subscribe(
             res => {
-								localStorage.setItem('auth', JSON.stringify(res));
+                localStorage.setItem('auth', JSON.stringify(res));
+                this.currentUserService.authenticate();
                 this.router.navigate(['/']);
 						},
 						error => {

@@ -3,7 +3,7 @@ import { ApiService } from './api.service';
 import { Observable,  BehaviorSubject,  ReplaySubject, throwError } from 'rxjs';
 // import { User } from '../interfaces/user.interface';
 import { distinctUntilChanged, map, catchError } from 'rxjs/operators';
-
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,20 +17,25 @@ export class CurrentUserService {
 
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private router: Router
   ) { }
 
   authenticate() {
-    return this.apiService.get('api/v1/profile/info').subscribe(
-      data => {
-        if (data) {
-          this.setCurrentUser(data)
-        } else {
-          this.logout()
-        }
-      },
-      err => this.logout()
-    );
+    const accessToken = JSON.parse(localStorage.getItem('auth'));
+
+    if (accessToken && accessToken.access_token) {
+      return this.apiService.get('api/v1/profile/info').subscribe(
+        data => {
+          if (data) {
+            this.setCurrentUser(data)
+          } else {
+            this.logout()
+          }
+        },
+        err => this.logout()
+      );
+    }
   }
 
   setCurrentUser(user: {}) {
@@ -39,9 +44,10 @@ export class CurrentUserService {
   }
 
   logout() {
-    localStorage.removeItem('access_token');
+    localStorage.removeItem('auth');
     this.currentUserSubject.next({});
     this.isAuthenticatedSubject.next(false);
+    this.router.navigate(['/signin']);
   }
 
   get() {
