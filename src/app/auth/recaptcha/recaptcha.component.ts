@@ -43,11 +43,10 @@ export class ScriptLoaderService {
 }
 
 @Component({
+    // tslint:disable-next-line: component-selector
     selector: 'recaptcha',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    template: `
-      <div class="google-recaptcha-container" #container></div>
-    `,
+    template: `<div class="google-recaptcha-container" #container></div>`,
     providers: [ScriptLoaderService],
 })
 export class RecaptchaComponent

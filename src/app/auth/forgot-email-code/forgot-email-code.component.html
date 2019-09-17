@@ -10,9 +10,9 @@
     <form [formGroup]="codeForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <input type="password"
-               class="form-control"
-               formControlName="code"
-               placeholder="Ваш пароль"
+              class="form-control"
+              formControlName="code"
+              placeholder="Ваш пароль"
         >
         <div class="text-danger" *ngIf="codeForm.get('code').errors && codeForm.get('code').touched">
           Введите корректный пароль

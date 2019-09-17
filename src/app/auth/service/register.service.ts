@@ -1,43 +1,39 @@
 import { Injectable } from '@angular/core';
-import { LocalStorageService } from 'ngx-localstorage';
-
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
-  currentID;
-  badge;
-  registerStage;
-  private login;
-  private code;
+  currentID: any;
+  badge: any;
+  registerStage: any;
+  private login: any;
+  private code: any;
 
-  constructor(
-    private localStorageService: LocalStorageService
-  ) {}
+  constructor() {}
 
   getRegisterStage() {
-    return this.localStorageService.get('registerStage', 'vpotoke');
+    return localStorage.get('registerStage', 'vpotoke');
   }
 
   getRegisterId() {
-    return this.localStorageService.get('id', 'vpotoke');
+    return localStorage.get('id', 'vpotoke');
   }
 
-  setRegisterData(data) {
-    this.localStorageService.set('id', `${data.id}`, 'vpotoke');
-    this.localStorageService.set('registerStage', `${data.registerStage}`, 'vpotoke');
+  setRegisterData(data: any) {
+    localStorage.set('id', `${data.id}`, 'vpotoke');
+    localStorage.set('registerStage', `${data.registerStage}`, 'vpotoke');
   }
 
-  setLogin(login) {
+  setLogin(login: any) {
     this.login = login;
-    this.localStorageService.set('id', login, 'vpotoke');
+    localStorage.set('id', login, 'vpotoke');
   }
 
   getLogin() {
     return this.login;
   }
 
-  setCode(code) {
+  setCode(code: any) {
     this.code = code;
   }
 

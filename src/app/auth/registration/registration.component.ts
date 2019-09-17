@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registration.component.sass']
 })
 export class RegistrationComponent implements OnInit {
-  registerStage;
 
   constructor(
   ) {}

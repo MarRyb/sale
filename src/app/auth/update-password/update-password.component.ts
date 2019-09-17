@@ -31,7 +31,7 @@ export class UpdatePasswordComponent implements OnInit, OnDestroy {
         this.route.queryParams.pipe(
             takeWhile(() => this.alive))
             .subscribe(params => {
-                this.token = params['token'];
+                this.token = params.token;
             });
         this.initForm();
     }
@@ -71,13 +71,13 @@ export class UpdatePasswordComponent implements OnInit, OnDestroy {
         }
     }
 
-    private pushErrorFor(ctrl_name: string, msg: string) {
-        this.updatePasswordForm.controls[ctrl_name].setErrors({ msg: msg });
+    private pushErrorFor(ctrlName: string, msg: string) {
+        this.updatePasswordForm.controls[ctrlName].setErrors({ msg });
     }
 
     initForm() {
         const password = '';
-        const confirm_password = '';
+        const confirmPassword = '';
 
         this.updatePasswordForm = this.fb.group(
             {
@@ -85,12 +85,12 @@ export class UpdatePasswordComponent implements OnInit, OnDestroy {
                     password,
                     Validators.compose([Validators.required, Validators.minLength(6)])
                 ],
-                confirm_password: [
-                    confirm_password,
+                confirmPassword: [
+                    confirmPassword,
                     Validators.compose([Validators.required, Validators.minLength(6)])
                 ],
             },
-            { validator: this.matchingPasswords({ passwordKey: 'password', confirmPasswordKey: 'confirm_password' }) }
+            { validator: this.matchingPasswords({ passwordKey: 'password', confirmPasswordKey: 'confirmPassword' }) }
         );
     }
 

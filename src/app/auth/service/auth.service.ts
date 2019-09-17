@@ -1,9 +1,6 @@
-// import { AuthLoginService } from './service.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { take } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-// import { LOGIN_SUCCESS, LoginAction, IPayloadRefreshTokenChat } from '../../../actions/auth.actions';
 import { Observable, of } from 'rxjs';
 import { ApiService } from '../../core/services/api.service';
 
@@ -43,14 +40,14 @@ export class AuthService {
 
     forgetPassWithMail(email: any) {
         return this.http.post(`${this.openApiUrl}users/send_password_email`, {
-            email: email,
+            email,
             url: `${location.origin}/forgot-email/verify/`
         });
     }
 
     updatePassWithMail(email: string): Observable<any> {
         return this.http.post(`${this.openApiUrl}users/send_invite_email`, {
-            email: email,
+            email,
             url: `${location.origin}/update-password/`
         });
     }
@@ -76,10 +73,8 @@ export class AuthService {
         return guid;
     }
 
-    registerUser(data) {
-        // const req = this.openApiUrl + 'registration';
+    registerUser(data: any) {
         return this.api.post('open_api/v1/registration', data);
-        // return this.http.post(req, data)    ;
     }
 }
 

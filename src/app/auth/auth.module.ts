@@ -1,16 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { CookieModule } from 'ngx-cookie';
 import { NgxfUploaderModule } from 'ngxf-uploader';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-
 import { RegisterInfoComponent } from './registration/register-info/register-info.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginInlineComponent } from './login-inline/login-inline.component';
-import { LogoutComponent } from './logout/logout.component';
 import { ForgotEmailComponent } from './forgot-email/forgot-email.component';
 import { ForgotEmailVerifyComponent } from './forgot-email-verify/forgot-email-verify.component';
 import { ForgotEmailCodeComponent } from './forgot-email-code/forgot-email-code.component';
@@ -28,7 +24,6 @@ defineLocale('ru', ruLocale);
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    // CookieModule.forRoot(),
     BsDatepickerModule.forRoot(),
     HttpClientModule,
     NgxfUploaderModule,
@@ -41,7 +36,6 @@ defineLocale('ru', ruLocale);
     RegistrationComponent,
     LoginInlineComponent,
     RegisterInfoComponent,
-    LogoutComponent,
     ForgotEmailComponent,
     ForgotEmailVerifyComponent,
     ForgotEmailCodeComponent,
@@ -51,7 +45,6 @@ defineLocale('ru', ruLocale);
     RegistrationComponent,
     LoginInlineComponent,
     RegisterInfoComponent,
-    LogoutComponent,
     UpdatePasswordComponent,
   ]
 })

@@ -15,8 +15,8 @@ export class ForgotEmailComponent implements OnInit {
     private alive = true;
 
     constructor(private fb: FormBuilder,
-        private router: Router,
-        private authService: AuthService) {
+                private router: Router,
+                private authService: AuthService) {
     }
 
     ngOnInit() {
@@ -51,8 +51,8 @@ export class ForgotEmailComponent implements OnInit {
             .subscribe();
     }
 
-    private pushErrorFor(ctrl_name: string, msg: string) {
-        this.emailForm.controls[ctrl_name].setErrors({ msg: msg });
+    private pushErrorFor(ctrlName: string, msg: string) {
+        this.emailForm.controls[ctrlName].setErrors({ msg });
     }
 
     private getErrosCode(error: number): string {

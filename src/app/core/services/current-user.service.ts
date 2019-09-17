@@ -1,7 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { ApiService } from './api.service';
 import { Observable,  BehaviorSubject,  ReplaySubject, throwError } from 'rxjs';
-// import { User } from '../interfaces/user.interface';
 import { distinctUntilChanged, map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 @Injectable({
@@ -28,9 +27,9 @@ export class CurrentUserService {
       return this.apiService.get('api/v1/profile/info').subscribe(
         data => {
           if (data) {
-            this.setCurrentUser(data)
+            this.setCurrentUser(data);
           } else {
-            this.logout()
+            this.logout();
           }
         },
         err => this.logout()

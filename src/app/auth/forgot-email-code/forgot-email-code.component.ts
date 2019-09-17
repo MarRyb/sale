@@ -27,17 +27,17 @@ export class ForgotEmailCodeComponent implements OnInit {
       code: ['', Validators.compose([Validators.minLength(4), Validators.required])],
     });
     this.activatedRoute.queryParams.subscribe(params => {
-      return this.phone = params['phone'];
+      return this.phone = params.phone;
     });
   }
 
   onSubmit() {
     const code = this.codeForm.get('code').value;
 
-    // this.authService.authUser({
-    //   userName: this.phone,
-    //   pass: code
-    // }).subscribe(() => this.router.navigate(['editshape']));
+    this.authService.authUser({
+      username: this.phone,
+      password: code
+    }).subscribe(() => this.router.navigate(['editshape']));
   }
 
 }
