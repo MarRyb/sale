@@ -34,6 +34,8 @@ export class CurrentUserService {
         },
         err => this.logout()
       );
+    } else {
+      this.logout();
     }
   }
 

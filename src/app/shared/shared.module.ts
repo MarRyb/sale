@@ -6,6 +6,7 @@ import { LogoModule } from './header/logo/logo.module';
 import { UiElementModule } from './../__ui-element/ui-element.module';
 import { ClickOutsideDirective } from './../directives/click-outside.directive';
 import { ShowAuthedDirective } from './../directives/show-authed.directive';
+import { RouterModule } from '@angular/router';
 @NgModule({
     declarations: [
         HeaderComponent,
@@ -16,7 +17,8 @@ import { ShowAuthedDirective } from './../directives/show-authed.directive';
     imports: [
         CommonModule,
         LogoModule,
-        UiElementModule
+        UiElementModule,
+        RouterModule
     ],
     exports: [
         HeaderComponent,

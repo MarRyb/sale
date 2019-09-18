@@ -37,8 +37,7 @@
         border: 1px solid #b30706
         background-size: contain
     .empty-header
-      width: 50%
-      flex: 0 0 50%
+      width: 100%
 
 .user-settings
   display: block
@@ -65,3 +64,23 @@
     transform: translateY(0px)
     bottom: auto
     width: 200px
+
+.block_auth
+  +flex-position()
+  #link-sign
+    width: 132px
+    background: #B70305
+    border-radius: 4px
+    color: #FFFFFF
+
+  #link-register
+    width: 109px
+    color: #B70305
+    margin: 0 40px
+
+  #link-sign, #link-register
+    +flex-position()
+    height: 32px
+    font-size: 18px
+    line-height: 21px
+    cursor: pointer
