@@ -2,10 +2,10 @@
   <div class="header-wrapper__container">
     <div class="header_logo"><app-logo class="logo"></app-logo></div>
     <div class="empty-header">&nbsp;</div>
-    <div class="header_user">
+    <div class="header_user" *appShowAuthed="true">
       <img src="https://vpotoke.com/assets/img/astronaut.svg">
 
-      <div class="user-menu" (appClickOutside)="showSettings = false" *appShowAuthed="true">
+      <div class="user-menu" (appClickOutside)="showSettings = false">
         <span class="user-settings" (click)="showSettings = !showSettings"></span>
         <app-popover *ngIf="showSettings">
           <a>Мой профиль</a>
