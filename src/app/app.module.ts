@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CoreModule } from './core/core.module';
     SharedModule,
     AuthModule,
     BrowserAnimationsModule,
-    CoreModule
+    CoreModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
