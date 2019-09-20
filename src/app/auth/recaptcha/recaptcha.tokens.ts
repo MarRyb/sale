@@ -1,5 +1,6 @@
-import { InjectionToken } from '@angular/core';
+// import { InjectionToken } from '@angular/core';
 
-export const RECAPTCHA_CONFIG = new InjectionToken<string>(
-    'google-recaptcha siteKey',
-);
+// export const RECAPTCHA_CONFIG = new InjectionToken<string>(
+//     'google-recaptcha siteKey',
+// );
+

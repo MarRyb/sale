@@ -20,8 +20,9 @@ import {
     ChangeDetectionStrategy,
 } from '@angular/core';
 
-import { RECAPTCHA_CONFIG } from './recaptcha.tokens';
+// import { RECAPTCHA_CONFIG } from './recaptcha.tokens';
 import { RecaptchaModuleConfig } from './recaptcha.module';
+import { WINDOW } from '@ng-toolkit/universal';
 
 export interface InjectAndLoadScriptConfig {
     scriptSrc: string;
@@ -31,6 +32,7 @@ export interface InjectAndLoadScriptConfig {
 
 @Injectable()
 export class ScriptLoaderService {
+
     injectAndLoadScript(config: InjectAndLoadScriptConfig) {
         const script = document.createElement('script');
         script.src = config.scriptSrc;
@@ -66,13 +68,15 @@ export class RecaptchaComponent
     };
 
     constructor(
-        @Inject(RECAPTCHA_CONFIG) private recaptchaConfig: RecaptchaModuleConfig,
+        // @Inject(RECAPTCHA_CONFIG) private recaptchaConfig: RecaptchaModuleConfig,
+        @Inject('google-recaptcha siteKey') private recaptchaConfig: RecaptchaModuleConfig,
         @Self()
         @Optional()
         private controlDir: NgControl,
         private scriptLoaderService: ScriptLoaderService,
         private zone: NgZone,
         private cd: ChangeDetectorRef,
+        @Inject(WINDOW) private window: Window
     ) {
         this.controlDir.valueAccessor = this;
     }
@@ -138,18 +142,18 @@ export class RecaptchaComponent
      * event from the recaptcha lib
      */
     private setGlobalHandlers(): void {
-        (window as any)[this.GLOBAL_ON_LOAD_CALLBACK_NAME] = () => {
+        (this.window as any)[this.GLOBAL_ON_LOAD_CALLBACK_NAME] = () => {
             /**
              * Make it easier to add type information to, and work with, the recaptcha lib
              * by storing a single reference to it
              */
-            this.recaptchaAPI = (window as any).grecaptcha;
+            this.recaptchaAPI = (this.window as any).grecaptcha;
             this.renderRecaptcha();
         };
     }
 
     private unsetGlobalHandlers(): void {
-        delete (window as any)[this.GLOBAL_ON_LOAD_CALLBACK_NAME];
+        delete (this.window as any)[this.GLOBAL_ON_LOAD_CALLBACK_NAME];
     }
 
     /**

@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { CurrentUserService } from './core/services/current-user.service';
-import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
-import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { WINDOW } from '@ng-toolkit/universal';
 
 @Component({
   selector: 'app-root',

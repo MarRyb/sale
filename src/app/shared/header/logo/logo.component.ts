@@ -1,5 +1,6 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef, Inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { WINDOW } from '@ng-toolkit/universal';
 @Component({
     selector: 'app-logo',
     templateUrl: './logo.component.html',
@@ -7,12 +8,12 @@ import { Router } from '@angular/router';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LogoComponent {
-    constructor(
+    constructor(@Inject(WINDOW) private window: Window, 
         private router: Router
     ) { }
 
     goToMain() {
-        window.scrollTo(0, 0);
+        this.window.scrollTo(0, 0);
         setTimeout(() => {
             return this.router.navigate(['']);
         }, 100);

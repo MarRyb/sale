@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable, of } from 'rxjs';
 import { ApiService } from '../../core/services/api.service';
+import { WINDOW } from '@ng-toolkit/universal';
 
 // import { AuthChatUser } from 'src/app/components/chat/models/chat-auth-user';
 
@@ -16,7 +17,7 @@ export class AuthService {
     client_id = environment.client_id;
     client_secret = environment.client_secret;
 
-    constructor(
+    constructor(@Inject(WINDOW) private window: Window, 
         private http: HttpClient,
         private api: ApiService
     ) {
@@ -61,8 +62,8 @@ export class AuthService {
     }
 
     guid() {
-        const nav = window.navigator;
-        const screen = window.screen;
+        const nav = this.window.navigator;
+        const screen = this.window.screen;
         let guid = nav.mimeTypes.length.toString();
         guid += nav.userAgent.replace(/\D+/g, '');
         guid += nav.plugins.length;
