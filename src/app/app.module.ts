@@ -16,7 +16,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     SharedModule,
     AuthModule,
