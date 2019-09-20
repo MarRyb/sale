@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
-
+import { LOCAL_STORAGE } from '@ng-toolkit/universal';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { CurrentUserService } from './../../core/services/current-user.service';
 @Component({
@@ -20,7 +20,8 @@ export class LoginInlineComponent implements OnInit {
         private router: Router,
         private auth: AuthService,
         private fb: FormBuilder,
-        private currentUserService: CurrentUserService
+        private currentUserService: CurrentUserService,
+        @Inject(LOCAL_STORAGE) private localStorage: any
     ) { }
 
     ngOnInit() {
@@ -35,7 +36,7 @@ export class LoginInlineComponent implements OnInit {
         const value = this.loginForm.getRawValue();
         this.auth.authUser(this.createAuthData(value)).subscribe(
             res => {
-                localStorage.setItem('auth', JSON.stringify(res));
+                this.localStorage.setItem('auth', JSON.stringify(res));
                 this.currentUserService.authenticate();
                 this.router.navigate(['/']);
             },

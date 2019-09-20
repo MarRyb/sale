@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { CurrentUserService } from './core/services/current-user.service';
-
+import { LOCAL_STORAGE, WINDOW } from '@ng-toolkit/universal';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +9,15 @@ import { CurrentUserService } from './core/services/current-user.service';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
-  constructor(private currentUser: CurrentUserService) {
+  constructor(private currentUser: CurrentUserService,
+              @Inject(WINDOW) private window: Window) {
     this.currentUser.authenticate();
   }
   title = 'kash';
 
   ngOnInit() {}
   onActivate() {
-    window.scrollTo({
+    this.window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });

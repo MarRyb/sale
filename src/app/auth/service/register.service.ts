@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
+import { LOCAL_STORAGE } from '@ng-toolkit/universal';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,24 +10,24 @@ export class RegisterService {
   private login: any;
   private code: any;
 
-  constructor() {}
+  constructor(@Inject(LOCAL_STORAGE) private localStorage: any) {}
 
   getRegisterStage() {
-    return localStorage.get('registerStage', 'vpotoke');
+    return this.localStorage.get('registerStage', 'vpotoke');
   }
 
   getRegisterId() {
-    return localStorage.get('id', 'vpotoke');
+    return this.localStorage.get('id', 'vpotoke');
   }
 
   setRegisterData(data: any) {
-    localStorage.set('id', `${data.id}`, 'vpotoke');
-    localStorage.set('registerStage', `${data.registerStage}`, 'vpotoke');
+    this.localStorage.set('id', `${data.id}`, 'vpotoke');
+    this.localStorage.set('registerStage', `${data.registerStage}`, 'vpotoke');
   }
 
   setLogin(login: any) {
     this.login = login;
-    localStorage.set('id', login, 'vpotoke');
+    this.localStorage.set('id', login, 'vpotoke');
   }
 
   getLogin() {

@@ -1,6 +1,7 @@
 import { Injectable, Injector, Inject } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { LOCAL_STORAGE } from '@ng-toolkit/universal';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 
 export class HttpConfigInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(@Inject(LOCAL_STORAGE) private localStorage: any) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const headersConfig = {
@@ -17,7 +18,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
       Authorization: ''
     };
 
-    const accessToken = localStorage.getItem('auth');
+    const accessToken = this.localStorage.getItem('auth');
 
     if (accessToken) {
       headersConfig.Authorization = 'Bearer ' + JSON.parse(accessToken).access_token;

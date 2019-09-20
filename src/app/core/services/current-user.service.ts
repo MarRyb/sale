@@ -3,6 +3,7 @@ import { ApiService } from './api.service';
 import { Observable,  BehaviorSubject,  ReplaySubject, throwError } from 'rxjs';
 import { distinctUntilChanged, map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { LOCAL_STORAGE } from '@ng-toolkit/universal';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,11 +18,12 @@ export class CurrentUserService {
 
   constructor(
     private apiService: ApiService,
-    private router: Router
+    private router: Router,
+    @Inject(LOCAL_STORAGE) private localStorage: any
   ) { }
 
   authenticate() {
-    const accessToken = JSON.parse(localStorage.getItem('auth'));
+    const accessToken = JSON.parse(this.localStorage.getItem('auth'));
 
     if (accessToken && accessToken.access_token) {
       return this.apiService.get('api/v1/profile/info').subscribe(
@@ -45,7 +47,7 @@ export class CurrentUserService {
   }
 
   logout() {
-    localStorage.removeItem('auth');
+    this.localStorage.removeItem('auth');
     this.currentUserSubject.next({});
     this.isAuthenticatedSubject.next(false);
     this.router.navigate(['/signin']);
