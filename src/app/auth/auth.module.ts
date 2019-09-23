@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { defineLocale, ruLocale } from 'ngx-bootstrap';
 import { AuthRoutingModule } from './auth-router.module';
+import { RouterModule } from '@angular/router';
 
 
 defineLocale('ru', ruLocale);
@@ -30,7 +31,8 @@ defineLocale('ru', ruLocale);
     RecaptchaModule.forRoot({
         siteKey: environment.recaptcha_key,
     }),
-    AuthRoutingModule
+    AuthRoutingModule,
+    RouterModule
   ],
   declarations: [
     RegistrationComponent,

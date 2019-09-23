@@ -17,9 +17,9 @@ export class AuthService {
     client_id = environment.client_id;
     client_secret = environment.client_secret;
 
-    constructor(@Inject(WINDOW) private window: Window, 
-        private http: HttpClient,
-        private api: ApiService
+    constructor(@Inject(WINDOW) private window: Window,
+                private http: HttpClient,
+                private api: ApiService
     ) {
     }
 

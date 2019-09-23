@@ -13,7 +13,6 @@ import { AuthService } from '../service/auth.service';
 export class UpdatePasswordComponent implements OnInit, OnDestroy {
     updatePasswordForm: FormGroup;
     updatePasswordSubs: Subscription;
-
     token: string;
     email: string;
     id: string;
@@ -25,7 +24,9 @@ export class UpdatePasswordComponent implements OnInit, OnDestroy {
         private route: ActivatedRoute,
         private router: Router,
         private authService: AuthService
-    ) { }
+    ) {
+        alert(1);
+    }
 
     ngOnInit() {
         this.route.queryParams.pipe(
