@@ -50,7 +50,7 @@ export class CurrentUserService {
     this.localStorage.removeItem('auth');
     this.currentUserSubject.next({});
     this.isAuthenticatedSubject.next(false);
-    this.router.navigate(['/signin']);
+    this.router.navigate(['/category']);
   }
 
   get() {
