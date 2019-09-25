@@ -1,8 +1,8 @@
+import { ApiAuthService } from './apiAuth.service';
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable, of } from 'rxjs';
-import { ApiService } from '../../core/services/api.service';
 import { WINDOW } from '@ng-toolkit/universal';
 
 // import { AuthChatUser } from 'src/app/components/chat/models/chat-auth-user';
@@ -13,13 +13,13 @@ import { WINDOW } from '@ng-toolkit/universal';
 export class AuthService {
 
     chatURL = environment.chatURL;
-    openApiUrl = environment.openApiURL;
+    openApiUrl = environment.apiAuth;
     client_id = environment.client_id;
     client_secret = environment.client_secret;
 
     constructor(@Inject(WINDOW) private window: Window,
                 private http: HttpClient,
-                private api: ApiService
+                private api: ApiAuthService
     ) {
     }
 

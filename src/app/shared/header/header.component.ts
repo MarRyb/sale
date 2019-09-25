@@ -6,7 +6,7 @@ import { CurrentUserService } from '../../core/services/current-user.service';
   styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent implements OnInit {
-  public showSettings = false;
+
   constructor(
     public currentUserService: CurrentUserService
   ) { }

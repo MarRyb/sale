@@ -1,7 +1,8 @@
+
 import { Component, EventEmitter, OnInit, Output, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from '../../../core/services/api.service';
+import { ApiAuthService } from './../../service/apiAuth.service';
 import { AuthService } from '../../service/auth.service';
 import { GeoService } from '../../service/geo.service';
 import { takeWhile } from 'rxjs/operators';
@@ -29,7 +30,7 @@ export class RegisterInfoComponent implements OnInit, OnDestroy {
     public selectedCountry: { id: number, name: string } = { id: null, name: 'Выберите страну' };
 
     constructor(
-        private api: ApiService,
+        private api: ApiAuthService,
         private geoService: GeoService,
         private fb: FormBuilder,
         public authService: AuthService,

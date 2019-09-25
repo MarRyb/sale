@@ -1,7 +1,8 @@
 export const environment = {
   production: true,
-  apiURL: 'http://test2.vpotoke.com/',
+  apiAuth: 'http://test2.vpotoke.com/',
   chatURL: 'http://test3.vpotoke.com:8890/',
+  apiUrl: 'http://test4.vpotoke.com/',
   openApiURL: 'http://test2.vpotoke.com/open_api/v1/',
   URL: 'http://test2.vpotoke.com/',
   tokenURL: 'http://test2.vpotoke.com/oauth/v2/token',

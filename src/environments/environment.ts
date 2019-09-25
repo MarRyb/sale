@@ -1,10 +1,8 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
 export const environment = {
     production: true,
-    apiURL: 'http://test2.vpotoke.com/',
+    apiAuth: 'http://test2.vpotoke.com/',
     chatURL: 'http://test3.vpotoke.com:8890/',
+    apiUrl: 'http://test4.vpotoke.com/',
     openApiURL: 'http://test2.vpotoke.com/open_api/v1/',
     URL: 'http://test2.vpotoke.com/',
     tokenURL: 'http://test2.vpotoke.com/oauth/v2/token',
@@ -15,10 +13,4 @@ export const environment = {
     youtube_api_key: 'AIzaSyCVZ_fv8f2coi0TiApyD60VrOb_wug6DdA'
 };
 
-/*
- * In development mode, to ignore zone related error stack frames such as
- * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can
- * import the following file, but please comment it out in production mode
- * because it will have performance impact when throw error
- */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.

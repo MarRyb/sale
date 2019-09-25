@@ -1,5 +1,5 @@
+import { ApiAuthService } from './../../auth/service/apiAuth.service';
 import { Injectable, Inject } from '@angular/core';
-import { ApiService } from './api.service';
 import { Observable,  BehaviorSubject,  ReplaySubject, throwError } from 'rxjs';
 import { distinctUntilChanged, map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ export class CurrentUserService {
 
 
   constructor(
-    private apiService: ApiService,
+    private apiService: ApiAuthService,
     private router: Router,
     @Inject(LOCAL_STORAGE) private localStorage: any
   ) { }
