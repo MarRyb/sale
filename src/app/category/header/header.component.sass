@@ -1,5 +1,29 @@
 .wrapper-category
-  display: flex
-  flex-direction: column
   padding: 25px 120px
   background: rgba(255, 255, 255, 0.8)
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+  justify-content: flex-start
+  flex-basis: 100%
+  flex-shrink: 0
+  .category-item
+    display: flex
+    flex-basis: 14%
+    align-items: flex-start
+    justify-content: flex-start
+    line-height: 32px
+    height: 32px
+    margin-bottom: 12px
+    img
+      width: 16px
+      height: 16px
+    span
+      font-style: normal
+      font-weight: 500
+      font-size: 14px
+      line-height: 16px
+      display: flex
+      align-items: center
+      margin-left: 4px
+      color: #575757
