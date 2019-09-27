@@ -58,7 +58,7 @@ export class AuthService {
     }
 
     updatePassword(token: string, data: any): Observable<any> {
-        return this.http.post(`${this.openApiUrl}users/recovery_password?confirmation_token=${token}`, data);
+        return this.http.post(`${this.openApiUrl}open_api/v1/users/recovery_password?confirmation_token=${token}`, data);
     }
 
     guid() {

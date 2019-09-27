@@ -25,8 +25,7 @@ export class UpdatePasswordComponent implements OnInit, OnDestroy {
         private router: Router,
         private authService: AuthService
     ) {
-        alert(1);
-    }
+}
 
     ngOnInit() {
         this.route.queryParams.pipe(
@@ -86,12 +85,12 @@ export class UpdatePasswordComponent implements OnInit, OnDestroy {
                     password,
                     Validators.compose([Validators.required, Validators.minLength(6)])
                 ],
-                confirmPassword: [
+                confirm_password: [
                     confirmPassword,
                     Validators.compose([Validators.required, Validators.minLength(6)])
                 ],
             },
-            { validator: this.matchingPasswords({ passwordKey: 'password', confirmPasswordKey: 'confirmPassword' }) }
+            { validator: this.matchingPasswords({ passwordKey: 'password', confirmPasswordKey: 'confirm_password' }) }
         );
     }
 

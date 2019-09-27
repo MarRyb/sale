@@ -37,7 +37,7 @@ export class CurrentUserService {
         err => this.logout()
       );
     } else {
-      this.logout();
+      // this.logout();
     }
   }
 
@@ -50,7 +50,7 @@ export class CurrentUserService {
     this.localStorage.removeItem('auth');
     this.currentUserSubject.next({});
     this.isAuthenticatedSubject.next(false);
-    this.router.navigate(['/category']);
+    this.router.navigate(['/signin']);
   }
 
   get() {

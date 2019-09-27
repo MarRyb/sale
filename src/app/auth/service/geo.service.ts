@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ApiService } from '../../core/services/api.service';
+import { ApiAuthService } from './apiAuth.service';
 
 @Injectable({
     providedIn: 'root'
@@ -8,7 +8,7 @@ import { ApiService } from '../../core/services/api.service';
 export class GeoService {
 
     constructor(
-        private api: ApiService
+        private api: ApiAuthService
     ) { }
 
     getCountries(): Observable<any> {

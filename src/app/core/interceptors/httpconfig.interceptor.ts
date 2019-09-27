@@ -15,13 +15,13 @@ export class HttpConfigInterceptor implements HttpInterceptor {
     const headersConfig = {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Authorization: ''
+      authorization: ''
     };
 
     const accessToken = this.localStorage.getItem('auth');
 
     if (accessToken) {
-      headersConfig.Authorization = 'Bearer ' + JSON.parse(accessToken).access_token;
+      headersConfig.authorization = 'Bearer ' + JSON.parse(accessToken).access_token;
     }
 
     const request = req.clone({

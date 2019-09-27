@@ -9,7 +9,7 @@ export class CategoryService {
   }
 
   getList() {
-    return this.api.get('api/v1/static/category/');
+    return this.api.get('open_api/v1/static/category/');
   }
 }
 
