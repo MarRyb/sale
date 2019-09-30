@@ -1,29 +1,66 @@
-.wrapper-category
-  padding: 25px 120px
-  background: rgba(255, 255, 255, 0.8)
+.wrapper
   display: flex
-  flex-wrap: wrap
+  background: rgba(255, 255, 255, 0.8)
+  padding: 25px 120px
+  .wrapper-category
+    display: grid
+    grid-gap: 10px 0
+    width: 100%
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
+
+.category-item
+  display: flex
+  flex-basis: 14%
   align-items: flex-start
   justify-content: flex-start
-  flex-basis: 100%
-  flex-shrink: 0
-  .category-item
+  height: 100%
+  cursor: pointer
+  user-select: none
+  img
+    width: 16px
+    height: 16px
+  span
+    font-style: normal
+    font-weight: 500
+    font-size: 14px
+    line-height: 16px
     display: flex
-    flex-basis: 14%
-    align-items: flex-start
-    justify-content: flex-start
-    line-height: 32px
-    height: 32px
-    margin-bottom: 12px
-    img
-      width: 16px
-      height: 16px
-    span
-      font-style: normal
-      font-weight: 500
-      font-size: 14px
-      line-height: 16px
-      display: flex
-      align-items: center
-      margin-left: 4px
-      color: #575757
+    align-items: center
+    margin-left: 4px
+    color: #575757
+
+
+.sub-category
+  height: 132px
+  left: 129px
+  top: 119px
+  margin: 35px 0
+  background: #FFFFFF
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25)
+  border-radius: 4px
+
+.wrapper-category__item
+  &:nth-child(6n+1)
+    .sub-category
+      margin-left: 0
+      margin-right: -500%
+  &:nth-child(6n+2)
+    .sub-category
+      margin-left: -100%
+      margin-right: -400%
+  &:nth-child(6n+3)
+    .sub-category
+      margin-left: -200%
+      margin-right: -300%
+  &:nth-child(6n+4)
+    .sub-category
+      margin-left: -300%
+      margin-right: -200%
+  &:nth-child(6n+5)
+    .sub-category
+      margin-left: -400%
+      margin-right: -100%
+  &:nth-child(6n+6)
+    .sub-category
+      margin-left: -500%
+      margin-right: 0

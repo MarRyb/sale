@@ -7,8 +7,12 @@ import { CategoryService } from './../../core/services/category.service';
   styleUrls: ['./header.component.sass']
 })
 export class CategoryHeaderComponent implements OnInit {
-
+  isShowSubCategory = false;
   constructor(private category: CategoryService) {
+  }
+
+  doShow() {
+    this.isShowSubCategory = true;
   }
 
   ngOnInit() {
