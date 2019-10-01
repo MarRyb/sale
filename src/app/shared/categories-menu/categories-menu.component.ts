@@ -10,17 +10,30 @@ export class CategoriesMenuComponent implements OnInit {
   isShowSubCategory = false;
   categoryList = [];
   constructor(private category: CategoryService) {
+    this.createPOST();
   }
 
   doShow(item: { isShowSubCategory: boolean; }) {
-    this.categoryList.forEach(function(elem){
-      elem.isShowSubCategory = false;
-    });
-    return item.isShowSubCategory = true;
+    if (item.isShowSubCategory === true) {
+      return item.isShowSubCategory = false;
+    } else {
+      this.categoryList.forEach(function(elem) {
+        elem.isShowSubCategory = false;
+      });
+      return item.isShowSubCategory = !item.isShowSubCategory;
+    }
   }
 
   showCategoryAction() {
     return true;
+  }
+
+  createPOST() {
+    this.category.create().subscribe(
+      (response) => {
+        return console.log(response);
+      }
+    );
   }
 
   ngOnInit() {
