@@ -11,12 +11,12 @@
       <img src="https://vpotoke.com/assets/img/astronaut.svg">
       <div class="user-menu" (appClickOutside)="showSettings = false">
         <span class="user-settings" (click)="showSettings = !showSettings"></span>
-        <app-popover *ngIf="showSettings">
+        <app-dropdown *ngIf="showSettings">
           <a>Мой профиль</a>
           <a>Настройки профиля</a>
           <a (click)="currentUserService.logout()">Выйти</a>
           <a>О нас</a>
-        </app-popover>
+        </app-dropdown>
       </div>
     </div>
   </div>

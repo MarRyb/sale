@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PopoverComponent } from './popover/popover.component';
+import { DropdownComponent } from './dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
-    PopoverComponent
+    DropdownComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    PopoverComponent
+    DropdownComponent
   ]
 })
 export class UiElementModule { }

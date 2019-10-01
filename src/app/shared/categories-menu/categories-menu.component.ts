@@ -19,6 +19,10 @@ export class CategoriesMenuComponent implements OnInit {
     return item.isShowSubCategory = true;
   }
 
+  showCategoryAction() {
+    return true;
+  }
+
   ngOnInit() {
     this.category.getList().subscribe(
       (response) => {
