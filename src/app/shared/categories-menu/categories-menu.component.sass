@@ -16,6 +16,20 @@
   height: 100%
   cursor: pointer
   user-select: none
+  position: relative
+  &.active
+    &:after
+      position: absolute
+      top: 44px
+      margin-top: -7.5px
+      left: 0
+      width: 28px
+      height: 28px
+      content: ''
+      box-shadow: 2px -2px 4px -1px rgba(0, 0, 0, 0.15)
+      background: #fff
+      left: 50%
+      transform: translateX(-50%) rotate(-45deg)
   img
     width: 16px
     height: 16px
@@ -38,6 +52,13 @@
   background: #FFFFFF
   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25)
   border-radius: 4px
+  padding: 15px 25px
+  .content
+    font-size: 14px
+    line-height: 16px
+    display: flex
+    align-items: center
+    color: #575757
 
 .wrapper-category__item
   &:nth-child(6n+1)

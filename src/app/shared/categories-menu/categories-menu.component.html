@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div class="wrapper-category">
+    <div (click)="doShow(item)" class="wrapper-category__item" *ngFor="let item of categoryList">
+      <div class="category-item" [ngClass]="{'active': item.isShowSubCategory}">
+        <img src="https://vpotoke.com/assets/img/astronaut.svg">
+        <span>{{item.name}}</span>
+      </div>
+      <div class="sub-category" *ngIf="item.isShowSubCategory">
+        <div class="content">
+          <div class="sub-category__item" *ngFor="let item of item.children">
+              {{item.name}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="category-action">
+    <div class="category-item" (click)="doShow()">
+      <img src="https://vpotoke.com/assets/img/astronaut.svg">
+      <span>Недвижимость</span>
+    </div>
+  </div>
+</div>
