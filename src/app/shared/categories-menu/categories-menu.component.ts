@@ -17,9 +17,9 @@ export class CategoriesMenuComponent implements OnInit {
     if (item.isShowSubCategory === true) {
       return item.isShowSubCategory = false;
     } else {
-      this.categoryList.forEach(function(elem) {
-        elem.isShowSubCategory = false;
-      });
+      this.categoryList.forEach(
+        (elem) => elem.isShowSubCategory = false
+      );
       return item.isShowSubCategory = !item.isShowSubCategory;
     }
   }
@@ -30,17 +30,13 @@ export class CategoriesMenuComponent implements OnInit {
 
   createPOST() {
     this.category.create().subscribe(
-      (response) => {
-        return console.log(response);
-      }
+      (response) => {console.log(response);}
     );
   }
 
   ngOnInit() {
     this.category.getList().subscribe(
-      (response) => {
-        return this.categoryList = response;
-      }
+      (response) => this.categoryList = response
     );
   }
 
