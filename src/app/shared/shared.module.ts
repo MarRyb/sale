@@ -9,13 +9,15 @@ import { ClickOutsideDirective } from './../directives/click-outside.directive';
 import { ShowAuthedDirective } from './../directives/show-authed.directive';
 import { CategoriesMenuComponent } from './categories-menu/categories-menu.component';
 import { RouterModule } from '@angular/router';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 @NgModule({
     declarations: [
         HeaderComponent,
         FooterComponent,
         ClickOutsideDirective,
         ShowAuthedDirective,
-        CategoriesMenuComponent
+        CategoriesMenuComponent,
+        BreadcrumbsComponent
     ],
     imports: [
         CommonModule,

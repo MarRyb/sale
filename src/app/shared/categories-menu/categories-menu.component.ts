@@ -9,9 +9,7 @@ import { CategoryService } from './../../core/services/category.service';
 export class CategoriesMenuComponent implements OnInit {
   isShowSubCategory = false;
   categoryList = [];
-  constructor(private category: CategoryService) {
-    this.createPOST();
-  }
+  constructor(private category: CategoryService) {}
 
   doShow(item: { isShowSubCategory: boolean; }) {
     if (item.isShowSubCategory === true) {
@@ -28,11 +26,6 @@ export class CategoriesMenuComponent implements OnInit {
     return true;
   }
 
-  createPOST() {
-    this.category.create().subscribe(
-      (response) => {console.log(response);}
-    );
-  }
 
   ngOnInit() {
     this.category.getList().subscribe(

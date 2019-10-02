@@ -11,8 +11,5 @@ export class CategoryService {
   getList() {
     return this.api.get('open_api/v1/static/category/');
   }
-  create() {
-    return this.api.post('api/v1/admin/category/new');
-  }
 }
 
