@@ -29,7 +29,8 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
         HeaderComponent,
         FooterComponent,
         ShowAuthedDirective,
-        CategoriesMenuComponent
+        CategoriesMenuComponent,
+        BreadcrumbsComponent
     ]
 })
 export class SharedModule { }

@@ -1,6 +1,9 @@
 <div class="container-fluid">
   <app-header></app-header>
   <app-categories-menu *appShowAuthed="true"></app-categories-menu>
-  <router-outlet (activate)="onActivate()"></router-outlet>
+  <div class="container-content">
+      <app-breadcrumbs></app-breadcrumbs>
+      <router-outlet (activate)="onActivate()"></router-outlet>
+  </div>
   <app-footer></app-footer>
 </div>

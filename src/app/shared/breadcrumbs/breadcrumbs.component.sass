@@ -1,0 +1,26 @@
+@import 'src/assets/style/mixin.sass'
+
+.breadcrumb
+  +content-box()
+  margin: 30px 335px 10px 0
+  .breadcrumb-item
+    +flex-position()
+    a
+      +flex-position($justify-content: flex-start)
+      padding-right: 15px
+      font-size: 14px
+      line-height: 16px
+      color: #696969
+      &:last-child
+        &:after
+          display: none
+      &:after
+        border: solid #575757
+        border-width: 0 1px 1px 0
+        transform: rotate(-45deg)
+        content: " "
+        display: inline-block
+        width: 7px
+        height: 7px
+        margin-left: 5px
+        vertical-align: middle
