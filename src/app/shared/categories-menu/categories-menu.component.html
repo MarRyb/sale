@@ -7,12 +7,14 @@
       </div>
       <div class="sub-category" *ngIf="item.isShowSubCategory">
         <div class="content">
-          <div class="sub-category__item all" [routerLink]="['categories', item.id]">
-            Все обьявления
+          <div class="sub-category__item all">
+            <div [routerLink]="['categories', item.id]" routerLinkActive="active">
+              Все обьявления
+            </div>
           </div>
           <div class="sub-category_group">
             <div class="sub-category__item" *ngFor="let item of item.children">
-              {{item.name}}
+              <div [routerLink]="['categories', item.id]" routerLinkActive="active">{{item.name}}</div>
             </div>
           </div>
         </div>
