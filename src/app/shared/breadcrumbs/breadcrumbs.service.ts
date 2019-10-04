@@ -9,6 +9,9 @@ export class BreadcrumbsService {
   public breadcrumbsSubject = new BehaviorSubject([]);
   public breadcrumbs = this.breadcrumbsSubject.asObservable().pipe(distinctUntilChanged());
 
+  public breadcrumbsLinkSubject = new BehaviorSubject({});
+  public breadcrumbsLink = this.breadcrumbsLinkSubject.asObservable().pipe(distinctUntilChanged());
+
   constructor(
   ) { }
 }

@@ -2,6 +2,18 @@
 
 .breadcrumb
   +content-box()
+  +flex-position($justify-content: flex-start)
+  position: relative
+  span
+    font-size: 18px
+    line-height: 21px
+    color: #B70305
+    position: absolute
+    right: 10px
+    &:hover
+      text-decoration: underline
+      cursor: pointer
+
   .breadcrumb-item
     +flex-position()
     a
