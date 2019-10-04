@@ -2,3 +2,75 @@
 
 .category-item_wrapper
   +content-box($margin: 0)
+  position: relative
+  .data-user
+    +flex-position($align-items: flex-start, $justify-content: space-between)
+    .data-user__info
+      +flex-position($align-items: flex-start)
+      .name
+        font-size: 14px
+        color: #000000
+      .date
+        font-size: 11px
+        line-height: 13px
+        display: flex
+        align-items: center
+        color: #949494
+      .type
+        font-size: 11px
+        line-height: 13px
+        display: flex
+        align-items: center
+        color: #949494
+      img
+        width: 48px
+        height: 48px
+        border: 2px solid #B70305
+        border-radius: 25px
+        margin-right: 25px
+    .data-user__shared
+      .star
+        width: 24px
+        height: 24px
+  .data-product
+    margin: 25px 0
+    +flex-position($align-items: flex-start, $justify-content: flex-start)
+    img
+      width: 200px
+      height: 200px
+      margin-right: 25px
+    .data-product_params
+      width: 100%
+      .header
+        margin-bottom: 30px
+        +flex-position($justify-content: space-between)
+        .title
+          font-size: 24px
+          line-height: 28px
+          color: #B70305
+        .type
+          position: absolute
+          right: -5px
+          +flex-position()
+          .title
+            position: absolute
+            right: 20px
+            font-weight: 500
+            font-size: 18px
+            color: #FFFFFF
+        //   color: #7675ac
+        //   path
+        //     fill: #7675ac
+      .body
+        .description
+          font-weight: 300
+          font-size: 18px
+          line-height: 21px
+          color: #000000
+          margin-bottom: 10px
+        .price
+          text-align: right
+          font-weight: 500
+          font-size: 36px
+          line-height: 42px
+          color: #B70305
