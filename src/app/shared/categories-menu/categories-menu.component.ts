@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from './../../core/services/category.service';
-
+import {CategoryInterface} from '../../core/interfaces/categories.interface';
 @Component({
   selector: 'app-categories-menu',
   templateUrl: './categories-menu.component.html',
@@ -8,8 +8,10 @@ import { CategoryService } from './../../core/services/category.service';
 })
 export class CategoriesMenuComponent implements OnInit {
   isShowSubCategory = false;
-  categoryList = [];
-  constructor(private category: CategoryService) {}
+  categoryList: Array<CategoryInterface> = [];
+  constructor(
+    private category: CategoryService
+  ) {}
 
   doShow(item: { isShowSubCategory: boolean; }) {
     if (item.isShowSubCategory === true) {
