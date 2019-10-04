@@ -1,4 +1,5 @@
 @import 'src/assets/style/mixin.sass'
+@import 'src/assets/style/__variables.sass'
 
 .wrapper
   +flex-position($align-items: flex-start)
@@ -68,9 +69,9 @@
 .sub-category__item
   &:hover
     cursor: pointer
-    color: #B70305
+    color: $main-color
   .active
-    color: #B70305
+    color: $main-color
   &.all
     margin-bottom: 15px
 .wrapper-category__item

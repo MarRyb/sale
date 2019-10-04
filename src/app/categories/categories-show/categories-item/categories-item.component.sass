@@ -1,4 +1,5 @@
 @import 'src/assets/style/mixin.sass'
+@import 'src/assets/style/__variables.sass'
 
 .category-item_wrapper
   +content-box($margin: 12px 0)
@@ -25,7 +26,7 @@
       img
         width: 48px
         height: 48px
-        border: 2px solid #B70305
+        border: 2px solid $main-color
         border-radius: 25px
         margin-right: 25px
     .data-user__shared
@@ -47,7 +48,7 @@
         .title
           font-size: 24px
           line-height: 28px
-          color: #B70305
+          color: $main-color
         .type
           position: absolute
           right: -5px
@@ -73,4 +74,4 @@
           font-weight: 500
           font-size: 36px
           line-height: 42px
-          color: #B70305
+          color: $main-color
