@@ -1,5 +1,7 @@
+@import 'src/assets/style/mixin.sass'
+
 .wrapper
-  display: flex
+  +flex-position($align-items: flex-start)
   background: rgba(255, 255, 255, 0.8)
   padding: 25px 120px
   .wrapper-category
@@ -9,10 +11,8 @@
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
 
 .category-item
-  display: flex
+  +flex-position($align-items: flex-start, $justify-content: flex-start)
   flex-basis: 14%
-  align-items: flex-start
-  justify-content: flex-start
   height: 100%
   cursor: pointer
   user-select: none
@@ -38,8 +38,7 @@
     font-weight: 500
     font-size: 14px
     line-height: 16px
-    display: flex
-    align-items: center
+    +flex-position($justify-content: flex-start)
     margin-left: 4px
     color: #575757
 
@@ -55,12 +54,20 @@
   .content
     font-size: 14px
     line-height: 16px
-    display: flex
-    align-items: center
     color: #575757
     position: relative
     z-index: 1
+    .sub-category_group
+      flex-wrap: wrap
+      +flex-position($align-items: flex-start, $justify-content: flex-start)
+      .sub-category__item
+        margin: 10px 0
+        margin-right: 20px
+        width: 140px
 
+.sub-category__item
+  &.all
+    margin-bottom: 15px
 .wrapper-category__item
   &:nth-child(6n+1)
     .sub-category
