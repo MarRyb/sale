@@ -2,7 +2,7 @@
   <app-header></app-header>
   <app-categories-menu *appShowAuthed="true"></app-categories-menu>
   <div class="container-content">
-      <app-breadcrumbs></app-breadcrumbs>
+      <app-breadcrumbs *appShowAuthed="true"></app-breadcrumbs>
       <router-outlet (activate)="onActivate()"></router-outlet>
   </div>
   <app-footer></app-footer>
