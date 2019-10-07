@@ -4,15 +4,15 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 
-export class CategoryService {
+export class PostsService {
   constructor(private api: ApiService) {
   }
 
   getList() {
-    return this.api.get('open_api/v1/static/category/');
+    return this.api.get('open_api/v1/posts/');
   }
   get(slug: string) {
-    return this.api.get(`open_api/v1/static/category/${slug}`);
+    return this.api.get(`open_api/v1/posts/${slug}`);
   }
 }
 

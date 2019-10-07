@@ -1,6 +1,6 @@
 // LIST CONST LINK BREADCRUMBS
 
-export const HOME_PAGE_BREADCRUMB = { label: 'Главная', url: '/categories' };
+export const HOME_PAGE_BREADCRUMB = { label: 'Все обьявления', url: '/categories' };
 
 
 // CONST LINK ON BREADCRUMBS
