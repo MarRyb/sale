@@ -1,12 +1,10 @@
-export interface  CategoryInterface {
+export interface  ICategory {
   id: number;
   name: string;
-  children: Array<CategoryInterface>;
-  custom_fields: Array<CustomFieldsInterface>;
-  isShowSubCategory: boolean;
+  children: Array<ICategory>;
+  custom_fields: Array<ICustomFields>;
 }
-
-export interface  CustomFieldsInterface {
+export interface  ICustomFields {
   id: number;
   name: string;
   type: string;
