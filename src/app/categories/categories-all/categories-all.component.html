@@ -1,3 +1,16 @@
-<p>
-  categories-all works!
-</p>
+<div class="category-group">
+  <div class="category-group__categories">
+    <div *ngFor="let category of categories" class="category">
+      <h3>{{ category.title }}</h3>
+      <div class="category__posts">
+        <app-categories-all-item *ngFor="let post of category.posts"></app-categories-all-item>
+      </div>
+      <div class="category__show-more">
+        <a href="#">Показать больше</a>
+      </div>
+    </div>
+  </div>
+  <div class="category-group__filter">
+    <app-categories-all-filter></app-categories-all-filter>
+  </div>
+</div>
