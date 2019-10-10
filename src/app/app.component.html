@@ -1,9 +1,10 @@
 <div class="container-fluid">
   <app-header></app-header>
-  <app-categories-menu *appShowAuthed="true"></app-categories-menu>
+  <app-categories-menu *ngIf="isShowElemToAuth"></app-categories-menu>
+
   <div class="container-content">
-      <app-breadcrumbs *appShowAuthed="true"></app-breadcrumbs>
-      <router-outlet (activate)="onActivate()"></router-outlet>
+    <app-breadcrumbs *ngIf="isShowElemToAuth"></app-breadcrumbs>
+    <router-outlet (activate)="onActivate()"></router-outlet>
   </div>
   <app-footer></app-footer>
 </div>

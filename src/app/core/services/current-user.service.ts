@@ -37,7 +37,7 @@ export class CurrentUserService {
         err => this.logout()
       );
     } else {
-      // this.logout();
+      this.logout(false);
     }
   }
 
@@ -46,11 +46,13 @@ export class CurrentUserService {
     this.isAuthenticatedSubject.next(true);
   }
 
-  logout() {
+  logout(toNavigate: boolean = true) {
     this.localStorage.removeItem('auth');
     this.currentUserSubject.next({});
     this.isAuthenticatedSubject.next(false);
-    this.router.navigate(['/signin']);
+    if (toNavigate === true) {
+      this.router.navigate(['/signin']);
+    }
   }
 
   get() {

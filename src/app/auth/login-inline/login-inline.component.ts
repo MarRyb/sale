@@ -38,7 +38,7 @@ export class LoginInlineComponent implements OnInit {
             res => {
                 this.localStorage.setItem('auth', JSON.stringify(res));
                 this.currentUserService.authenticate();
-                this.router.navigate(['/']);
+                this.router.navigate(['/categories']);
             },
             error => {
                 this.errorArray = error.error.error.exception;

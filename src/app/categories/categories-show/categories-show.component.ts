@@ -24,10 +24,11 @@ export class CategoriesShowComponent implements OnInit {
         this.category = routeParams.category;
       });
       this.categoryService.get(this.category).subscribe(data => {
+        this.breadcrumbs = [];
         this.breadcrumbs.push({ label: 'data.parentName', url: `categories/${data.slug}` });
         this.breadcrumbs.push({ label: data.name, url: `categories/${data.slug}` });
+        this.breadcrumbsService.breadcrumbsSubject.next(this.breadcrumbs);
       });
-      this.breadcrumbsService.breadcrumbsSubject.next(this.breadcrumbs);
       this.postsService.getList().subscribe(data => {
         this.posts = data.items;
       });
