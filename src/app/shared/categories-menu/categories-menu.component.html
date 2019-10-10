@@ -1,30 +1,32 @@
-<div class="wrapper">
-  <div class="wrapper-category">
-    <div class="wrapper-category__item" *ngFor="let item of categoryList">
-      <div class="category-item" [ngClass]="{'active': item.isShowSubCategory}">
-        <img src="https://vpotoke.com/assets/img/astronaut.svg">
-        <span (click)="doShow(item)">{{item.name}}</span>
-      </div>
-      <div class="sub-category" *ngIf="item.isShowSubCategory">
-        <div class="content">
-          <div class="sub-category__item all">
-            <div [routerLink]="['categories', item.slug]" routerLinkActive="active">
-              Все обьявления
-            </div>
+<div class="background">
+  <div class="wrapper">
+      <div class="wrapper-category">
+        <div class="wrapper-category__item" *ngFor="let item of categoryList">
+          <div class="category-item" [ngClass]="{'active': item.isShowSubCategory}">
+            <img src="https://vpotoke.com/assets/img/astronaut.svg">
+            <span (click)="doShow(item)">{{item.name}}</span>
           </div>
-          <div class="sub-category_group">
-            <div class="sub-category__item" *ngFor="let item of item.children">
-              <div [routerLink]="['categories', item.slug]" routerLinkActive="active">{{item.name}}</div>
+          <div class="sub-category" *ngIf="item.isShowSubCategory">
+            <div class="content">
+              <div class="sub-category__item all">
+                <div [routerLink]="['categories', item.slug]" routerLinkActive="active">
+                  Все обьявления
+                </div>
+              </div>
+              <div class="sub-category_group">
+                <div class="sub-category__item" *ngFor="let item of item.children">
+                  <div [routerLink]="['categories', item.slug]" routerLinkActive="active">{{item.name}}</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="category-action">
+        <div class="category-item" (click)="showCategoryAction()">
+          <img src="https://vpotoke.com/assets/img/astronaut.svg">
+          <span>Недвижимость</span>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="category-action">
-    <div class="category-item" (click)="showCategoryAction()">
-      <img src="https://vpotoke.com/assets/img/astronaut.svg">
-      <span>Недвижимость</span>
-    </div>
-  </div>
 </div>
