@@ -10,6 +10,8 @@ import { ShowAuthedDirective } from './../directives/show-authed.directive';
 import { CategoriesMenuComponent } from './categories-menu/categories-menu.component';
 import { RouterModule } from '@angular/router';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 @NgModule({
     declarations: [
         HeaderComponent,
@@ -23,14 +25,16 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
         CommonModule,
         LogoModule,
         UiElementModule,
-        RouterModule
+        RouterModule,
+        InfiniteScrollModule
     ],
     exports: [
         HeaderComponent,
         FooterComponent,
         ShowAuthedDirective,
         CategoriesMenuComponent,
-        BreadcrumbsComponent
+        BreadcrumbsComponent,
+        InfiniteScrollModule
     ]
 })
 export class SharedModule { }

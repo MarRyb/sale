@@ -1,4 +1,11 @@
 <div class="category_group">
   <app-categories-item [posts]="posts"></app-categories-item>
   <app-categories-filter></app-categories-filter>
+  <div
+    class="search-results"
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()"
+  ></div>
 </div>

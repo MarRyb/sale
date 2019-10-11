@@ -14,6 +14,9 @@ export class CategoriesShowComponent implements OnInit {
   category: string;
   posts: Array<any> = [];
 
+  params = {
+    page: 1
+  };
   constructor(
     private breadcrumbsService: BreadcrumbsService,
     private categoryService: CategoryService,
@@ -23,18 +26,26 @@ export class CategoriesShowComponent implements OnInit {
       this.router.params.subscribe(routeParams => {
         this.category = routeParams.category;
       });
+      this.getPosts();
       this.categoryService.get(this.category).subscribe(data => {
         this.breadcrumbs = [];
         this.breadcrumbs.push({ label: 'data.parentName', url: `categories/${data.slug}` });
         this.breadcrumbs.push({ label: data.name, url: `categories/${data.slug}` });
         this.breadcrumbsService.breadcrumbsSubject.next(this.breadcrumbs);
       });
-      this.postsService.getList().subscribe(data => {
-        this.posts = data.items;
-      });
+    }
+    onScroll() {
+      this.params.page += 1;
+      this.getPosts();
     }
 
   ngOnInit() {
+  }
+
+  getPosts() {
+    this.postsService.getList(this.params).subscribe(data => {
+      this.posts = [...this.posts, ...data.items] ;
+    });
   }
 
 }

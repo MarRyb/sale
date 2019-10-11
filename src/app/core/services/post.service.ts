@@ -8,8 +8,8 @@ export class PostsService {
   constructor(private api: ApiService) {
   }
 
-  getList() {
-    return this.api.get('open_api/v1/posts/');
+  getList(params: {page: number}) {
+    return this.api.get('open_api/v1/posts/', params);
   }
   get(slug: string) {
     return this.api.get(`open_api/v1/posts/${slug}`);
