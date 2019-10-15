@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./posts-show.component.sass']
 })
 export class PostsShowComponent implements OnInit {
+  sliderArray = [
+    {id: 1, url: 'http://www.moto-net.com/sites/default/files/bmw-moto-coloris-2020_s.jpg'},
+    {id: 2, url: 'http://minsk-moto.ru/uploads/product/000/77/mins_moto_ru_1-(6)_2019-07-04_18-36-18.jpg'},
+    {id: 3, url: 'https://www.utiama.com/wp-content/uploads/2016/01/BM-6701.jpg'}
+  ];
 
   params = [
     { key: "Объявление от:", value: "Частного лица" },

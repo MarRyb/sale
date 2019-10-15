@@ -1,0 +1,9 @@
+<mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
+  <mdb-carousel-item *ngFor="let item of sliderArray">
+    <div class="view w-100">
+      <img class="d-block w-100" src="{{item.url}}">
+    </div>
+  </mdb-carousel-item>
+</mdb-carousel>
+
+

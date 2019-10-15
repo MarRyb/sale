@@ -164,3 +164,43 @@ input.ng-touched.ng-invalid
   font-size: 80%
   font-weight: 400
 
+// style for carousel
+
+.carousel .carousel-control-next-icon, .carousel .carousel-control-prev-icon
+  background: rgba(0, 0, 0, 0.25)
+  border-radius: 50px
+  width: 60px
+  height: 60px
+  position: relative
+  &:after
+    border: solid white
+    border-width: 0 2px 2px 0
+    content: " "
+    position: absolute
+    display: inline-block
+    width: 10px
+    height: 10px
+    top: 13px
+
+.carousel .carousel-control-next-icon
+  &:after
+    transform: rotate(-45deg)
+    left: 11px
+
+
+.carousel .carousel-control-prev-icon
+  &:after
+    transform: rotate(135deg)
+    right: 11px
+
+.carousel .carousel-indicators li
+  background: #FFFFFF
+  opacity: 1
+  width: 12px
+  height: 12px
+  border: 0
+
+.carousel-indicators li
+  &.active
+    background: #B70305
+    opacity: 1
