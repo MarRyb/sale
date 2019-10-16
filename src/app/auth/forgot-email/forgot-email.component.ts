@@ -7,7 +7,7 @@ import { takeWhile, tap } from 'rxjs/operators';
 @Component({
     selector: 'app-forgot-email',
     templateUrl: './forgot-email.component.html',
-    styleUrls: ['./forgot-email.component.sass']
+    styleUrls: ['./forgot-email.component.scss']
 })
 export class ForgotEmailComponent implements OnInit {
     public emailForm: FormGroup;

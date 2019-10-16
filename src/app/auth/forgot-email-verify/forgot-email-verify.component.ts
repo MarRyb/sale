@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-forgot-email-verify',
   templateUrl: './forgot-email-verify.component.html',
-  styleUrls: ['./forgot-email-verify.component.sass']
+  styleUrls: ['./forgot-email-verify.component.scss']
 })
 export class ForgotEmailVerifyComponent implements OnInit {
 

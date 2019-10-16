@@ -2,11 +2,11 @@ import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { CurrentUserService } from './core/services/current-user.service';
 import { WINDOW } from '@ng-toolkit/universal';
 import { isPlatformBrowser } from '@angular/common';
-import { Router, NavigationEnd, NavigationStart } from "@angular/router";
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   isShowElemToAuth = false;

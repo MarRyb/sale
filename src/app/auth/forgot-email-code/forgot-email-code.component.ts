@@ -7,7 +7,7 @@ import { RegisterService } from '../service/register.service';
 @Component({
   selector: 'app-forgot-email-code',
   templateUrl: './forgot-email-code.component.html',
-  styleUrls: ['./forgot-email-code.component.sass']
+  styleUrls: ['./forgot-email-code.component.scss']
 })
 export class ForgotEmailCodeComponent implements OnInit {
 

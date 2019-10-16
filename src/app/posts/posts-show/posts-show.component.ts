@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-posts-show',
   templateUrl: './posts-show.component.html',
-  styleUrls: ['./posts-show.component.sass']
+  styleUrls: ['./posts-show.component.scss']
 })
 export class PostsShowComponent implements OnInit {
   sliderArray = [

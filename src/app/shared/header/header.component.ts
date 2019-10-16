@@ -4,7 +4,7 @@ import { CurrentUserService } from '../../core/services/current-user.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.sass']
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
   showSettings = false;

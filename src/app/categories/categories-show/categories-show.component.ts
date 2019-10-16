@@ -7,7 +7,7 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-categories-show',
   templateUrl: './categories-show.component.html',
-  styleUrls: ['./categories-show.component.sass']
+  styleUrls: ['./categories-show.component.scss']
 })
 export class CategoriesShowComponent implements OnInit {
   breadcrumbs: Array<any> = [];

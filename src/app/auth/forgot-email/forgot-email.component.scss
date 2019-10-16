@@ -1,0 +1,46 @@
+:host {
+  .card {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .log-in {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 60px auto;
+    justify-content: space-between;
+    background: url("../../../assets/img/log-bg.png");
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 65px 50px;
+    max-width: 900px;
+  }
+
+  .col-centered {
+    float: none;
+    margin: 0 auto;
+  }
+
+  .panel {
+    min-height: 220px;
+  }
+
+  .panel-heading img {
+    height: 150px;
+  }
+
+  .panel-title {
+    margin-bottom: 3px;
+    text-align: center;
+    font-weight: 400;
+  }
+
+  .panel-body {
+    padding: 1rem 0;
+  }
+
+  .panel-footer {
+    margin: 1rem 0;
+  }
+}

@@ -7,7 +7,7 @@ import { CurrentUserService } from './../../core/services/current-user.service';
 @Component({
     selector: 'app-login-inline',
     templateUrl: './login-inline.component.html',
-    styleUrls: ['./login-inline.component.sass']
+    styleUrls: ['./login-inline.component.scss']
 })
 export class LoginInlineComponent implements OnInit {
 

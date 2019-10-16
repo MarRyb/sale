@@ -1,0 +1,5 @@
+@import "src/assets/style/mixin.scss";
+
+.category-filter_wrapper {
+  @include content-box($margin: 0);
+}
