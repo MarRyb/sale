@@ -12,7 +12,8 @@
         padding: 1.25rem;
         border-bottom: 1px solid #edf1f7;
 
-        i {
+        .expansion-indicator {
+            left: 1rem;
             position: absolute;
         }
     }

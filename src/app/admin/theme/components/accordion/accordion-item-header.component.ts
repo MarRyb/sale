@@ -29,7 +29,9 @@ import { VpAccordionItemComponent } from './accordion-item.component';
     <ng-content select="vp-accordion-item-title"></ng-content>
     <ng-content select="vp-accordion-item-description"></ng-content>
     <ng-content></ng-content>
-    <i [@expansionIndicator]="state" *ngIf="!disabled" class="fa fa-chevron-down"></i>
+    <span class ="expansion-indicator" *ngIf="!disabled">
+    <i [@expansionIndicator]="state"  class="fa fa-chevron-down"></i>
+    </span>
   `,
     animations: [
         trigger('expansionIndicator', [

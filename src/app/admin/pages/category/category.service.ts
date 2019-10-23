@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
     providedIn: 'root'
 })
 export class CategoryManagementService {
-    private openApiURL = environment.openApiURL;
     private apiUrl = environment.apiUrl;
 
     constructor(
@@ -16,7 +15,7 @@ export class CategoryManagementService {
     ) { }
 
     getCategories(): Observable<Category[]> {
-        return this.http.get<Category[]>(`${this.openApiURL}static/category/`);
+        return this.http.get<Category[]>(`${this.apiUrl}open_api/v1/static/category/`);
     }
 
     createCategory(payload: Partial<Category>): Observable<Category> {
