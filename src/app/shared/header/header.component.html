@@ -14,6 +14,7 @@
         <app-dropdown *ngIf="showSettings">
           <a>Мой профиль</a>
           <a>Настройки профиля</a>
+          <a [routerLink] = "'/vp-admin'">Администрирование</a>
           <a (click)="currentUserService.logout()">Выйти</a>
           <a>О нас</a>
         </app-dropdown>

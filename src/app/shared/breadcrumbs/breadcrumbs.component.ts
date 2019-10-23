@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BreadcrumbsComponent implements OnInit {
   breadcrumbs = [];
-  breadcrumbsLink = {};
+  breadcrumbsLink: { title?: string; url?: string; };
   constructor(private breadcrumbsService: BreadcrumbsService) {
     this.breadcrumbsService.breadcrumbs
       .subscribe(data => {

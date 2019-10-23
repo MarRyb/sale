@@ -13,12 +13,14 @@
       true,
       "attribute",
       "app",
-      "camelCase"
+      "camelCase",
+      "vp"
     ],
     "component-selector": [
       true,
       "element",
       "app",
+      "vp",
       "kebab-case"
     ],
     "import-blacklist": [
@@ -54,7 +56,7 @@
     ],
     "no-empty": false,
     "no-inferrable-types": [
-      true,
+      false,
       "ignore-params"
     ],
     "no-non-null-assertion": true,

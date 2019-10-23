@@ -14,6 +14,8 @@ import { CommonModule } from '@angular/common';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgtUniversalModule } from '@ng-toolkit/universal';
+import { VP_MEDIA_BREAKPOINTS, VP_WINDOW } from './admin/theme/theme.options';
+import { DEFAULT_MEDIA_BREAKPOINTS } from './admin/theme/service/breakpoints.service';
 
 
 @NgModule({
@@ -33,7 +35,10 @@ import { NgtUniversalModule } from '@ng-toolkit/universal';
     HttpClientModule,
     NgtUniversalModule
   ],
-  providers: [],
+  providers: [
+    { provide: VP_MEDIA_BREAKPOINTS, useValue: DEFAULT_MEDIA_BREAKPOINTS },
+    { provide: VP_WINDOW, useFactory: () => window },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

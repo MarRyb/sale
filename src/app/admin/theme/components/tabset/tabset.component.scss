@@ -1,0 +1,94 @@
+:host ::ng-deep {
+    display: block;
+
+    &.full-width .tabset {
+        justify-content: space-around;
+    }
+
+    ::ng-deep app-vtab {
+        flex: 1;
+        -ms-flex: 1 1 auto;
+        overflow: auto;
+        display: none;
+        color: #a4abb3;
+        background-color: #ffffff;
+        padding: 0;
+
+        &.content-active {
+            display: block;
+        }
+    }
+
+    .tabset {
+        display: flex;
+        flex-direction: row;
+        list-style-type: none;
+        margin: 0;
+        font-size: 1rem;
+        padding: 0.85rem 0.35rem 0.25rem;
+        border-bottom: 1px solid  #ebeef2;
+
+        .tab {
+            cursor: pointer;
+            margin-bottom: -1px;
+            text-align: center;
+            position: relative;
+            background: transparent;
+            padding: 0.25rem 0.25rem 0 0.25rem;
+
+            &.active {
+                background: transparent;
+
+                a {
+                    font-weight: 500;
+                    color: #bc0000;
+                }
+            }
+
+            &.active a::before {
+                display: block;
+            }
+
+            &.hide {
+                display: none;
+            }
+
+            a {
+                display: flex;
+                position: relative;
+                text-decoration: none;
+                color: #8d8d8d;
+
+                &::before {
+                    display: none;
+                    position: absolute;
+                    background: #bc0000;
+                    content: '';
+                    width: 100%;
+                    height: 2px;
+                    border-radius: 3px;
+                    bottom: -4px;
+                    left: 0;
+                }
+
+                i {
+                    font-size: 1.5rem;
+                    vertical-align: middle;
+                }
+
+                .tab-image {
+                    width: 1.5rem;
+                    vertical-align: middle;
+                }
+
+                span + span {
+                    margin-left: 0.5rem;
+                }
+
+                i + span {
+                    margin-left: 0.5rem;
+                }
+            }
+        }
+    }
+}

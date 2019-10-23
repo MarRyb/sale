@@ -1,0 +1,20 @@
+<div class="admin-container">
+    <vp-sidebar class="menu-sidebar"
+        tag="menu-sidebar"
+        responsive
+        state = "expanded">
+        <vp-sidebar-header>
+            <a (click)="toggleSidebar()" class="btn v-btn-red main-btn">
+                <i class="fa fa-bars"></i>
+            </a>
+        </vp-sidebar-header>
+        <vp-menu id="menu-sidebar"
+            tag="sidebarMenu"
+            [items]="sidebarMenuItems"></vp-menu>
+    </vp-sidebar>
+    <div class="content center">
+        <div class="columns">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

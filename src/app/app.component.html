@@ -1,10 +1,13 @@
 <div class="container-fluid">
-  <app-header></app-header>
-  <app-categories-menu *ngIf="isShowElemToAuth"></app-categories-menu>
+    <app-header></app-header>
+    <app-categories-menu *ngIf="isShowElemToAuth"></app-categories-menu>
 
-  <div class="container-content">
-    <app-breadcrumbs *ngIf="isShowElemToAuth"></app-breadcrumbs>
-    <router-outlet (activate)="onActivate()"></router-outlet>
-  </div>
-  <app-footer></app-footer>
+    <div class="container-content">
+        <app-breadcrumbs *ngIf="isShowElemToAuth"></app-breadcrumbs>
+        <router-outlet (activate)="onActivate()"></router-outlet>
+    </div>
+    <ng-container *ngIf="!isShowAdmin">
+        <app-footer></app-footer>
+    </ng-container>
+
 </div>
