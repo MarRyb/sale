@@ -1,4 +1,4 @@
-<app-card size="xlarge">
+<app-card>
     <app-card-header>
         <span> Менеджер категорий </span>
         <button class="btn v-btn-red add-category-btn"
@@ -9,19 +9,20 @@
     </app-card-header>
     <app-card-body>
         <vp-accordion>
-                <vp-accordion-item *ngFor="let category of categories">>
+            <ng-container *ngFor="let category of categories">
+                <vp-accordion-item *ngIf="category.children && category.children.length > 0; else oneCategory">
                     <vp-accordion-item-header>
-                        <app-category-managment-item [category]="category"
-                            (click)="onClickCategory(category)"
+                        <app-category-managment-item [category]="category"                            
                             [class.selected]="category === currentCategory"
                             (delete)="deleteCategory(category)"
                             (edit)="onClickEditCategory(category)">
                         </app-category-managment-item>
                     </vp-accordion-item-header>
                     <vp-accordion-item-body>
-                        <ng-container *ngIf="category.children && category.children.length > 0">
-                            <vp-accordion>
-                                    <vp-accordion-item *ngFor="let childCategory of category.children">
+                        <vp-accordion class="category-child-wrap">
+                            <ng-container *ngFor="let childCategory of category.children">
+                                <ng-container *ngIf="childCategory.children && childCategory.children.length > 0">
+                                    <vp-accordion-item>
                                         <vp-accordion-item-header>
                                             <app-category-managment-item [category]="childCategory"
                                                 (click)="onClickCategory(childCategory)"
@@ -34,10 +35,26 @@
                                             Item Content
                                         </vp-accordion-item-body>
                                     </vp-accordion-item>
-                            </vp-accordion>
-                        </ng-container>
+                                </ng-container>
+                                <ng-container *ngIf="childCategory.children && !childCategory.children.length">
+                                    <app-category-managment-item [category]="childCategory"
+                                        (click)="onClickCategory(childCategory)"
+                                        [class.selected]="childCategory === currentCategory"
+                                        (delete)="deleteCategory(childCategory)"
+                                        (edit)="onClickEditCategory(childCategory)">
+                                    </app-category-managment-item>
+                                </ng-container>
+                            </ng-container>
+                        </vp-accordion>
                     </vp-accordion-item-body>
                 </vp-accordion-item>
+                <app-category-managment-item *ngIf="category.children && !category.children.length"
+                    [category]="category"                    
+                    [class.selected]="category === currentCategory"
+                    (delete)="deleteCategory(category)"
+                    (edit)="onClickEditCategory(category)">
+                </app-category-managment-item>
+            </ng-container>
         </vp-accordion>
     </app-card-body>
 </app-card>

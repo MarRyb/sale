@@ -16,7 +16,7 @@ import { convertToBoolProperty } from '../helpers';
     selector: 'vp-accordion',
     styleUrls: ['./accordion.component.scss'],
     template: `
-    <ng-content select="vp-accordion-item"></ng-content>
+    <ng-content></ng-content>
   `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

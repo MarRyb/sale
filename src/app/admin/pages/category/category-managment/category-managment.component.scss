@@ -4,14 +4,35 @@
     flex: 1;
 
     app-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .add-category-btn {
         width: auto;
         padding: 0 1rem;
         border-radius: 4px;
+    }
+
+    ::ng-deep vp-accordion {
+        vp-accordion-item-header {
+            padding: 0;
+
+            .expansion-indicator {
+                left: 0;
+                position: absolute;
+            }
+        }
+    }
+
+    .category-child-wrap {
+        padding-left: 2rem;
+
+
+    }
+
+    app-category-managment-item+ ::ng-deep app-category-managment-item {
+        border-top: 1px solid #edf1f7;
     }
 }
