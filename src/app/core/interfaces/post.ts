@@ -51,6 +51,7 @@ export interface CustomField {
 export interface Category {
     id: number;
     name: string;
+    image?: any;
     children: Category[];
     custom_fields: CustomField[];
     slug: string;

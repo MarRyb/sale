@@ -1,0 +1,22 @@
+<div class="category-imgage"
+    [style.background-image]="getCategoryImage()"></div>
+<div class="category-name">{{category.name}}</div>
+<div class="category-tools"
+    *ngIf="isHover">
+    <span class="edit-category"
+        tooltip="Редактировать"
+        tooltipAppendToBody="true"
+        role="button"
+        aria-label="Редактировать"
+        (click)="editCategory($event)"><i class="fa fa-pencil-square"
+            aria-hidden="true"></i>
+    </span>
+    <span class="delete-category"
+        tooltip="Удалить"
+        tooltipAppendToBody="true"
+        role="button"
+        aria-label="Удалить"
+        (click)="deleteCategory($event)"><i class="fa fa-trash"
+            aria-hidden="true"></i>
+    </span>
+</div>

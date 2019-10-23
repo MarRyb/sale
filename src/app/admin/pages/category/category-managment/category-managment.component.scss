@@ -1,0 +1,17 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    app-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .add-category-btn {
+        width: auto;
+        padding: 0 1rem;
+        border-radius: 4px;
+    }
+}

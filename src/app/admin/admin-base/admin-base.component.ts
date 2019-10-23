@@ -42,6 +42,19 @@ export class AdminBaseComponent implements OnInit, OnDestroy {
 
             ],
         },
+        {
+            title: 'Категории',
+            icon: 'fa fa-folder-open-o',
+            link: '/vp-admin/categories',
+            children: [
+                {
+                    title: 'Менеджер категорий',
+                    icon: 'fa fa-list-alt',
+                    link: '/vp-admin/categories/managment',
+                },
+
+            ],
+        },
     ];
 
     ngOnInit() {

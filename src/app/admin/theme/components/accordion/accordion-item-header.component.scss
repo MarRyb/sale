@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+
+  &:focus {
+    outline: 0;
+  }
+}

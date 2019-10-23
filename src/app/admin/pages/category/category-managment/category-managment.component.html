@@ -1,0 +1,56 @@
+<app-card size="xlarge">
+    <app-card-header>
+        <span> Менеджер категорий </span>
+        <button class="btn v-btn-red add-category-btn"
+            (click)="onClickAddCategory()">
+            <i class="fa fa-plus"
+                aria-hidden="true"></i> Добавить
+        </button>
+    </app-card-header>
+    <app-card-body>
+        <vp-accordion>
+            <!--  <ng-container *ngFor="let category of categories">  -->
+            <vp-accordion-item>
+                <vp-accordion-item-header>Category Details
+                    <!-- <app-category-managment-item 
+            [category]="category"
+            (click)="onClickCategory(category)"
+            [class.selected]="category === currentCategory"
+            (update)="onClickUpdateAvatar(category)"
+            (delete)="deleteCategory(category)"
+            (edit)="onClickEditCategory(category)">
+            </app-posts-category-item> -->
+                </vp-accordion-item-header>
+                <vp-accordion-item-body>
+                    Item Content
+                    <!-- <ng-container *ngIf="category.children && category.children.length > 0"> -->
+
+                    <vp-accordion>
+                        <!-- <ng-container *ngFor="let childCategory of category.children"> -->
+
+                        <vp-accordion-item>
+                            <vp-accordion-item-header>Category Details
+                                <!-- <app-category-managment-item 
+            [category]="category"
+            (click)="onClickCategory(category)"
+            [class.selected]="category === currentCategory"
+            (update)="onClickUpdateAvatar(category)"
+            (delete)="deleteCategory(category)"
+            (edit)="onClickEditCategory(category)">
+            </app-posts-category-item> -->
+                            </vp-accordion-item-header>
+                            <vp-accordion-item-body>
+                                Item Content
+                            </vp-accordion-item-body>
+                        </vp-accordion-item>
+                        <!-- </ng-container> -->
+                    </vp-accordion>
+
+                    <!-- </ng-container> -->
+                </vp-accordion-item-body>
+            </vp-accordion-item>
+            <!-- </ng-container> -->
+        </vp-accordion>
+
+    </app-card-body>
+</app-card>
