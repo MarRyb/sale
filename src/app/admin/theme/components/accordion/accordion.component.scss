@@ -3,7 +3,7 @@
     box-shadow: none;
     border-radius: .17rem;
 
-    vp-accordion-item-header {
+    ::ng-deep vp-accordion-item-header {
         position: relative;
         color: #192038;
         font-size: .9375rem;
@@ -17,14 +17,14 @@
         }
     }
 
-    vp-accordion-item {
+    ::ng-deep vp-accordion-item {
         background-color: #fff;
         color: #192038;
         font-size: .9375rem;
         font-weight: 400;
         line-height: 1.25rem;
 
-        &.disabled vp-accordion-item-header {
+        &.disabled::ng-deep vp-accordion-item-header {
             color: grey;
             cursor: default;
         }
@@ -38,17 +38,17 @@
             border-top-left-radius: .25rem;
             border-top-right-radius: .25rem;
 
-            &.collapsed vp-accordion-item-header {
+            &.collapsed::ng-deep vp-accordion-item-header {
                 border-bottom: none;
             }
         }
     }
 
-    vp-accordion-item:not(.collapsed) + vp-accordion-item vp-accordion-item-header {
+    ::ng-deep vp-accordion-item:not(.collapsed)+::ng-deep vp-accordion-item::ng-deep vp-accordion-item-header {
         border-top: 1px solid #edf1f7;
     }
 
-    vp-accordion-item-body .item-body {
+    ::ng-deep vp-accordion-item-body .item-body {
         flex: 1;
         -ms-flex: 1 1 auto;
         overflow: auto;
