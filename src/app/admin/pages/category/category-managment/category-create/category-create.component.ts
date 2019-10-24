@@ -69,7 +69,7 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
     initForm() {
         this.categoryForm = this.fb.group({
             name: ['', Validators.required],
-            // slug: [''],
+            slug: [''],
             parent: [null],
             customFields: this.fb.array([]),
         });
@@ -131,6 +131,10 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
                 );
                 this.categoryForm.reset();
             });
+    }
+
+    onFileChange($event) {
+
     }
 
     onClosed(dismissedAlert: any): void {

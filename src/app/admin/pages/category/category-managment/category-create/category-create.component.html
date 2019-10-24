@@ -2,10 +2,10 @@
     [formGroup]="categoryForm"
     (ngSubmit)="onSubmit()">
     <div *ngFor="let alert of alerts">
-            <alert [type]="alert.type"
-                [dismissible]="dismissible"
-                (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
-        </div>
+        <alert [type]="alert.type"
+            [dismissible]="dismissible"
+            (onClosed)="onClosed(alert)">{{ alert.msg }}</alert>
+    </div>
     <div class="form-group category-form-field">
         <label for="name">Название:</label>
         <input class="form-control"
@@ -16,7 +16,7 @@
             [ngClass]="{'is-invalid':  categoryForm.get('name').errors && categoryForm.get('name').touched}">
     </div>
 
-    <!-- <div class="form-group category-form-field">
+    <div class="form-group category-form-field">
         <label for="slug">URL адрес:</label>
         <input type="text"
             class="form-control"
@@ -28,7 +28,7 @@
             *ngIf="categoryForm.get('slug').errors && categoryForm.get('slug').touched">
             Введите URL адрес
         </div>
-    </div> -->
+    </div>
     <div class="form-group category-form-field">
         <label for="parent">Родительская категория:</label>
         <ng-select class="parent-category-select"
@@ -44,11 +44,19 @@
     </div>
     <div class="form-group category-form-field">
         <label for="image">Изображение категории:</label>
-        <button class="btn v-btn-red add-category-btn"
-            (click)="onClickAddCategory()">
-            <i class="fa fa-plus"
+        <div class="category-image-input">
+            <button type="button" class="btn v-btn-red add-category-btn"
+                (click)="file.click()"><i class="fa fa-plus"
                 aria-hidden="true"></i> Добавить
-        </button>
+            </button>
+            <input class="file"
+                #file
+                type="file"
+                accept="image/*"
+                size="28"
+                (change)="onFileChange($event)"
+                name="photo">
+        </div>
     </div>
 
     <!-- <div class="category-form-custom-field">
