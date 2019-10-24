@@ -13,8 +13,8 @@ export class HttpConfigInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const headersConfig = {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
+    //   'Content-Type': 'application/json',
+    //   Accept: 'application/json',
       authorization: ''
     };
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Subject, OperatorFunction, of } from 'rxjs';
+import { takeUntil, switchMap } from 'rxjs/operators';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { CategoryManagementService } from '../../category.service';
 import { Category } from 'src/app/core/interfaces/post';
@@ -20,6 +20,8 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
     private categoryValue: Category;
 
     @Input() categories: Category[];
+    fileData: File;
+    previewUrl: string | ArrayBuffer;
 
     @Input() set editable(val: boolean) {
         if (val) {
@@ -104,7 +106,9 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
     onUpdateCategory() {
         const payload = this.categoryForm.getRawValue();
         this.categoryService.editCategory(this.category.id, payload)
-            .pipe(takeUntil(this.ngOnDestroy$))
+            .pipe(
+                this.uploadImage(),
+                takeUntil(this.ngOnDestroy$))
             .subscribe(res => {
                 this.updateCategory.emit(res);
                 this.alerts.push(
@@ -120,7 +124,9 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
     onCreateCategory() {
         const payload = this.categoryForm.getRawValue();
         this.categoryService.createCategory(payload)
-            .pipe(takeUntil(this.ngOnDestroy$))
+            .pipe(
+                this.uploadImage(),
+                takeUntil(this.ngOnDestroy$))
             .subscribe(res => {
                 this.addCategory.emit(res);
                 this.alerts.push(
@@ -133,12 +139,41 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
             });
     }
 
-    onFileChange($event) {
+    onFileChange(fileInput: Event) {
+        this.fileData = fileInput.target && (fileInput.target as HTMLInputElement).files[0] as File;
+        this.previewImage();
+    }
 
+    previewImage() {
+        const mimeType = this.fileData.type;
+        if (mimeType.match(/image\/*/) === null) {
+            return;
+        }
+
+        const fileReader: FileReader = new FileReader();
+        fileReader.readAsDataURL(this.fileData);
+        fileReader.onload = (event: Event) => {
+            this.previewUrl = fileReader.result;
+        };
+    }
+
+    removeUploadFile() {
+        this.fileData = null;
+        this.previewUrl = null;
     }
 
     onClosed(dismissedAlert: any): void {
         this.alerts = this.alerts.filter(alert => alert !== dismissedAlert);
+    }
+
+    private uploadImage(): OperatorFunction<Category, Category> {
+        return switchMap((category: Category) => {
+            if (this.fileData) {
+                return this.categoryService.uploadCategoryImage(category.id, this.fileData);
+            } else {
+                return of(category);
+            }
+        });
     }
 
     ngOnDestroy() {

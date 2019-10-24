@@ -40,7 +40,8 @@
                 font-weight: 600;
             }
 
-            input, ng-select {
+            input,
+            ng-select {
                 flex: 1;
 
                 &.is-invalid {
@@ -71,11 +72,50 @@
                 }
             }
 
-            .category-image-input {
+            .category-image-wrap {
+                flex: 1;
 
-                input.file {
-                    visibility: hidden;
-                    position: absolute;
+                .category-image-input {
+
+                    input.file {
+                        visibility: hidden;
+                        position: absolute;
+                    }
+                }
+
+                .category-image-preview {
+                    width: 4rem;
+                    height: 4rem;
+                    background: lightgrey;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .preview-img {
+                        width: 4rem;
+                        height: auto;
+                    }
+
+                    .preview-delete-btn {
+                        width: 15px;
+                        height: 15px;
+                        display: none;
+                        position: absolute;
+                        line-height: 1px;
+                        font-size: 9px;
+                        margin-left: 50px;
+                        right: -6px;
+                        top: -6px;
+                        border-radius: 2px;
+                    }
+
+                    &:hover {
+                        .preview-delete-btn {
+                            display: block;
+                        }
+
+                    }
                 }
             }
         }
