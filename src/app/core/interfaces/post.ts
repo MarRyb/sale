@@ -53,6 +53,7 @@ export interface Category {
     name: string;
     image?: any;
     children: Category[];
+    parent: any [];
     custom_fields: CustomField[];
     slug: string;
 }

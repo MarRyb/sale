@@ -1,0 +1,106 @@
+:host {
+    display: flex;
+    flex-direction: column;
+
+    .custom-input {
+        border: 1px solid #F2F2F2;
+        box-sizing: border-box;
+        border-radius: 4px;
+        font-size: 14px;
+        line-height: 16px;
+        color: #000000;
+        padding: 6px;
+
+        &:focus {
+            border-color: #c9d0d6;
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    .category-form {
+        display: flex;
+        flex-direction: column;
+        border-radius: 3px;
+        padding: 1.8rem;
+
+        .error {
+            position: absolute;
+        }
+
+        &-field {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            position: relative;
+            padding-bottom: .5rem;
+
+            label {
+                flex: .4;
+                font-weight: 600;
+            }
+
+            input, select, ng-select {
+                flex: 1;
+
+                &.is-invalid {
+                    border-color: red;
+                }
+            }
+
+            input {
+                @extend .custom-input;
+            }
+
+            ng-select.parent-category-select {
+                @extend .custom-input;
+
+                padding: 0;
+            }
+
+            ng-select.parent-category-select ::ng-deep .ng-select-container {
+                border: none;
+                height: auto;
+                padding: .5rem;
+                min-height: auto;
+
+                .ng-value-container .ng-placeholder {
+                    top: auto;
+                    padding-bottom: 5px;
+                    color: black;
+                }
+            }
+        }
+
+        .add-custom-field {
+            cursor: pointer;
+            color: #192038;
+            text-decoration: underline;
+        }
+
+        .remote-custom-field {
+            cursor: pointer;
+            color: #B70305;
+            text-decoration: underline;
+            padding-top: 1.5rem;
+        }
+
+        &-custom-field-input {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-wrap {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+    }
+
+    .add-category-btn {
+        width: auto;
+        padding: 0 1rem;
+        border-radius: 4px;
+    }
+}

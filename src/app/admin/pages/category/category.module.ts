@@ -6,11 +6,15 @@ import { CategoryManagmentComponent } from './category-managment/category-managm
 import { CategoryManagmentItemComponent } from './category-managment/category-managment-item/category-managment-item.component';
 import { CategoryManagmentRoutingModule } from './category-routing.module';
 import { VpCardModule } from '../../theme/components/card/card.module';
+import { CategoryCreateComponent } from './category-managment/category-create/category-create.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 @NgModule({
     declarations: [
         CategoryManagmentComponent,
-        CategoryManagmentItemComponent
+        CategoryManagmentItemComponent,
+        CategoryCreateComponent
     ],
     imports: [
         CommonModule,
@@ -18,6 +22,8 @@ import { VpCardModule } from '../../theme/components/card/card.module';
         ReactiveFormsModule,
         VpAccordionModule,
         VpCardModule,
+        NgSelectModule,
+        AlertModule.forRoot(),
     ]
 })
 export class CategoryManagmentModule { }

@@ -22,7 +22,7 @@ export class CategoryManagementService {
         return this.http.post<Category>(`${this.apiUrl}api/v1/admin/category/new`, payload);
     }
 
-    deleteCategory(categoryId: number, payload: Partial<Category>): Observable<Category> {
+    deleteCategory(categoryId: number): Observable<Category> {
         return this.http.delete<Category>(`${this.apiUrl}api/v1/admin/category/${categoryId}`);
     }
 

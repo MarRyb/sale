@@ -2,19 +2,19 @@
     <app-card-header>
         <span> Менеджер категорий </span>
         <button class="btn v-btn-red add-category-btn"
-            (click)="onClickAddCategory()">
+            (click)="onClickAddCategory(templateCreateCategory)">
             <i class="fa fa-plus"
                 aria-hidden="true"></i> Добавить
         </button>
     </app-card-header>
     <app-card-body>
         <vp-accordion>
-            <ng-container *ngFor="let category of categories">
-                <vp-accordion-item *ngIf="category.children && category.children.length > 0; else oneCategory">
+            <ng-container *ngFor="let category of categories; let i = index;">
+                <vp-accordion-item *ngIf="category.children && category.children.length > 0">
                     <vp-accordion-item-header>
-                        <app-category-managment-item [category]="category"                            
+                        <app-category-managment-item [category]="category"
                             [class.selected]="category === currentCategory"
-                            (delete)="deleteCategory(category)"
+                            (delete)="onDeleteCategory(category)"
                             (edit)="onClickEditCategory(category)">
                         </app-category-managment-item>
                     </vp-accordion-item-header>
@@ -25,9 +25,8 @@
                                     <vp-accordion-item>
                                         <vp-accordion-item-header>
                                             <app-category-managment-item [category]="childCategory"
-                                                (click)="onClickCategory(childCategory)"
                                                 [class.selected]="childCategory === currentCategory"
-                                                (delete)="deleteCategory(childCategory)"
+                                                (delete)="onDeleteCategory(childCategory, category)"
                                                 (edit)="onClickEditCategory(childCategory)">
                                             </app-category-managment-item>
                                         </vp-accordion-item-header>
@@ -38,9 +37,8 @@
                                 </ng-container>
                                 <ng-container *ngIf="childCategory.children && !childCategory.children.length">
                                     <app-category-managment-item [category]="childCategory"
-                                        (click)="onClickCategory(childCategory)"
                                         [class.selected]="childCategory === currentCategory"
-                                        (delete)="deleteCategory(childCategory)"
+                                        (delete)="onDeleteCategory(childCategory, category)"
                                         (edit)="onClickEditCategory(childCategory)">
                                     </app-category-managment-item>
                                 </ng-container>
@@ -49,12 +47,30 @@
                     </vp-accordion-item-body>
                 </vp-accordion-item>
                 <app-category-managment-item *ngIf="category.children && !category.children.length"
-                    [category]="category"                    
+                    [category]="category"
                     [class.selected]="category === currentCategory"
-                    (delete)="deleteCategory(category)"
+                    (delete)="onDeleteCategory(category)"
                     (edit)="onClickEditCategory(category)">
                 </app-category-managment-item>
             </ng-container>
         </vp-accordion>
     </app-card-body>
 </app-card>
+
+<ng-template #templateCreateCategory>
+    <div class="modal-header category-create-header">
+        <h4 class="modal-title category-create-title">{{titleCreateCategory}}</h4>
+        <button type="button"
+            class="close pull-right"
+            aria-label="Close"
+            (click)="createCategoryRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body category-create-body">
+        <app-category-create [categories]="categories"
+            (addCategory)="getCategories()"
+            (updateCategory)="getCategories()">
+        </app-category-create>
+    </div>
+</ng-template>
