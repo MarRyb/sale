@@ -52,7 +52,11 @@ export class AdminBaseComponent implements OnInit, OnDestroy {
                     icon: 'fa fa-list-alt',
                     link: '/vp-admin/categories/managment',
                 },
-
+                {
+                    title: 'Дополнительные поля',
+                    icon: 'fa fa-cc',
+                    link: '/vp-admin/categories/custom-field',
+                },
             ],
         },
     ];

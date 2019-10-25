@@ -1,0 +1,70 @@
+:host {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ebeef2;
+    padding: 1rem 1.25rem;
+    position: relative;
+    height: 4.5rem;
+    justify-content: space-between;
+
+    .custom-field {
+        &-name {
+            text-align: center;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        &-edit {
+            flex: 1;
+            padding: 0;
+        }
+
+        &-tools {
+            position: absolute;
+            right: 1rem;
+
+            span {
+                font-size: 1.2rem;
+                cursor: pointer;
+
+                &:hover {
+                    color: #b70305;
+                }
+            }
+
+            span ~ span {
+                margin-left: 1rem;
+            }
+        }
+    }
+
+    &:hover {
+        background-color: #ebeff5;
+
+        &::before {
+            position: absolute;
+            content: '';
+            height: 100%;
+            width: 6px;
+            left: 0;
+            top: 0;
+            background-color: #b70305;
+            border-radius: .375rem;
+        }
+    }
+
+    &.selected {
+        background-color: #ebeff5;
+
+        &::before {
+            position: absolute;
+            content: '';
+            height: 100%;
+            width: 6px;
+            left: 0;
+            top: 0;
+            background-color: #b70305;
+            border-radius: .375rem;
+        }
+    }
+}

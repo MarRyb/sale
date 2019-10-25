@@ -1,0 +1,36 @@
+<form [formGroup]="customFieldForm"
+    (ngSubmit)="onSubmit()"
+    class="form-wrap">
+    <div class="form-group">
+        <input type="text"
+            class="form-control"
+            formControlName="name"
+            placeholder="Введите название"
+            id="inputName"
+            [ngClass]="{'is-invalid':  customFieldForm.get('name').errors && customFieldForm.get('name').touched}">
+        <div class="invalid-feedback error"
+            *ngIf=" customFieldForm.get('name').errors && customFieldForm.get('name').touched">
+            Введите название
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text"
+            class="form-control"
+            formControlName="type"
+            placeholder="Введите тип"
+            id="inputName"
+            [ngClass]="{'is-invalid':  customFieldForm.get('type').errors && customFieldForm.get('type').touched}">
+        <div class="invalid-feedback error"
+            *ngIf=" customFieldForm.get('type').errors && customFieldForm.get('type').touched">
+            Введите тип
+        </div>
+    </div>
+    <div class="custom-field-tools">
+        <button type="button"
+            class="btn v-btn-grey btn-normal"
+            (click)="cancelCreate()">Отмена</button>
+        <button type="submit"
+            class="btn v-btn-red btn-normal"
+            [disabled]="!customFieldForm.valid">Сохранить</button>
+    </div>
+</form>

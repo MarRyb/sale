@@ -1,0 +1,20 @@
+:host {
+    flex: 1;
+
+    app-card {
+        display: block;
+    }
+
+    app-card-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    app-card-body {
+        padding: 0;
+        position: relative;
+        height: calc(100vh - 222px);
+        display: block;
+        overflow: auto;
+    }
+}

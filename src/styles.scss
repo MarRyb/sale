@@ -113,12 +113,58 @@ fieldset {
         outline: 0;
         box-shadow: none;
 
+        &.btn-normal {
+            height: 39px;
+            line-height: 20px;
+            text-align: center;
+            width: auto;
+            padding: 0 20px;
+            font-size: 14px;
+        }
+
         &:hover {
             outline: 0;
             border: 2px solid #bc0000;
             color: #bc0000;
             background: #fff;
             box-shadow: none;
+        }
+    }
+
+    &.v-btn-grey {
+        width: 230px;
+        height: 44px;
+        line-height: 40px;
+        color: #696969;
+        text-align: center;
+        box-sizing: border-box;
+        border: 2px solid transparent;
+        background: #F2F2F2;
+        padding: 0;
+        transition: all .3s;
+        border-radius: 0;
+        cursor: pointer;
+    
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    
+        &:hover {
+            outline: none;
+            box-shadow: none;
+            border: 2px solid #F2F2F2;
+            color: #696969;
+            background: #fff;
+        }
+    
+        &.btn-normal {
+            height: 39px;
+            line-height: 20px;
+            text-align: center;
+            width: auto;
+            padding: 0 20px;
+            font-size: 14px;
         }
     }
 }

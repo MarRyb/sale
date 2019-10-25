@@ -1,0 +1,26 @@
+<app-card>
+    <app-card-header>
+        <span> Список дополнительных полей </span> <button class="add-custom-field-button btn v-btn-red btn-normal"
+            (click)="onClickAddCustomField(true)">
+            <i class="fa fa-plus"
+                aria-hidden="true"></i> Добавить
+        </button>
+    </app-card-header>
+    <!-- [scrollWindow]="false" -->
+    <app-card-body infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="200"        
+        (scrolled)="onScroll()">
+        <ng-container *ngIf="showAddCustomField">
+            <app-custom-field-managment-create (close)="onClickAddCustomField(false)"
+                (create)="onAddCustomField($event)">
+            </app-custom-field-managment-create>
+        </ng-container>
+        <ng-container *ngFor="let customField of customFields">
+            <app-custom-field-managment-item [customField]="customField"
+                (delete)="confirmDeleteCustomField(customField)"
+                (edit)="onEditCustomField(customField, $event)">
+            </app-custom-field-managment-item>
+        </ng-container>
+    </app-card-body>
+</app-card>
