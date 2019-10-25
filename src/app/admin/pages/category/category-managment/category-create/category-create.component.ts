@@ -13,7 +13,6 @@ import { CustomFieldService } from '../../custom-field.service';
     styleUrls: ['./category-create.component.scss']
 })
 export class CategoryCreateComponent implements OnInit, OnDestroy {
-    public title = 'Добавить новую категорию';
     public buttonTitle = 'Создать';
     public categoryForm: FormGroup;
     dismissible = true;
@@ -33,11 +32,9 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
     @Input() set editable(val: boolean) {
         if (val) {
             this.editForm = true;
-            this.title = 'Редактирование категории';
             this.buttonTitle = 'Обновить';
         } else {
             this.editForm = false;
-            this.title = 'Добавить новую категорию';
             this.buttonTitle = 'Создать';
             if (this.categoryForm) {
                 this.categoryForm.reset();
@@ -99,24 +96,6 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
             this.onCreateCategory();
         }
     }
-
-    get formCustomField() {
-        return this.categoryForm.controls.customFields as FormArray;
-    }
-
-
-    addCustomField() {
-        this.formCustomField.push(
-            this.fb.group({
-                name: ['', Validators.required],
-                type: ['', Validators.required]
-            }));
-    }
-
-    remoteCustomField(index: number) {
-        this.formCustomField.removeAt(index);
-    }
-
 
     onUpdateCategory() {
         const payload = this.categoryForm.getRawValue();

@@ -43,19 +43,19 @@
         </ng-select>
     </div>
     <div class="form-group category-form-field">
-            <label for="customFields">Дополнительные поля:</label>
-            <ng-select class="parent-category-select"
-                [items]="customFields"
-                bindLabel="name"
-                bindValue="id"
-                labelForId="customFields"
-                [multiple]="true"
-                placeholder="Выберите поля"
-                clearAllText="Очистить"
-                formControlName="customFields"
-                (scrollToEnd) ="getCustomFieldList()">
-            </ng-select>
-        </div>
+        <label for="customFields">Дополнительные поля:</label>
+        <ng-select class="parent-category-select"
+            [items]="customFields"
+            bindLabel="name"
+            bindValue="id"
+            labelForId="customFields"
+            [multiple]="true"
+            placeholder="Выберите поля"
+            clearAllText="Очистить"
+            formControlName="customFields"
+            (scrollToEnd)="getCustomFieldList()">
+        </ng-select>
+    </div>
     <div class="form-group category-form-field">
         <label for="image">Изображение категории:</label>
         <div class="category-image-wrap">
