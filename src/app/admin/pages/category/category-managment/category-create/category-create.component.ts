@@ -161,12 +161,19 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
     }
 
     removeUploadFile() {
+        if (this.category && this.category.image) {
+            this.removeCategoryImage();
+        }
         this.fileData = null;
         this.previewUrl = null;
     }
 
-    removeCategoryImage() {
-
+    private removeCategoryImage() {
+        this.categoryService.deleteCategoryImage(this.category.id)
+            .pipe(takeUntil(this.ngOnDestroy$))
+            .subscribe(res => {
+                this.updateCategory.emit(res);
+            });
     }
 
     onClosed(dismissedAlert: any): void {
