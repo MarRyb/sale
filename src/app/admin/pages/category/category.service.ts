@@ -27,7 +27,7 @@ export class CategoryManagementService {
     }
 
     editCategory(categoryId: number, payload: Partial<Category>): Observable<Category> {
-        return this.http.put<Category>(`${this.apiUrl}api/v1/admin/category/${categoryId}`, payload);
+        return this.http.patch<Category>(`${this.apiUrl}api/v1/admin/category/${categoryId}`, payload);
     }
 
     uploadCategoryImage(categoryId: number, file: File | Blob): Observable<Category> {

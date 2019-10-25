@@ -13,9 +13,9 @@
                 <vp-accordion-item *ngIf="category.children && category.children.length > 0">
                     <vp-accordion-item-header>
                         <app-category-managment-item [category]="category"
-                            [class.selected]="category === currentCategory"
+                           
                             (delete)="onDeleteCategory(category)"
-                            (edit)="onClickEditCategory(category)">
+                            (edit)="onClickEditCategory(templateCreateCategory, category)">
                         </app-category-managment-item>
                     </vp-accordion-item-header>
                     <vp-accordion-item-body>
@@ -24,10 +24,9 @@
                                 <ng-container *ngIf="childCategory.children && childCategory.children.length > 0">
                                     <vp-accordion-item>
                                         <vp-accordion-item-header>
-                                            <app-category-managment-item [category]="childCategory"
-                                                [class.selected]="childCategory === currentCategory"
+                                            <app-category-managment-item [category]="childCategory"                                              
                                                 (delete)="onDeleteCategory(childCategory, category)"
-                                                (edit)="onClickEditCategory(childCategory)">
+                                                (edit)="onClickEditCategory(templateCreateCategory, childCategory)">
                                             </app-category-managment-item>
                                         </vp-accordion-item-header>
                                         <vp-accordion-item-body>
@@ -36,10 +35,9 @@
                                     </vp-accordion-item>
                                 </ng-container>
                                 <ng-container *ngIf="childCategory.children && !childCategory.children.length">
-                                    <app-category-managment-item [category]="childCategory"
-                                        [class.selected]="childCategory === currentCategory"
+                                    <app-category-managment-item [category]="childCategory"                                      
                                         (delete)="onDeleteCategory(childCategory, category)"
-                                        (edit)="onClickEditCategory(childCategory)">
+                                        (edit)="onClickEditCategory(templateCreateCategory, childCategory)">
                                     </app-category-managment-item>
                                 </ng-container>
                             </ng-container>
@@ -47,10 +45,9 @@
                     </vp-accordion-item-body>
                 </vp-accordion-item>
                 <app-category-managment-item *ngIf="category.children && !category.children.length"
-                    [category]="category"
-                    [class.selected]="category === currentCategory"
+                    [category]="category"                   
                     (delete)="onDeleteCategory(category)"
-                    (edit)="onClickEditCategory(category)">
+                    (edit)="onClickEditCategory(templateCreateCategory, category)">
                 </app-category-managment-item>
             </ng-container>
         </vp-accordion>
@@ -69,6 +66,8 @@
     </div>
     <div class="modal-body category-create-body">
         <app-category-create [categories]="categories"
+            [editable]="isEditCategory"
+            [category]="currentCategory"
             (addCategory)="getCategories()"
             (updateCategory)="getCategories()">
         </app-category-create>

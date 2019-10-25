@@ -14,8 +14,10 @@ export class CategoryManagmentComponent implements OnInit, OnDestroy {
 
     categories: Category[];
     titleCreateCategory: string = 'Добавить новую категорию';
+    createCategoryRef: BsModalRef;
+    isEditCategory: boolean = false;
+    currentCategory: Category;
     private ngOnDestroy$: ReplaySubject<null> = new ReplaySubject<null>();
-    public createCategoryRef: BsModalRef;
 
     constructor(private categoryService: CategoryManagementService,
                 private modalService: BsModalService) { }
@@ -26,8 +28,8 @@ export class CategoryManagmentComponent implements OnInit, OnDestroy {
 
     getCategories() {
         this.categoryService.getCategories()
-        .pipe(takeUntil(this.ngOnDestroy$))
-        .subscribe(categories => this.categories = categories);
+            .pipe(takeUntil(this.ngOnDestroy$))
+            .subscribe(categories => this.categories = categories);
     }
 
 
@@ -38,6 +40,14 @@ export class CategoryManagmentComponent implements OnInit, OnDestroy {
 
     onClickAddCategory(template: TemplateRef<any>) {
         this.titleCreateCategory = 'Добавить новую категорию';
+        this.isEditCategory = false;
+        this.createCategoryRef = this.modalService.show(template, { class: 'modal-lg' });
+    }
+
+    onClickEditCategory(template: TemplateRef<any>, category: Category) {
+        this.currentCategory = category;
+        this.titleCreateCategory = 'Редактирование категории';
+        this.isEditCategory = true;
         this.createCategoryRef = this.modalService.show(template, { class: 'modal-lg' });
     }
 

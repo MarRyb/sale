@@ -53,6 +53,14 @@
                     (click)="removeUploadFile()"
                     class="btn v-btn-red preview-delete-btn">x</button>
             </div>
+            <!-- <div class="category-image-preview"
+                *ngIf="category && category.image">
+                <img [src]="url + category.image.path"
+                    class="preview-img" />
+                <button type="button"
+                    (click)="removeCategoryImage()"
+                    class="btn v-btn-red preview-delete-btn">x</button>
+            </div> -->
             <div class="category-image-input"
                 *ngIf="!previewUrl">
                 <button type="button"

@@ -48,12 +48,28 @@ export interface CustomField {
     type: string;
 }
 
+export interface ParentCategory {
+    id: number;
+    name: string;
+}
+
+
+export interface ImageFile {
+    id: number;
+    path: string;
+    name: string;
+    mimeType: string;
+    size: number;
+    created: Date;
+    updated: Date;
+    file_type: string;
+}
 export interface Category {
     id: number;
     name: string;
-    image?: any;
+    image?: ImageFile;
     children: Category[];
-    parent: any [];
+    parent: ParentCategory;
     custom_fields: CustomField[];
     slug: string;
 }

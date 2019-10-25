@@ -4,6 +4,7 @@ import { takeUntil, switchMap } from 'rxjs/operators';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { CategoryManagementService } from '../../category.service';
 import { Category } from 'src/app/core/interfaces/post';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-category-create',
@@ -18,6 +19,7 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
     public alerts: Array<any> = [];
     editForm = false;
     private categoryValue: Category;
+    url = environment.URL;
 
     @Input() categories: Category[];
     fileData: File;
@@ -42,9 +44,10 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
     @Input() set category(val: Category) {
         if (val) {
             this.categoryValue = val;
+            this.previewUrl = val.image && this.url + val.image.path;
             if (this.editForm) {
                 this.initForm();
-                this.categoryForm.patchValue(val);
+                this.categoryForm.patchValue({ ...val, parent: val.parent.id ? val.parent.id : null, customFields: val.custom_fields });
             }
         }
     }
@@ -160,6 +163,10 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
     removeUploadFile() {
         this.fileData = null;
         this.previewUrl = null;
+    }
+
+    removeCategoryImage() {
+
     }
 
     onClosed(dismissedAlert: any): void {
