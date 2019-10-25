@@ -3,8 +3,9 @@ import { Subject, OperatorFunction, of } from 'rxjs';
 import { takeUntil, switchMap } from 'rxjs/operators';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { CategoryManagementService } from '../../category.service';
-import { Category } from 'src/app/core/interfaces/post';
+import { Category, CustomField } from 'src/app/core/interfaces/post';
 import { environment } from 'src/environments/environment';
+import { CustomFieldService } from '../../custom-field.service';
 
 @Component({
     selector: 'app-category-create',
@@ -20,6 +21,10 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
     editForm = false;
     private categoryValue: Category;
     url = environment.URL;
+    private pageToLoadNext = 1;
+    private loading = false;
+    totalCount: number;
+    customFields: CustomField[];
 
     @Input() categories: Category[];
     fileData: File;
@@ -66,13 +71,16 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
     private ngOnDestroy$: Subject<null> = new Subject<null>();
 
     constructor(private fb: FormBuilder,
-        // tslint:disable-next-line:align
-        private categoryService: CategoryManagementService) { }
+        // tslint:disable:align
+        private customFieldService: CustomFieldService,
+        private categoryService: CategoryManagementService,
+    ) { }
 
     ngOnInit() {
         if (!this.editForm) {
             this.initForm();
         }
+        this.getCustomFieldList();
     }
 
     initForm() {
@@ -80,7 +88,7 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
             name: ['', Validators.required],
             slug: [''],
             parent: [null],
-            customFields: [],
+            customFields: [null],
         });
     }
 
@@ -192,6 +200,26 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
                 return of(category);
             }
         });
+    }
+
+
+    getCustomFieldList() {
+        if (this.loading) {
+            return;
+        }
+        this.loading = true;
+        let params = {};
+        if (this.pageToLoadNext > 1) {
+            params = { ...params, ...{ page: this.pageToLoadNext } };
+        }
+        this.customFieldService.getCustomFields(params)
+            .pipe(takeUntil(this.ngOnDestroy$))
+            .subscribe(customFields => {
+                this.totalCount = customFields.total_count;
+                this.customFields = this.customFields ? [...this.customFields, ...customFields.items] : customFields.items;
+                this.loading = false;
+                this.pageToLoadNext++;
+            });
     }
 
     ngOnDestroy() {

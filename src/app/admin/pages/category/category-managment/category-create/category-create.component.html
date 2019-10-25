@@ -43,6 +43,20 @@
         </ng-select>
     </div>
     <div class="form-group category-form-field">
+            <label for="customFields">Дополнительные поля:</label>
+            <ng-select class="parent-category-select"
+                [items]="customFields"
+                bindLabel="name"
+                bindValue="id"
+                labelForId="customFields"
+                [multiple]="true"
+                placeholder="Выберите поля"
+                clearAllText="Очистить"
+                formControlName="customFields"
+                (scrollToEnd) ="getCustomFieldList()">
+            </ng-select>
+        </div>
+    <div class="form-group category-form-field">
         <label for="image">Изображение категории:</label>
         <div class="category-image-wrap">
             <div class="category-image-preview"
@@ -53,14 +67,6 @@
                     (click)="removeUploadFile()"
                     class="btn v-btn-red preview-delete-btn">x</button>
             </div>
-            <!-- <div class="category-image-preview"
-                *ngIf="category && category.image">
-                <img [src]="url + category.image.path"
-                    class="preview-img" />
-                <button type="button"
-                    (click)="removeCategoryImage()"
-                    class="btn v-btn-red preview-delete-btn">x</button>
-            </div> -->
             <div class="category-image-input"
                 *ngIf="!previewUrl">
                 <button type="button"
@@ -78,43 +84,6 @@
             </div>
         </div>
     </div>
-
-    <!-- <div class="category-form-custom-field">
-        <div class="add-custom-field" (click) = "addCustomField()">
-            <i class="fa fa-plus-circle"
-                aria-hidden="true"></i> Добавить дополнительное поле
-        </div>
-    </div>
-
-    <div formArrayName="customFields"
-        class="category-form-custom-field-wrap">
-        <div class="category-form-custom-field-input"
-            *ngFor="let customFields of formCustomField.controls; let i = index"
-            [formGroupName]="i">
-            <div class="form-group">
-                <label for="slug">Название:</label>
-                <input type="text"
-                    name="name"
-                    formControlName="name"
-                    placeholder="Введите название"
-                    class="form-control"
-                    [ngClass]="{'is-invalid':  customFields.get('name').errors && customFields.get('name').touched}">
-            </div>
-            <div class="form-group">
-                <label for="slug">Тип:</label>
-                <input type="text"
-                    name="name"
-                    formControlName="type"
-                    placeholder="Введите тип"
-                    class="form-control"
-                    [ngClass]="{'is-invalid':  customFields.get('type').errors && customFields.get('type').touched}">
-            </div>
-            <span class="remote-custom-field" (click) = "remoteCustomField(i)">
-                    <i class="fa fa-minus-circle"
-                    aria-hidden="true"></i>  Удалить 
-            </span>
-        </div>
-    </div> -->
 
     <div class="btn-wrap">
         <button type="submit"
