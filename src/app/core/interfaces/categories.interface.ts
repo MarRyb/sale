@@ -2,7 +2,7 @@ export interface  ICategory {
   id: number;
   name: string;
   children: Array<ICategory>;
-  custom_fields: Array<ICustomFields>;
+  customFields: Array<ICustomFields>;
 }
 export interface  ICustomFields {
   id: number;

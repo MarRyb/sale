@@ -36,10 +36,10 @@ export interface DeliveryAddress {
 
 export interface User {
     id: number;
-    user_id: number;
-    payment_types: PaymentType[];
-    delivery_addresses: DeliveryAddress[];
-    count_bonus: number;
+    userId: number;
+    paymentTypes: PaymentType[];
+    deliveryAddresses: DeliveryAddress[];
+    countBonus: number;
 }
 
 export interface CustomField {
@@ -70,7 +70,7 @@ export interface Category {
     image?: ImageFile;
     children: Category[];
     parent: ParentCategory;
-    custom_fields: CustomField[];
+    customFields: CustomField[];
     slug: string;
 }
 
@@ -84,7 +84,7 @@ export interface Currency {
 export interface PostCustomField {
     id: number;
     value: string;
-    custom_field: CustomField;
+    customField: CustomField;
 }
 
 export interface HistoryPost {
@@ -104,10 +104,10 @@ export interface Post {
     type: Type;
     currency: Currency;
     data: any[];
-    post_custom_fields: PostCustomField[];
+    postCustomFields: PostCustomField[];
     status: string;
-    history_previous_post: Post[];
-    history_post: HistoryPost[];
+    historyPreviousPost: Post[];
+    historyPost: HistoryPost[];
     count: number;
     created: Date;
     updated: Date;

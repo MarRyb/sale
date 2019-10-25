@@ -47,7 +47,11 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
             this.previewUrl = val.image && this.url + val.image.path;
             if (this.editForm) {
                 this.initForm();
-                this.categoryForm.patchValue({ ...val, parent: val.parent.id ? val.parent.id : null, customFields: val.custom_fields });
+                this.categoryForm.patchValue({
+                    ...val,
+                    parent: val.parent.id ? val.parent.id : null,
+                    customFields: (val.customFields || []).map(cf => cf.id)
+                });
             }
         }
     }
@@ -76,7 +80,7 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
             name: ['', Validators.required],
             slug: [''],
             parent: [null],
-            customFields: this.fb.array([]),
+            customFields: [],
         });
     }
 
