@@ -20,29 +20,6 @@ export class AdminBaseComponent implements OnInit, OnDestroy {
             home: true,
         },
         {
-            title: 'Отчеты',
-            icon: 'fa fa-bar-chart',
-            link: '/vp-admin/reports',
-            children: [
-                {
-                    title: 'Посетители',
-                    icon: 'fa fa-user-secret',
-                    link: '/vp-admin/reports/visitors',
-                },
-                {
-                    title: 'Зарегистрированные',
-                    icon: 'fa fa-users',
-                    link: '/vp-admin/reports/registered',
-                },
-                {
-                    title: 'Посты',
-                    icon: 'fa fa-newspaper-o',
-                    link: '/vp-admin/reports/posts',
-                },
-
-            ],
-        },
-        {
             title: 'Категории',
             icon: 'fa fa-folder-open-o',
             link: '/vp-admin/categories',
