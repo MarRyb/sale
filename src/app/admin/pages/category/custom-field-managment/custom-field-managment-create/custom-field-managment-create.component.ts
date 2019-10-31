@@ -160,7 +160,7 @@ export class CustomFieldManagmentCreateComponent implements OnInit, OnDestroy {
     }
 
     pathParams(param: CustomField) {
-        param.value.map(item => {
+        (param.value || []).map(item => {
             this.formParams.push(
                 this.fb.group({
                     label: item.label,
