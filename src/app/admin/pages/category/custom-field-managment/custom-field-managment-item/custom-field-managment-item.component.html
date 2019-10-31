@@ -6,7 +6,6 @@
     <div class="custom-field-type">
         {{customField.type}}
     </div>
-    <div class="custom-field-hide"></div>
 
     <div class="custom-field-tools"
         *ngIf="isHover">
@@ -15,7 +14,7 @@
             tooltipAppendToBody="true"
             role="button"
             aria-label="Редактировать"
-            (click)="onClickEditCustomField(true)"><i class="fa fa-pencil-square"
+            (click)="onClickEditCustomField($event)"><i class="fa fa-pencil-square"
                 aria-hidden="true"></i>
         </span>
         <span class="delete-custom-field"
@@ -28,10 +27,10 @@
         </span>
     </div>
 </ng-container>
-<ng-container *ngIf="showEdit">
+<!-- <ng-container *ngIf="showEdit">
     <app-custom-field-managment-create [customField]="customField"
         class="custom-field-edit"
         (close)="onClickEditCustomField(false)"
         (create)="onEditCustomField($event)">
     </app-custom-field-managment-create>
-</ng-container>
+</ng-container> -->

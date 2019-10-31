@@ -1,30 +1,97 @@
 <form [formGroup]="customFieldForm"
     (ngSubmit)="onSubmit()"
     class="form-wrap">
-    <div class="form-group">
-        <input type="text"
-            class="form-control"
-            formControlName="name"
-            placeholder="Введите название"
-            id="inputName"
-            [ngClass]="{'is-invalid':  customFieldForm.get('name').errors && customFieldForm.get('name').touched}">
-        <div class="invalid-feedback error"
-            *ngIf=" customFieldForm.get('name').errors && customFieldForm.get('name').touched">
-            Введите название
+    <div class="form-group custom-field-form-field">
+        <label for="input-name">Название:</label>
+        <div class="labeled">
+            <input type="text"
+                class="form-control"
+                formControlName="name"
+                placeholder="Введите название"
+                id="input-name"
+                [ngClass]="{'is-invalid':  customFieldForm.get('name').errors && customFieldForm.get('name').touched}">
+            <div class="invalid-feedback error"
+                *ngIf=" customFieldForm.get('name').errors && customFieldForm.get('name').touched">
+                Введите название
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <input type="text"
-            class="form-control"
-            formControlName="type"
-            placeholder="Введите тип"
-            id="inputName"
-            [ngClass]="{'is-invalid':  customFieldForm.get('type').errors && customFieldForm.get('type').touched}">
-        <div class="invalid-feedback error"
-            *ngIf=" customFieldForm.get('type').errors && customFieldForm.get('type').touched">
-            Введите тип
+    <div class="form-group custom-field-form-field">
+        <label for="input-parent">Связать с полем:</label>
+        <div class="labeled">
+            <ng-select class="parent-category-select"
+                [items]="customFields"
+                bindLabel="name"
+                bindValue="id"
+                labelForId="input-parent"
+                [multiple]="false"
+                placeholder="Выберите поле"
+                clearAllText="Очистить"
+                formControlName="parent"
+                (scrollToEnd)="getCustomFieldList()">
+            </ng-select>
         </div>
     </div>
+    <div class="form-group custom-field-form-field">
+        <label for="input-type">Тип:</label>
+        <div class="labeled">
+            <select class="custom-select form-control"
+                formControlName="type"
+                id="input-type"
+                [ngClass]="{'is-invalid':  customFieldForm.get('type').errors && customFieldForm.get('type').touched}">
+                <option [ngValue]="null"
+                    selected> Выберите тип поля </option>
+                <option *ngFor="let tp of customFieldType"
+                    [ngValue]="tp.type">{{tp.name}}
+                </option>
+            </select>
+            <div class="invalid-feedback error"
+                *ngIf=" customFieldForm.get('type').errors && customFieldForm.get('type').touched">
+                Выберите тип
+            </div>
+        </div>
+    </div>
+
+    <ng-container *ngIf="showParams">
+        <div class="custom-field-form-params">
+            <span class="add-params"
+                (click)="addParams()">
+                <i class="fa fa-plus-circle"
+                    aria-hidden="true"></i> Добавить параметр
+            </span>
+        </div>
+
+        <div formArrayName="value"
+            class="custom-field-form-params-wrap">
+            <div class="custom-field-form-params-input"
+                *ngFor="let param of formParams.controls; let i = index"
+                [formGroupName]="i">
+                <div class="form-group">
+                    <label for="label">Название:</label>
+                    <input type="text"
+                        id="label"
+                        formControlName="label"
+                        placeholder="Введите название"
+                        class="form-control"
+                        [ngClass]="{'is-invalid':  param.get('label').errors && param.get('label').touched}">
+                </div>
+                <div class="form-group">
+                    <label for="value">Значение:</label>
+                    <input type="text"
+                        id="value"
+                        formControlName="value"
+                        placeholder="Введите значение"
+                        class="form-control"
+                        [ngClass]="{'is-invalid':  param.get('value').errors && param.get('value').touched}">
+                </div>
+                <span class="remote-params"
+                    (click)="remoteParams(i)">
+                    <i class="fa fa-minus-circle"
+                        aria-hidden="true"></i> Удалить
+                </span>
+            </div>
+        </div>
+    </ng-container>
     <div class="custom-field-tools">
         <button type="button"
             class="btn v-btn-grey btn-normal"

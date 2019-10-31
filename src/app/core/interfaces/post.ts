@@ -46,6 +46,9 @@ export interface CustomField {
     id: number;
     name: string;
     type: string;
+    children: CustomField[];
+    parent: {id: number};
+    value?: any;
 }
 
 export interface ParentCategory {

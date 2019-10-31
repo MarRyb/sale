@@ -9,7 +9,13 @@
 
     .custom-field {
         &-name {
-            text-align: center;
+            flex: 6;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        &-type {
+            flex: 6;
             overflow: hidden;
             white-space: nowrap;
         }

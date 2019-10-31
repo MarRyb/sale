@@ -1,26 +1,38 @@
 <app-card>
     <app-card-header>
         <span> Список дополнительных полей </span> <button class="add-custom-field-button btn v-btn-red btn-normal"
-            (click)="onClickAddCustomField(true)">
+            (click)="onClickAddCustomField(templateCreateCustomField)">
             <i class="fa fa-plus"
                 aria-hidden="true"></i> Добавить
         </button>
     </app-card-header>
-    <!-- [scrollWindow]="false" -->
     <app-card-body infiniteScroll
         [infiniteScrollDistance]="2"
-        [infiniteScrollThrottle]="200"        
+        [infiniteScrollThrottle]="200"
         (scrolled)="onScroll()">
-        <ng-container *ngIf="showAddCustomField">
-            <app-custom-field-managment-create (close)="onClickAddCustomField(false)"
-                (create)="onAddCustomField($event)">
-            </app-custom-field-managment-create>
-        </ng-container>
         <ng-container *ngFor="let customField of customFields">
             <app-custom-field-managment-item [customField]="customField"
                 (delete)="confirmDeleteCustomField(customField)"
-                (edit)="onEditCustomField(customField, $event)">
+                (edit)="onClickEditCustomField(templateCreateCustomField, customField)">
             </app-custom-field-managment-item>
         </ng-container>
     </app-card-body>
 </app-card>
+
+<ng-template #templateCreateCustomField>
+    <div class="modal-header custom-field-create-header">
+        <h4 class="modal-title custom-field-create-title">{{titleCreateCustomField}}</h4>
+        <button type="button"
+            class="close pull-right"
+            aria-label="Close"
+            (click)="createCustomFieldRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body custom-field-create-body">
+        <app-custom-field-managment-create [customField]="currentCustomField"
+            (close)="createCustomFieldRef.hide()"
+            (create)="onSubmit($event)">
+        </app-custom-field-managment-create>
+    </div>
+</ng-template>

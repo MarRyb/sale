@@ -16,17 +16,17 @@ export class CustomFieldManagmentItemComponent {
     }
     // tslint:disable-next-line:variable-name
     private _customField: CustomField;
-    @Output() edit: EventEmitter<any> = new EventEmitter();
+    @Output() edit: EventEmitter<CustomField> = new EventEmitter();
     @Output() delete: EventEmitter<CustomField> = new EventEmitter();
     isHover: boolean;
     showEdit: boolean;
 
     constructor() { }
 
-    onEditCustomField(payload: { name: string }) {
-        this.edit.emit(payload);
-        this.showEdit = false;
-    }
+    // onEditCustomField(payload: { name: string }) {
+    //     this.edit.emit(payload);
+    //     this.showEdit = false;
+    // }
 
     deleteCustomField(event: MouseEvent) {
         event.stopPropagation();
@@ -41,8 +41,9 @@ export class CustomFieldManagmentItemComponent {
         this.isHover = false;
     }
 
-    onClickEditCustomField(show: boolean) {
-        this.showEdit = show;
+    onClickEditCustomField(event: MouseEvent) {
+        event.stopPropagation();
+        this.edit.emit(this.customField);
     }
 
 }
