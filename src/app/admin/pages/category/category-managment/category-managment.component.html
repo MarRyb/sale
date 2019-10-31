@@ -13,7 +13,6 @@
                 <vp-accordion-item *ngIf="category.children && category.children.length > 0">
                     <vp-accordion-item-header>
                         <app-category-managment-item [category]="category"
-                           
                             (delete)="onDeleteCategory(category)"
                             (edit)="onClickEditCategory(templateCreateCategory, category)">
                         </app-category-managment-item>
@@ -24,18 +23,23 @@
                                 <ng-container *ngIf="childCategory.children && childCategory.children.length > 0">
                                     <vp-accordion-item>
                                         <vp-accordion-item-header>
-                                            <app-category-managment-item [category]="childCategory"                                              
+                                            <app-category-managment-item [category]="childCategory"
                                                 (delete)="onDeleteCategory(childCategory, category)"
                                                 (edit)="onClickEditCategory(templateCreateCategory, childCategory)">
                                             </app-category-managment-item>
                                         </vp-accordion-item-header>
                                         <vp-accordion-item-body>
-                                            Item Content
+                                            <ng-container *ngFor="let childChildCategory of childCategory.children">
+                                                <app-category-managment-item [category]="childChildCategory"
+                                                    (delete)="onDeleteCategory(childChildCategory, childCategory)"
+                                                    (edit)="onClickEditCategory(templateCreateCategory, childChildCategory)">
+                                                </app-category-managment-item>
+                                            </ng-container>
                                         </vp-accordion-item-body>
                                     </vp-accordion-item>
                                 </ng-container>
                                 <ng-container *ngIf="childCategory.children && !childCategory.children.length">
-                                    <app-category-managment-item [category]="childCategory"                                      
+                                    <app-category-managment-item [category]="childCategory"
                                         (delete)="onDeleteCategory(childCategory, category)"
                                         (edit)="onClickEditCategory(templateCreateCategory, childCategory)">
                                     </app-category-managment-item>
@@ -45,7 +49,7 @@
                     </vp-accordion-item-body>
                 </vp-accordion-item>
                 <app-category-managment-item *ngIf="category.children && !category.children.length"
-                    [category]="category"                   
+                    [category]="category"
                     (delete)="onDeleteCategory(category)"
                     (edit)="onClickEditCategory(templateCreateCategory, category)">
                 </app-category-managment-item>
