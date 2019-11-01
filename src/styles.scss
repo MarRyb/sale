@@ -144,12 +144,12 @@ fieldset {
         transition: all .3s;
         border-radius: 0;
         cursor: pointer;
-    
+
         &:focus {
             outline: none;
             box-shadow: none;
         }
-    
+
         &:hover {
             outline: none;
             box-shadow: none;
@@ -157,7 +157,7 @@ fieldset {
             color: #696969;
             background: #fff;
         }
-    
+
         &.btn-normal {
             height: 39px;
             line-height: 20px;
@@ -291,5 +291,29 @@ input.ng-touched.ng-invalid {
 .carousel .carousel-control-prev, .carousel .carousel-control-next {
     &.disabled {
         display: none;
+    }
+}
+
+/* modal ngx-bootsrap/modal */
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background: rgba(0, 0, 0, 0.288);
+
+    &.show {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        margin: 4rem auto;
     }
 }
