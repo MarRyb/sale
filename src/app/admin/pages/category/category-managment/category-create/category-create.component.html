@@ -30,10 +30,10 @@
         </div>
     </div>
     <div class="form-group category-form-field">
+        <!-- groupBy="children" -->
         <label for="parent">Родительская категория:</label>
         <ng-select class="parent-category-select"
-            [items]="categories"
-            groupBy="children"
+            [items]="categories"            
             bindLabel="name"
             bindValue="id"
             labelForId="parent"
@@ -41,14 +41,14 @@
             placeholder="Корень каталога"
             clearAllText="Очистить"
             formControlName="parent">
-            <ng-template ng-optgroup-tmp
+            <!-- <ng-template ng-optgroup-tmp
                 let-item="item">
                 {{item.name}}
             </ng-template>
             <ng-template ng-option-tmp
                 let-item="item">
                 {{item.name}}
-            </ng-template>
+            </ng-template> -->
         </ng-select>
     </div>
     <div class="form-group category-form-field">
