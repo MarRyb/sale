@@ -312,7 +312,9 @@ input.ng-touched.ng-invalid {
         position: fixed;
     }
 }
-
+.modal-content, .modal-dialog.modal-xl.modal-dialog-centered {
+    width: 900px;
+}
 @media (min-width: 576px) {
     .modal-dialog {
         margin: 4rem auto;

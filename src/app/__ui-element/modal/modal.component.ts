@@ -13,7 +13,7 @@ export class ModalComponent implements OnInit {
   }
 
   openVerticallyCentered(content) {
-    this.modalService.open(content, { centered: true });
+    this.modalService.open(content, { centered: true , size: 'xl'});
   }
 
   ngOnInit() {
