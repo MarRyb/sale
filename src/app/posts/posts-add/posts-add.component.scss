@@ -1,0 +1,19 @@
+.posts-add_header {
+  display: flex;
+  margin-bottom: 13px;
+  span {
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    color: #B70305;
+    font-style: normal;
+    font-weight: 500;
+    width: 330px;
+  }
+  .border-bottom {
+    border-bottom: 1px solid #DADADA;
+    width: 100%;
+    height: 23px;
+  }
+}
