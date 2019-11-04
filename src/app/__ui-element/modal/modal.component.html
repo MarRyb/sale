@@ -1,0 +1,9 @@
+<ng-template #content let-modal>
+  <div class="modal-container">
+    <img src="/assets/img/Shape.png" (click)="modal.dismiss('Cross click')">
+    <ng-content></ng-content>
+  </div>
+</ng-template>
+
+<button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">Modal vertically centered</button>
+
