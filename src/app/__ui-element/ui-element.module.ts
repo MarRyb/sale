@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { ModalComponent } from './modal/modal.component';
-// import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 
 @NgModule({
@@ -13,8 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     CommonModule,
-    // BrowserModule,
-    NgbModule
+    ModalModule.forRoot()
   ],
   exports: [
     DropdownComponent,

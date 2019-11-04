@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
@@ -7,15 +8,15 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) { }
-  openBackDropCustomClass(content) {
-    this.modalService.open(content, {backdropClass: 'light-blue-backdrop'});
-  }
+  modalRef: BsModalRef;
+  config = {
+    animated: true
+  };
+  constructor(private modalService: BsModalService) {}
 
-  openVerticallyCentered(content) {
-    this.modalService.open(content, { centered: true , size: 'xl'});
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, this.config);
   }
-
   ngOnInit() {
   }
 

@@ -305,7 +305,7 @@ input.ng-touched.ng-invalid {
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 1049;
     pointer-events: auto;
     -webkit-tap-highlight-color: transparent;
     transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -327,6 +327,7 @@ input.ng-touched.ng-invalid {
     .modal-dialog {
         margin-top: 0;
         margin-bottom: 0;
+        max-width: 900px;
         .modal-content {
             margin-top: 40px;
             margin-bottom: 40px;
@@ -335,6 +336,7 @@ input.ng-touched.ng-invalid {
 }
 @media (min-width: 576px) {
     .modal-dialog {
+        max-width: 900px;
         margin: 4rem auto;
     }
 }
