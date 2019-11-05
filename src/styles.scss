@@ -340,3 +340,78 @@ input.ng-touched.ng-invalid {
         margin: 4rem auto;
     }
 }
+
+
+
+.tooltip-inner {
+    color: #000;
+    background-color: #fff;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.15);
+    max-width: 170px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: left;
+}
+.tooltip.show {
+    opacity: 1;
+}
+
+
+.tooltip-arrow {
+    &.arrow {
+        &:after {
+            width: 15px;
+            height: 15px;
+            background: white;
+            content: "";
+            top: -32px;
+            left: 6px;
+            position: absolute;
+            display: block;
+        /* Rotate */
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        /* Rotate Origin */
+            -webkit-transform-origin: 0 100%;
+            -moz-transform-origin: 0 100%;
+            -ms-transform-origin: 0 100%;
+            -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+        }
+        &:before {
+            width: 15px;
+            height: 15px;
+            background: #ffff;
+            content: "";
+            top: -32px;
+            z-index: -1;
+            left: 6px;
+            position: absolute;
+            display: block;
+            box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.15);
+            border-width: 0;
+            border-right-color: none;
+        /* Rotate */
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        /* Rotate Origin */
+            -webkit-transform-origin: 0 100%;
+            -moz-transform-origin: 0 100%;
+            -ms-transform-origin: 0 100%;
+            -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+        }
+    }
+}
+.tooltip {
+    left: 19px !important;
+    transform: translate3d(729px, 80px, 0px) !important;
+}

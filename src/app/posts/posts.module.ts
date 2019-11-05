@@ -1,4 +1,3 @@
-import { UiElementModule } from './../__ui-element/ui-element.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PostsRoutingModule } from './posts-routing.module';
@@ -11,8 +10,7 @@ import { PostsAddComponent } from './posts-add/posts-add.component';
   imports: [
     CommonModule,
     PostsRoutingModule,
-    SharedModule,
-    UiElementModule
+    SharedModule
   ],
   exports: [
     PostsAddComponent

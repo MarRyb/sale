@@ -40,7 +40,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
         CategoriesMenuComponent,
         BreadcrumbsComponent,
         InfiniteScrollModule,
-        CarouselComponent
+        CarouselComponent,
+        UiElementModule
     ]
 })
 export class SharedModule { }

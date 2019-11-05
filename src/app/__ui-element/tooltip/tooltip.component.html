@@ -1,0 +1,7 @@
+<ng-template #popTemplate>
+  <div [innerHtml]="settingsTooltip.contentHtml"></div>
+</ng-template>
+
+<img src="{{settingsTooltip.imgUrl}}"
+      [tooltip]="popTemplate"
+      placement="{{settingsTooltip.placement}}">

@@ -64,6 +64,9 @@
     border: 1px solid #F2F2F2;
     box-sizing: border-box;
     border-radius: 4px;
+    &[disabled] {
+      background: #F2F2F2;
+    }
     &.contact-data {
       width: 470px;
     }
@@ -146,6 +149,11 @@
       }
     }
   }
+}
+
+.tooltip-block {
+  display: block;
+  margin-left: 13px;
 }
 
 .plus {
