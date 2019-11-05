@@ -362,22 +362,22 @@ input.ng-touched.ng-invalid {
 
 .tooltip-arrow {
     &.arrow {
-        &:after {
+        &:after, &:before {
             width: 15px;
             height: 15px;
-            background: white;
+            background: #ffff;
             content: "";
             top: -32px;
             left: 6px;
             position: absolute;
             display: block;
-        /* Rotate */
+            /* Rotate */
             -webkit-transform: rotate(-45deg);
             -moz-transform: rotate(-45deg);
             -ms-transform: rotate(-45deg);
             -o-transform: rotate(-45deg);
             transform: rotate(-45deg);
-        /* Rotate Origin */
+            /* Rotate Origin */
             -webkit-transform-origin: 0 100%;
             -moz-transform-origin: 0 100%;
             -ms-transform-origin: 0 100%;
@@ -385,30 +385,10 @@ input.ng-touched.ng-invalid {
             transform-origin: 0 100%;
         }
         &:before {
-            width: 15px;
-            height: 15px;
-            background: #ffff;
-            content: "";
-            top: -32px;
             z-index: -1;
-            left: 6px;
-            position: absolute;
-            display: block;
             box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.15);
             border-width: 0;
             border-right-color: none;
-        /* Rotate */
-            -webkit-transform: rotate(-45deg);
-            -moz-transform: rotate(-45deg);
-            -ms-transform: rotate(-45deg);
-            -o-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-        /* Rotate Origin */
-            -webkit-transform-origin: 0 100%;
-            -moz-transform-origin: 0 100%;
-            -ms-transform-origin: 0 100%;
-            -o-transform-origin: 0 100%;
-            transform-origin: 0 100%;
         }
     }
 }
