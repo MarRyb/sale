@@ -6,7 +6,7 @@
   <div class="form-gropup">
     <label>Заголовок</label>
     <input type="text" placeholder="Ваш заголовок">
-    <app-tooltip class="tooltip-block" [settingsTooltip]="settingsTooltip"></app-tooltip>
+    <app-tooltip class="tooltip-block" [settingsTooltip]="settingsTooltipInfo"></app-tooltip>
   </div>
   <div class="form-gropup">
     <label>Рубрика</label>
@@ -15,6 +15,7 @@
   <div class="form-gropup strip">
     <label>Описание</label>
     <textarea placeholder="Ваше описание"></textarea>
+    <app-tooltip class="tooltip-block" [settingsTooltip]="settingsTooltipWarning"></app-tooltip>
   </div>
   <div class="form-gropup">
     <label>Фото</label>

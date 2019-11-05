@@ -348,6 +348,7 @@ input.ng-touched.ng-invalid {
     background-color: #fff;
     box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.15);
     max-width: 170px;
+    width: 170px !important;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
@@ -413,5 +414,17 @@ input.ng-touched.ng-invalid {
 }
 .tooltip {
     left: 19px !important;
-    transform: translate3d(729px, 80px, 0px) !important;
+    // transform: translate3d(729px, 80px, 0px) !important;
+    transform: translate3d(14px, -5px, 10px) !important;
+}
+.bs-tooltip-right {
+    .arrow {
+        top: 49px !important;
+    }
+}
+
+
+
+.tooltip-text-red {
+    color: #B70305;
 }
