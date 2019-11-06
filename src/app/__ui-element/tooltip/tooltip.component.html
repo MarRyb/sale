@@ -4,6 +4,9 @@
   </ng-template>
 
   <img src="{{settingsTooltip.imgUrl}}"
-        [tooltip]="popTemplate"
-        placement="{{settingsTooltip.placement}}">
+    [tooltip]="popTemplate"
+    placement="{{settingsTooltip.placement}}">
 </div>
+
+
+{{settingsTooltip | json}}
