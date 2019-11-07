@@ -1,0 +1,13 @@
+<div class="rubric-item-group">
+  <app-rubric-item class="rubric-item"
+                   [categoryList]="categoryParentList"
+                   (getSubCategory)="getSubCategoryItem($event)">
+  </app-rubric-item>
+  <app-rubric-item class="rubric-item"
+                   [categoryList]="categoryChildList">
+                   (getSubCategory)="getSubChildCategoryItem($event)"
+  </app-rubric-item>
+  <app-rubric-item class="rubric-item"
+                   [categoryList]="categorySubChildList">
+  </app-rubric-item>
+</div>

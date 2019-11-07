@@ -1,6 +1,6 @@
 import { ITooltip } from './../../core/interfaces/tooltip.interface';
-import { Component, ElementRef, ViewChild, AfterViewInit, OnInit} from '@angular/core';
-
+import { Component, ElementRef, ViewChild, AfterViewInit, OnInit, TemplateRef} from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-posts-add',
   templateUrl: './posts-add.component.html',
@@ -11,7 +11,13 @@ export class PostsAddComponent implements OnInit {
   public settingsTooltipInfo: ITooltip;
   public settingsTooltipWarning: ITooltip;
 
-  constructor() {
+  modalRef: BsModalRef;
+  config = {
+    animated: true
+  };
+
+
+  constructor(private modalService: BsModalService) {
     this.settingsTooltipInfo = {
       imgUrl: 'assets/img/icon Инфо.png',
       placement: 'right',
@@ -33,7 +39,9 @@ export class PostsAddComponent implements OnInit {
       click: ''
     };
   }
-
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, this.config);
+  }
   focusInput() {
     this.isFocus = true;
     this.settingsTooltipInfo.click = 'click';

@@ -408,3 +408,20 @@ input.ng-touched.ng-invalid {
 .tooltip-text-red {
     color: #B70305;
 }
+
+
+
+.modal-container {
+    padding: 30px 65px;
+    position: relative;
+    &.small-padding {
+        padding: 10px !important;
+        background: #f1f1f1;
+    }
+    .modal-close {
+        position: absolute;
+        top: -27px;
+        right: 0;
+        cursor: pointer;
+    }
+}

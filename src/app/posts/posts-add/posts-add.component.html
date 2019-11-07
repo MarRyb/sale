@@ -1,92 +1,101 @@
-<app-modal>
-  <div class="posts-add_header">
-    <span>Подать обьявление</span>
-    <div class="border-bottom"></div>
+
+
+
+<ng-template #template let-modal>
+  <div class="modal-container small-padding">
+    <img src="/assets/img/Shape.png" (click)="modalRef.hide()" class="modal-close">
+    <app-rubrics></app-rubrics>
   </div>
-  <div class="form-gropup">
-    <label>Заголовок</label>
-    <input type="text" placeholder="Ваш заголовок" (focus)="focusInput()">
-    <app-tooltip class="tooltip-block" [settingsTooltip]="settingsTooltipInfo"></app-tooltip>
-  </div>
-  <div class="form-gropup">
-    <label>Рубрика</label>
-    <button>Выбрать рубрику</button>
-  </div>
-  <div class="form-gropup strip">
-    <label>Описание</label>
-    <textarea placeholder="Ваше описание"></textarea>
-    <app-tooltip class="tooltip-block" [settingsTooltip]="settingsTooltipWarning"></app-tooltip>
-  </div>
-  <div class="form-gropup">
-    <label>Фото</label>
-    <div class="upload-photo-group">
-      <input class="upload-photo main file-main">
-      <div class="upload-photo__content">
-        <img src="/assets/img/photo-path.png">
-        <span>Титульное изображение</span>
-        <div class="plus">+</div>
-      </div>
-      <input class="upload-photo main file" type="file">
-      <div class="upload-photo__min-group">
-        <div class="upload-photo__min">
-          <div class="upload-photo">
-            <div class="plus">+</div>
-            <input class="upload-photo file" type="file">
-          </div>
-          <div class="upload-photo">
-            <div class="plus">+</div>
-            <input class="upload-photo file" type="file">
-          </div>
-          <div class="upload-photo">
-            <div class="plus">+</div>
-            <input class="upload-photo file" type="file">
-          </div>
+</ng-template>
+  
+
+<div class="posts-add_header">
+  <span>Подать обьявление</span>
+  <div class="border-bottom"></div>
+</div>
+<div class="form-gropup">
+  <label>Заголовок</label>
+  <input type="text" placeholder="Ваш заголовок" (focus)="focusInput()">
+  <app-tooltip class="tooltip-block" [settingsTooltip]="settingsTooltipInfo"></app-tooltip>
+</div>
+<div class="form-gropup">
+  <label>Рубрика</label>
+  <button (click)="openModal(template)">Выбрать рубрику</button>
+</div>
+<div class="form-gropup strip">
+  <label>Описание</label>
+  <textarea placeholder="Ваше описание"></textarea>
+  <app-tooltip class="tooltip-block" [settingsTooltip]="settingsTooltipWarning"></app-tooltip>
+</div>
+<div class="form-gropup">
+  <label>Фото</label>
+  <div class="upload-photo-group">
+    <input class="upload-photo main file-main">
+    <div class="upload-photo__content">
+      <img src="/assets/img/photo-path.png">
+      <span>Титульное изображение</span>
+      <div class="plus">+</div>
+    </div>
+    <input class="upload-photo main file" type="file">
+    <div class="upload-photo__min-group">
+      <div class="upload-photo__min">
+        <div class="upload-photo">
+          <div class="plus">+</div>
+          <input class="upload-photo file" type="file">
         </div>
-        <div class="upload-photo__min">
-          <div class="upload-photo">
-            <div class="plus">+</div>
-            <input class="upload-photo file" type="file">
-          </div>
-          <div class="upload-photo">
-            <div class="plus">+</div>
-            <input class="upload-photo file" type="file">
-          </div>
-          <div class="upload-photo">
-            <div class="plus">+</div>
-            <input class="upload-photo file" type="file">
-          </div>
+        <div class="upload-photo">
+          <div class="plus">+</div>
+          <input class="upload-photo file" type="file">
+        </div>
+        <div class="upload-photo">
+          <div class="plus">+</div>
+          <input class="upload-photo file" type="file">
+        </div>
+      </div>
+      <div class="upload-photo__min">
+        <div class="upload-photo">
+          <div class="plus">+</div>
+          <input class="upload-photo file" type="file">
+        </div>
+        <div class="upload-photo">
+          <div class="plus">+</div>
+          <input class="upload-photo file" type="file">
+        </div>
+        <div class="upload-photo">
+          <div class="plus">+</div>
+          <input class="upload-photo file" type="file">
         </div>
       </div>
     </div>
   </div>
-  <div class="posts-add_header margin-top">
-    <span>Контактные данные</span>
-    <div class="border-bottom"></div>
-  </div>
-  <div class="form-gropup">
-    <span class="descrption">Здесь выводятся Ваши контактные данные, которые будут видны покупателям.</span>
-  </div>
-  <div class="form-gropup">
-    <label class="contact-data">Местоположение</label>
-    <input  class="contact-data" type="text" placeholder="Начните писать город">
-  </div>
-  <div class="form-gropup">
-    <label class="contact-data">Номер телефона</label>
-    <input  class="contact-data" type="text" placeholder="+38 0">
-  </div>
-  <div class="form-gropup">
-    <label class="contact-data">E-mail</label>
-    <input  class="contact-data" type="text" placeholder="Ваш заголовок" disabled>
-  </div>
-  <div class="form-gropup">
-    <label class="contact-data">Контактное лицо</label>
-    <input  class="contact-data" type="text" placeholder="Введите фио">
-  </div>
-  <div class="posts-add_header">
-    <div class="border-bottom br"></div>
-  </div>
-  <div class="button-group">
-    <button class="btn white">Предпросмотр</button>
-    <button class="btn red">Дальше</button>
-  </div>
-</app-modal>
+</div>
+<div class="posts-add_header margin-top">
+  <span>Контактные данные</span>
+  <div class="border-bottom"></div>
+</div>
+<div class="form-gropup">
+  <span class="descrption">Здесь выводятся Ваши контактные данные, которые будут видны покупателям.</span>
+</div>
+<div class="form-gropup">
+  <label class="contact-data">Местоположение</label>
+  <input  class="contact-data" type="text" placeholder="Начните писать город">
+</div>
+<div class="form-gropup">
+  <label class="contact-data">Номер телефона</label>
+  <input  class="contact-data" type="text" placeholder="+38 0">
+</div>
+<div class="form-gropup">
+  <label class="contact-data">E-mail</label>
+  <input  class="contact-data" type="text" placeholder="Ваш заголовок" disabled>
+</div>
+<div class="form-gropup">
+  <label class="contact-data">Контактное лицо</label>
+  <input  class="contact-data" type="text" placeholder="Введите фио">
+</div>
+<div class="posts-add_header">
+  <div class="border-bottom br"></div>
+</div>
+<div class="button-group">
+  <button class="btn white">Предпросмотр</button>
+  <button class="btn red">Дальше</button>
+</div>

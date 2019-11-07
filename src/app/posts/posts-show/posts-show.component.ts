@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-posts-show',
   templateUrl: './posts-show.component.html',
@@ -29,8 +29,15 @@ export class PostsShowComponent implements OnInit {
     { key: 'Растаможена:', value: 'Да' }
   ];
 
-  constructor() { }
+  modalRef: BsModalRef;
+  config = {
+    animated: true
+  };
+  constructor(private modalService: BsModalService) {}
 
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, this.config);
+  }
   ngOnInit() {
   }
 

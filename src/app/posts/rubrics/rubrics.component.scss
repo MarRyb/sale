@@ -1,0 +1,12 @@
+.rubric-item-group{
+  display: flex;
+  app-rubric-item {
+    border-left: 1px solid #B70305;
+    &:first-child {
+      border-left: none;
+    }
+  }
+  .rubric-item{
+    flex-basis: 33%;
+  }
+}

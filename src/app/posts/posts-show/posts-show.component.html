@@ -1,4 +1,13 @@
-<app-posts-add></app-posts-add>
+<ng-template #template let-modal>
+  <div class="modal-container">
+    <img src="/assets/img/Shape.png" (click)="modalRef.hide()" class="modal-close">
+    <app-posts-add></app-posts-add>
+  </div>
+</ng-template>
+
+<button class="btn btn-outline-primary mb-2 mr-2" (click)="openModal(template)">Modal vertically centered</button>
+
+
 
 <div class="post">
   <div class="post__left">
