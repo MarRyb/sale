@@ -1,4 +1,4 @@
-import { ICategoryCustom } from './../../core/interfaces/IShowSub';
+import { ICategory } from './../../core/interfaces/categories.interface';
 import { CategoryService } from './../../core/services/category.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rubrics.component.scss']
 })
 export class RubricsComponent implements OnInit {
-  categoryParentList: Array<ICategoryCustom> = [];
-  categoryChildList: Array<ICategoryCustom> = [];
-  categorySubChildList: Array<ICategoryCustom> = [];
+  categoryParentList: Array<ICategory> = [];
+  categoryChildList: Array<ICategory> = [];
+  categorySubChildList: Array<ICategory> = [];
   categoryChildListTitle: string;
   categorySubChildListTitle: string;
 

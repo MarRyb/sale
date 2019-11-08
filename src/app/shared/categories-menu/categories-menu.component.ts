@@ -1,4 +1,4 @@
-import { ICategoryCustom } from './../../core/interfaces/IShowSub';
+import { ICategory } from './../../core/interfaces/categories.interface';
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from './../../core/services/category.service';
 
@@ -9,7 +9,7 @@ import { CategoryService } from './../../core/services/category.service';
 })
 export class CategoriesMenuComponent implements OnInit {
   isShowSubCategory = false;
-  categoryList: Array<ICategoryCustom> = [];
+  categoryList: Array<ICategory> = [];
   constructor(
     private category: CategoryService
   ) {}
