@@ -1,6 +1,9 @@
 <div class="header-title">
-  <span>Header Title </span>
+  <span>{{rubricTitle}}</span>
 </div>
 <div *ngFor="let item of categoryList">
-  <div class="rubric-item" (click)="getSubCategoryItem(item)">{{item.name}}</div>
+  <div class="rubric-item" (click)="getSubCategoryItem(item)">
+    {{item.name}}
+    <span *ngIf="item.children.length > 0">></span>
+  </div>
 </div>

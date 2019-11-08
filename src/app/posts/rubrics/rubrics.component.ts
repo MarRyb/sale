@@ -11,6 +11,8 @@ export class RubricsComponent implements OnInit {
   categoryParentList: Array<ICategoryCustom> = [];
   categoryChildList: Array<ICategoryCustom> = [];
   categorySubChildList: Array<ICategoryCustom> = [];
+  categoryChildListTitle: string;
+  categorySubChildListTitle: string;
 
   constructor(public category: CategoryService) { }
 
@@ -21,9 +23,11 @@ export class RubricsComponent implements OnInit {
   }
   getSubCategoryItem(item) {
     this.categoryChildList = item.children;
+    this.categoryChildListTitle = item.name;
   }
   getSubChildCategoryItem(item) {
     this.categorySubChildList = item.children;
+    this.categorySubChildListTitle = item.name;
   }
 
 

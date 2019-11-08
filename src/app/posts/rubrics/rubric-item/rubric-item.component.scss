@@ -6,11 +6,18 @@
   padding: 10px;
   span {
     font-weight: 500;
+    color: #B70305;
   }
 }
 .rubric-item{
-  color: #B70305;
+  color: black;
   padding: 5px 10px;
   font-size: 12px;
   cursor: pointer;
+  span {
+    color: #B70305;
+  }
+  &:hover {
+    background: rgba(183, 3, 5, 0.25);
+  }
 }

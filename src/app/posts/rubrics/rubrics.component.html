@@ -1,13 +1,16 @@
 <div class="rubric-item-group">
   <app-rubric-item class="rubric-item"
+                   [rubricTitle]="'Рубрики'"
                    [categoryList]="categoryParentList"
                    (getSubCategory)="getSubCategoryItem($event)">
   </app-rubric-item>
   <app-rubric-item class="rubric-item"
+                   [rubricTitle]="categoryChildListTitle"
                    [categoryList]="categoryChildList"
                    (getSubCategory)="getSubChildCategoryItem($event)">
   </app-rubric-item>
   <app-rubric-item class="rubric-item"
+                   [rubricTitle]="categorySubChildListTitle"
                    [categoryList]="categorySubChildList">
   </app-rubric-item>
 </div>

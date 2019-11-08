@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 })
 export class RubricItemComponent implements OnInit {
   @Input() categoryList: Array<ICategoryCustom> = [];
+  @Input() rubricTitle: string;
   @Output() getSubCategory = new EventEmitter();
 
   constructor() { }
