@@ -2,7 +2,7 @@
   height: 60px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #B70305;
+  border-bottom: 1px solid #dadada;
   padding: 10px;
   span {
     font-weight: 500;
@@ -11,4 +11,6 @@
 .rubric-item{
   color: #B70305;
   padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
 }

@@ -12,7 +12,7 @@ export class RubricItemComponent implements OnInit {
 
   constructor() { }
 
-  getSubCategoryItem(item: any) {
+  getSubCategoryItem(item: Array<ICategoryCustom>) {
     this.getSubCategory.emit(item);
   }
   ngOnInit() {
