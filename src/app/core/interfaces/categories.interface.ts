@@ -3,6 +3,7 @@ export interface  ICategory {
   name: string;
   children: Array<ICategory>;
   customFields: Array<ICustomFields>;
+  isShowSubCategory: boolean;
 }
 export interface  ICustomFields {
   id: number;
