@@ -2,15 +2,19 @@
   <app-rubric-item class="rubric-item"
                    [rubricTitle]="'Рубрики'"
                    [categoryList]="categoryParentList"
-                   (getSubCategory)="getSubCategoryItem($event)">
+                   (getSubCategory)="getCategoryItem($event)"
+                   (click)="selectedCategory(selectedCategories)">
   </app-rubric-item>
   <app-rubric-item class="rubric-item"
                    [rubricTitle]="categoryChildListTitle"
                    [categoryList]="categoryChildList"
-                   (getSubCategory)="getSubChildCategoryItem($event)">
+                   (getSubCategory)="getSubCategoryItem($event)"
+                   (click)="selectedCategory(selectedCategories)">
   </app-rubric-item>
   <app-rubric-item class="rubric-item"
                    [rubricTitle]="categorySubChildListTitle"
-                   [categoryList]="categorySubChildList">
+                   [categoryList]="categorySubChildList"
+                   (getSubCategory)="getSubChildCategoryItem($event)"
+                   (click)="selectedCategory(selectedCategories)">
   </app-rubric-item>
 </div>

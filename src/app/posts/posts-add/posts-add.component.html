@@ -1,13 +1,9 @@
-
-
-
 <ng-template #template let-modal>
   <div class="modal-container small-padding">
     <img src="/assets/img/Shape.png" (click)="modalRef.hide()" class="modal-close">
-    <app-rubrics></app-rubrics>
+    <app-rubrics (getCurrentCategory)="selectedCategory($event)"></app-rubrics>
   </div>
 </ng-template>
-  
 
 <div class="posts-add_header">
   <span>Подать обьявление</span>
@@ -20,7 +16,14 @@
 </div>
 <div class="form-gropup">
   <label>Рубрика</label>
-  <button (click)="openModal(template)">Выбрать рубрику</button>
+  <button (click)="openModal(template)" *ngIf="isShowSelectRubrics">Выбрать рубрику</button>
+  <div class="rubric-array">
+    <div *ngFor="let item of selectedCategories" class="rubric-item">
+      <span>{{item}} </span> <span class="item-delimiter"> » &nbsp;</span>
+    </div>
+  </div>
+  <button *ngIf="!isShowSelectRubrics" (click)="openModal(template)" class="small">Изменить</button>
+  <img src="/assets/img/success.png" class="selected-rubric" *ngIf="!isShowSelectRubrics">
 </div>
 <div class="form-gropup strip">
   <label>Описание</label>

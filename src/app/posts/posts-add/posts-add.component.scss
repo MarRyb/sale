@@ -78,6 +78,9 @@
     background: #B70305;
     border-radius: 4px;
     outline: none;
+    &.small {
+      width: 120px;
+    }
   }
   textarea {
     width: 500px;
@@ -198,4 +201,26 @@
       margin-right: 24px;
     }
   }
+}
+
+.rubric-array{
+  display: flex;
+  margin-right: 10px;
+  .rubric-item {
+    font-weight: 500;
+    color: #b70305;
+    &:last-child {
+      .item-delimiter {
+        display: none;
+      }
+      
+    }
+  }
+}
+
+
+
+.selected-rubric {
+  width: 30px;
+  margin: 0 10px;
 }

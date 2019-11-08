@@ -1,6 +1,7 @@
 import { ITooltip } from './../../core/interfaces/tooltip.interface';
 import { Component, ElementRef, ViewChild, AfterViewInit, OnInit, TemplateRef} from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import {ICategory} from '../../core/interfaces/categories.interface'
 @Component({
   selector: 'app-posts-add',
   templateUrl: './posts-add.component.html',
@@ -10,7 +11,8 @@ export class PostsAddComponent implements OnInit {
   public isFocus: boolean = false;
   public settingsTooltipInfo: ITooltip;
   public settingsTooltipWarning: ITooltip;
-
+  public selectedCategories = [];
+  public isShowSelectRubrics = true;
   modalRef: BsModalRef;
   config = {
     animated: true
@@ -45,10 +47,18 @@ export class PostsAddComponent implements OnInit {
   focusInput() {
     this.isFocus = true;
     this.settingsTooltipInfo.click = 'click';
-    console.log('focus');
   }
 
   ngOnInit() {
+  }
+
+
+  selectedCategory(item) {
+    this.selectedCategories = item.array;
+    if (item.hideModal === true) {
+      this.modalRef.hide();
+      this.isShowSelectRubrics = false;
+    }
   }
 
 
