@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./tooltip.component.scss']
 })
 export class TooltipComponent implements OnInit {
-  @Input() settingsTooltip: object = {};
+  @Input() settingsTooltip: any;
   constructor() { }
 
   ngOnInit() {
