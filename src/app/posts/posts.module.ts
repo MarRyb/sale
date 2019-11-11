@@ -6,13 +6,18 @@ import { SharedModule } from './../shared/shared.module';
 import { PostsAddComponent } from './posts-add/posts-add.component';
 import { RubricsComponent } from './rubrics/rubrics.component';
 import { RubricItemComponent } from './rubrics/rubric-item/rubric-item.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DynamicFormBuilderModule } from './../dynamic-form-builder/dynamic-form-builder.module';
+
 
 @NgModule({
   declarations: [PostsShowComponent, PostsAddComponent, RubricsComponent, RubricItemComponent],
   imports: [
     CommonModule,
     PostsRoutingModule,
-    SharedModule
+    SharedModule,
+    DynamicFormBuilderModule,
+    ReactiveFormsModule
   ],
   exports: [
     PostsAddComponent

@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'field-builder',
-  template: './field-builder.component.html',
+  templateUrl: './field-builder.component.html',
   styleUrls: ['./field-builder.component.scss']
 })
 export class FieldBuilderComponent implements OnInit {

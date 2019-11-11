@@ -4,11 +4,11 @@
     <strong class="text-danger" *ngIf="field.required">*</strong>
   </label>
   <div class="col-md-9" [ngSwitch]="field.type">
-    <textbox *ngSwitchCase="'text'" [field]="field" [form]="form"></textbox>
-    <dropdown *ngSwitchCase="'dropdown'" [field]="field" [form]="form"></dropdown>
-    <checkbox *ngSwitchCase="'checkbox'" [field]="field" [form]="form"></checkbox>
-    <radio *ngSwitchCase="'radio'" [field]="field" [form]="form"></radio>
-    <file *ngSwitchCase="'file'" [field]="field" [form]="form"></file>
+    <app-input *ngSwitchCase="'input'" [field]="field" [form]="form"></app-input>
+    <app-select *ngSwitchCase="'select'" [field]="field" [form]="form"></app-select>
+    <app-checkbox *ngSwitchCase="'checkbox'" [field]="field" [form]="form"></app-checkbox>
+    <app-radio *ngSwitchCase="'radio'" [field]="field" [form]="form"></app-radio>
+    <app-textarea *ngSwitchCase="'textarea'" [field]="field" [form]="form"></app-textarea>
     <div class="alert alert-danger my-1 p-2 fadeInDown animated" *ngIf="!isValid && isDirty">{{field.label}} is required</div>
   </div>
 </div>

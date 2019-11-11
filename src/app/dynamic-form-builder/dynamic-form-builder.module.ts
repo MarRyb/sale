@@ -1,3 +1,5 @@
+
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -10,6 +12,8 @@ import { CheckboxComponent } from './atom/checkbox/checkbox.component';
 import { TextareaComponent } from './atom/textarea/textarea.component';
 import { MultiselectComponent } from './atom/multiselect/multiselect.component';
 import { RangeComponent } from './atom/range/range.component';
+import { SelectComponent } from './atom/select/select.component';
+import { RadioComponent } from './atom/radio/radio.component';
 
 @NgModule({
   imports: [
@@ -23,9 +27,21 @@ import { RangeComponent } from './atom/range/range.component';
     CheckboxComponent,
     TextareaComponent,
     MultiselectComponent,
-    RangeComponent
+    RangeComponent,
+    SelectComponent,
+    RadioComponent
   ],
-  exports: [DynamicFormBuilderComponent],
+  exports: [
+    DynamicFormBuilderComponent,
+    FieldBuilderComponent,
+    InputComponent,
+    CheckboxComponent,
+    TextareaComponent,
+    MultiselectComponent,
+    RangeComponent,
+    SelectComponent,
+    RadioComponent
+  ],
   providers: []
 })
 export class DynamicFormBuilderModule { }

@@ -1,3 +1,22 @@
+<div class="col-sm-12">
+  <div class="card">
+    <div class="card-header">Dynamic Forms</div>
+    <div class="card-body">
+      <app-dynamic-form-builder [fields]="getFields()"></app-dynamic-form-builder>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-12">
+  <div class="form-group" [formGroup]="form">
+    <label>JSON</label>
+    <textarea formControlName="fields" class="form-control" rows="3"></textarea>
+  </div>
+</div>
+
+
+
+
 <ng-template #template let-modal>
   <div class="modal-container small-padding">
     <img src="/assets/img/Shape.png" (click)="modalRef.hide()" class="modal-close">
@@ -102,3 +121,13 @@
   <button class="btn white">Предпросмотр</button>
   <button class="btn red">Дальше</button>
 </div>
+
+
+
+
+
+
+
+
+
+  

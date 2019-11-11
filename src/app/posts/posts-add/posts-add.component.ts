@@ -1,7 +1,8 @@
 import { ITooltip } from './../../core/interfaces/tooltip.interface';
-import { Component, ElementRef, ViewChild, AfterViewInit, OnInit, TemplateRef} from '@angular/core';
+import { Component, OnInit, TemplateRef} from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import {ICategory} from '../../core/interfaces/categories.interface'
+
 @Component({
   selector: 'app-posts-add',
   templateUrl: './posts-add.component.html',
@@ -17,6 +18,66 @@ export class PostsAddComponent implements OnInit {
   config = {
     animated: true
   };
+  public form: FormGroup;
+  unsubcribe: any;
+
+
+
+  public fields: any[] = [
+    {
+      type: 'textarea',
+      name: 'firstName',
+      label: 'First Name',
+      value: '',
+      required: true,
+    },
+    {
+      type: 'input',
+      name: 'lastName',
+      label: 'Last Name',
+      value: '',
+      required: true,
+    },
+    {
+      type: 'text',
+      name: 'email',
+      label: 'Email',
+      value: '',
+      required: true,
+    },
+    {
+      type: 'select',
+      name: 'country',
+      label: 'Country',
+      value: 'in',
+      required: true,
+      options: [
+        { key: 'in', label: 'India' },
+        { key: 'us', label: 'USA' }
+      ]
+    },
+    {
+      type: 'radio',
+      name: 'country',
+      label: 'Country',
+      value: 'in',
+      required: true,
+      options: [
+        { key: 'm', label: 'Male' },
+        { key: 'f', label: 'Female' }
+      ]
+    },
+    {
+      type: 'checkbox',
+      name: 'hobby',
+      label: 'Hobby',
+      required: true,
+      options: [
+        { key: 'f', label: 'Fishing' },
+        { key: 'c', label: 'Cooking' }
+      ]
+    }
+  ];
 
 
   constructor(private modalService: BsModalService) {
@@ -40,6 +101,13 @@ export class PostsAddComponent implements OnInit {
       `,
       click: ''
     };
+    this.form = new FormGroup({
+      fields: new FormControl(JSON.stringify(this.fields))
+    })
+    this.unsubcribe = this.form.valueChanges.subscribe((update) => {
+      console.log(update);
+      this.fields = JSON.parse(update.fields);
+    });
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, this.config);
@@ -62,4 +130,11 @@ export class PostsAddComponent implements OnInit {
   }
 
 
+  getFields() {
+    return this.fields;
+  }
+
+  ngDistroy() {
+    this.unsubcribe();
+  }
 }
