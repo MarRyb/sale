@@ -29,7 +29,7 @@ export class CategoriesShowComponent implements OnInit {
       this.getPosts();
       this.categoryService.get(this.category).subscribe(data => {
         this.breadcrumbs = [];
-        this.breadcrumbs.push({ label: 'data.parentName', url: `categories/${data.slug}` });
+        this.breadcrumbs.push({ label: data.parent.name, url: `categories/${data.parent.slug}` });
         this.breadcrumbs.push({ label: data.name, url: `categories/${data.slug}` });
         this.breadcrumbsService.breadcrumbsSubject.next(this.breadcrumbs);
       });
