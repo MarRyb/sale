@@ -1,0 +1,28 @@
+.selected {
+  position: relative;
+  width: 195px;
+  &:before {
+    top: 17px;
+    right: 8px;
+    position: absolute;
+    display: block;
+    content: '';
+    border: 5px solid transparent;
+    border-top: 5px solid #B70305;
+  }
+}
+
+select {
+  width: 195px;
+  height: 32px;
+  border: 1px solid #F2F2F2;
+  box-sizing: border-box;
+  border-radius: 4px;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+}
+
+

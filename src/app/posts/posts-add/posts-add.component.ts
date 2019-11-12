@@ -28,29 +28,19 @@ export class PostsAddComponent implements OnInit {
       type: 'textarea',
       name: 'firstName',
       label: 'First Name',
-      value: '',
-      required: true,
+      value: ''
     },
     {
       type: 'input',
       name: 'lastName',
       label: 'Last Name',
-      value: '',
-      required: true,
-    },
-    {
-      type: 'text',
-      name: 'email',
-      label: 'Email',
-      value: '',
-      required: true,
+      value: ''
     },
     {
       type: 'select',
       name: 'country',
       label: 'Country',
       value: 'in',
-      required: true,
       options: [
         { key: 'in', label: 'India' },
         { key: 'us', label: 'USA' }
@@ -61,7 +51,6 @@ export class PostsAddComponent implements OnInit {
       name: 'country',
       label: 'Country',
       value: 'in',
-      required: true,
       options: [
         { key: 'm', label: 'Male' },
         { key: 'f', label: 'Female' }
@@ -71,10 +60,15 @@ export class PostsAddComponent implements OnInit {
       type: 'checkbox',
       name: 'hobby',
       label: 'Hobby',
-      required: true,
       options: [
         { key: 'f', label: 'Fishing' },
-        { key: 'c', label: 'Cooking' }
+        { key: 'c', label: 'Cooking' },
+        { key: 'd', label: 'Fishing' },
+        { key: 'q', label: 'Cooking' },
+        { key: 'w', label: 'Fishing' },
+        { key: 'e', label: 'Cooking' },
+        { key: 'r', label: 'Fishing' },
+        { key: 't', label: 'Cooking' }
       ]
     }
   ];

@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+  padding: 0;
+  .container-item {
+    margin-right: 50px;
+  }
+  label {
+    position: relative;
+    display: flex;
+    font-family: Roboto !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-size: 18px;
+    line-height: 21px;
+    color: #474747;
+  }
+
+  input {
+    &[type="radio"] {
+      display: none;
+    }
+
+    &[type="radio"] + label {
+      font: 18px bold;
+      color: #444;
+      cursor: pointer;
+    }
+    &[type="radio"] + label::before {
+      content: "";
+      display: inline-block;
+      height: 20px;
+      width: 20px;
+      margin: 0 15px 0 0;
+      border: 2px solid #474747;
+      border-radius: 50px;
+    }
+    &[type="radio"]:checked + label::before {
+      content: "";
+      display: inline-block;
+      height: 20px;
+      width: 20px;
+      margin: 0 15px 0 0;
+      border: 2px solid #B70305;
+      border-radius: 50px;
+    }
+    &[type="radio"]:checked + label::after {
+      position: absolute;
+      content: "";
+      display: inline-block;
+      height: 10px;
+      width: 10px;
+      margin: 0 15px 0 0;
+      border-radius: 50px;
+      background: #B70305;
+      top: 5px;
+      left: 5px;
+    }
+
+    &[type="radio"] + label::before {
+      background-position: 0px -279px;
+    }
+
+    &[type="radio"] {
+      &:disabled + label::before {
+        background-position: -144px -279px;
+      }
+
+      &:checked:disabled + label::before {
+        background-position: -162px -279px;
+      }
+    }
+  }
+}
+

@@ -1,7 +1,7 @@
-<div [formGroup]="form">
-  <div class="form-check" *ngFor="let opt of field.options">
-    <input class="form-check-input" type="radio" [value]="opt.key" >
-    <label class="form-check-label">
+<div [formGroup]="form" class="container">
+  <div *ngFor="let opt of field.options" class="container-item">
+    <input type="radio" [value]="opt.key" id="input-{{opt.key}}" name="{{field.name}}">
+    <label for="input-{{opt.key}}">
       {{opt.label}}
     </label>
   </div>
