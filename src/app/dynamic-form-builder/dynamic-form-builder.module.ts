@@ -1,5 +1,3 @@
-
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -14,6 +12,7 @@ import { MultiselectComponent } from './atom/multiselect/multiselect.component';
 import { RangeComponent } from './atom/range/range.component';
 import { SelectComponent } from './atom/select/select.component';
 import { RadioComponent } from './atom/radio/radio.component';
+import { PriceCustomComponent } from './atom/price-custom/price-custom.component';
 
 @NgModule({
   imports: [
@@ -29,7 +28,8 @@ import { RadioComponent } from './atom/radio/radio.component';
     MultiselectComponent,
     RangeComponent,
     SelectComponent,
-    RadioComponent
+    RadioComponent,
+    PriceCustomComponent
   ],
   exports: [
     DynamicFormBuilderComponent,

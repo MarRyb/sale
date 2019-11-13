@@ -22,6 +22,7 @@
           margin: 0 15px 0 0;
           border: 2px solid #474747;
           border-radius: 2px;
+          flex-shrink: 0;
         }
         &[type="checkbox"]:checked + label::before {
           content: "";

@@ -1,0 +1,13 @@
+<div [formGroup]="form" class="container">
+  <div *ngFor="let opt of field.options" class="container-item" [ngClass]="{flex: opt.params}">
+    <input type="radio" [value]="opt.key" id="input-{{opt.key}}" name="{{field.name}}">
+    <label for="input-{{opt.key}}">
+      {{opt.label}}
+    </label>
+    <div *ngIf="opt.params" class="params">
+      <app-input [field]="opt.params.input" [form]="form"></app-input>
+      <app-select [field]="opt.params.select" [form]="form"></app-select>
+      <app-checkbox [field]="opt.params.checkbox" [form]="form"></app-checkbox>
+    </div>
+  </div>
+</div>

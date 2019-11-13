@@ -15,9 +15,7 @@ export class PostsAddComponent implements OnInit {
   public selectedCategories = [];
   public isShowSelectRubrics = true;
   modalRef: BsModalRef;
-  config = {
-    animated: true
-  };
+
   public form: FormGroup;
   unsubcribe: any;
 
@@ -29,6 +27,44 @@ export class PostsAddComponent implements OnInit {
       name: 'firstName',
       label: 'First Name',
       value: ''
+    },
+    {
+      type: 'price',
+      name: 'price',
+      label: 'Цена товара',
+      value: '',
+      options: [
+        { key: 'exchange', label: 'Обмен' },
+        { key: 'Selling for', label: 'Продажа за',
+          params: {
+            input: {
+              type: 'input',
+              name: 'price',
+              label: 'Цена',
+              value: ''
+            },
+            select: {
+              type: 'select',
+              name: 'currency',
+              label: 'Валюта',
+              value: 'in',
+              options: [
+                { key: 'uan', label: 'грн.' },
+                { key: 'doll', label: 'долл.' }
+              ]
+            },
+            checkbox: {
+              type: 'checkbox',
+              name: 'bargain',
+              label: 'Возможен торг',
+              options: [
+                { key: 'barg', label: 'Возможен торг' }
+              ]
+            }
+          }
+        },
+        { key: 'Negotiable price', label: 'Цена договорная' }
+      ]
     },
     {
       type: 'input',
@@ -104,7 +140,7 @@ export class PostsAddComponent implements OnInit {
     });
   }
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, this.config);
+    this.modalRef = this.modalService.show(template, {animated: true});
   }
   focusInput() {
     this.isFocus = true;
