@@ -1,3 +1,4 @@
+import { PostsService } from './../../core/services/post.service';
 import { ITooltip } from './../../core/interfaces/tooltip.interface';
 import { Component, OnInit, TemplateRef} from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -19,7 +20,16 @@ export class PostsAddComponent implements OnInit {
   public form: FormGroup;
   unsubcribe: any;
   public fields: any[];
+  public photo: any;
 
+  public photos: any[] = [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+  ]
 
   public fieldsPrice: any[] = [
     {
@@ -58,7 +68,10 @@ export class PostsAddComponent implements OnInit {
   ];
 
 
-  constructor(private modalService: BsModalService) {
+  constructor(
+    private modalService: BsModalService,
+    public post: PostsService
+    ) {
     this.settingsTooltipInfo = {
       imgUrl: 'assets/img/icon Инфо.png',
       placement: 'right',
@@ -107,8 +120,6 @@ export class PostsAddComponent implements OnInit {
       this.isShowSelectRubrics = false;
     }
     this.fields = item.itemCategory.customFields;
-    console.log(item.itemCategory.customFields);
-    // debugger
   }
 
 
@@ -121,5 +132,21 @@ export class PostsAddComponent implements OnInit {
 
   ngDistroy() {
     this.unsubcribe();
+  }
+
+  uploadFile(event, item) {
+    if (event.target.files) {
+      const fileList: FileList = event.target.files;
+      if (fileList.length > 0) {
+        const file = fileList[0];
+        const formData = new FormData();
+        formData.append('path', file, file.name);
+        this.post.postFiles(formData).subscribe(data => {
+          item = data.path;
+        });
+      }
+
+    }
+
   }
 }

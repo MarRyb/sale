@@ -37,48 +37,45 @@
   <textarea placeholder="Ваше описание"></textarea>
   <app-tooltip class="tooltip-block" [settingsTooltip]="settingsTooltipWarning"></app-tooltip>
 </div>
+
+
+
+
+
 <div class="form-gropup">
   <label>Фото</label>
   <div class="upload-photo-group">
-    <input class="upload-photo main file-main">
-    <div class="upload-photo__content">
+    <input class="upload-photo main file-main" >
+    <div class="upload-photo__content" *ngIf="!photo.id">
       <img src="/assets/img/photo-path.png">
       <span>Титульное изображение</span>
       <div class="plus">+</div>
     </div>
-    <input class="upload-photo main file" type="file">
+    <input class="upload-photo main file" type="file" (change)="uploadFile($event, photo)" *ngIf="!photo.id">
+    <div>{{photo}}</div>
+    <div [ngStyle]="{'background-image': 'url(' + photo + ')'}" class="preview-1" *ngIf="photo.id"></div>
+
     <div class="upload-photo__min-group">
       <div class="upload-photo__min">
-        <div class="upload-photo">
-          <div class="plus">+</div>
-          <input class="upload-photo file" type="file">
-        </div>
-        <div class="upload-photo">
-          <div class="plus">+</div>
-          <input class="upload-photo file" type="file">
-        </div>
-        <div class="upload-photo">
-          <div class="plus">+</div>
-          <input class="upload-photo file" type="file">
-        </div>
-      </div>
-      <div class="upload-photo__min">
-        <div class="upload-photo">
-          <div class="plus">+</div>
-          <input class="upload-photo file" type="file">
-        </div>
-        <div class="upload-photo">
-          <div class="plus">+</div>
-          <input class="upload-photo file" type="file">
-        </div>
-        <div class="upload-photo">
-          <div class="plus">+</div>
-          <input class="upload-photo file" type="file">
+        <div *ngFor="let item of photos">
+          <div class="upload-photo" *ngIf="!item.id">
+            <div class="plus">+</div>
+            <input class="upload-photo file" type="file" (change)="uploadFile($event, item)">
+          </div>
+          <div class="upload-photo" *ngIf="item.id">
+            <div [ngStyle]="{'background-image': 'url(' + item + ')'}"></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
+
+
+
 <div class="posts-add_header margin-top">
   <span>Контактные данные</span>
   <div class="border-bottom"></div>

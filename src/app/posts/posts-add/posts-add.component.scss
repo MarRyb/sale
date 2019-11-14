@@ -108,6 +108,7 @@
       border: 1px dashed #B70305;
       box-sizing: border-box;
       border-radius: 2px;
+      margin-bottom: 12px;
       &.file {
         opacity: 0;
         position: absolute;
@@ -174,9 +175,8 @@
 .upload-photo__min {
   display: flex;
   margin-left: 34px;
-  &:first-child {
-    margin-bottom: 12px;
-  }
+  flex-wrap: wrap;
+  width: 340px;
 }
 
 .button-group {
