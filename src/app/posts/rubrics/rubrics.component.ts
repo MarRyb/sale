@@ -18,7 +18,8 @@ export class RubricsComponent implements OnInit {
   categorySubChildListTitle: string;
   selectedCategories = {
     array: [],
-    hideModal: false
+    hideModal: false,
+    itemCategory: {}
   };
 
   constructor(public category: CategoryService) { }
@@ -36,6 +37,7 @@ export class RubricsComponent implements OnInit {
     }
     this.categoryChildList = item.children;
     this.categoryChildListTitle = item.name;
+    this.selectedCategories.itemCategory = item;
   }
   getSubCategoryItem(item) {
     this.selectedCategories.array.splice(1, 1);
@@ -45,12 +47,14 @@ export class RubricsComponent implements OnInit {
     }
     this.categorySubChildList = item.children;
     this.categorySubChildListTitle = item.name;
+    this.selectedCategories.itemCategory = item;
   }
 
   getSubChildCategoryItem(item) {
     this.selectedCategories.array.splice(2, 1);
     this.selectedCategories.array.push(item.name);
     this.selectedCategories.hideModal = true;
+    this.selectedCategories.itemCategory = item;
   }
 
   selectedCategory(array) {

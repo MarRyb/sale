@@ -15,96 +15,44 @@ export class PostsAddComponent implements OnInit {
   public selectedCategories = [];
   public isShowSelectRubrics = true;
   modalRef: BsModalRef;
-
+  public customFields: [];
   public form: FormGroup;
   unsubcribe: any;
+  public fields: any[];
 
 
-
-  public fields: any[] = [
-    {
-      type: 'textarea',
-      name: 'firstName',
-      label: 'First Name',
-      value: ''
-    },
+  public fieldsPrice: any[] = [
     {
       type: 'price',
-      name: 'price',
-      label: 'Цена товара',
-      value: '',
-      options: [
-        { key: 'exchange', label: 'Обмен' },
-        { key: 'Selling for', label: 'Продажа за',
+      name: 'Цена товара',
+      value: [
+        { key: 'exchange', name: 'Обмен' },
+        { key: 'Selling for', name: 'Продажа за',
           params: {
             input: {
               type: 'input',
-              name: 'price',
-              label: 'Цена',
-              value: ''
+              id: 'price',
+              name: 'Цена'
             },
             select: {
               type: 'select',
-              name: 'currency',
-              label: 'Валюта',
-              value: 'in',
-              options: [
-                { key: 'uan', label: 'грн.' },
-                { key: 'doll', label: 'долл.' }
+              id: 'currency',
+              name: 'грн',
+              value: [
+                { value: 'uan', label: 'грн.' },
+                { value: 'doll', label: 'долл.' }
               ]
             },
             checkbox: {
               type: 'checkbox',
-              name: 'bargain',
-              label: 'Возможен торг',
-              options: [
-                { key: 'barg', label: 'Возможен торг' }
+              id: 'bargain',
+              value: [
+                { value: 'barg', label: 'Возможен торг' }
               ]
             }
           }
         },
-        { key: 'Negotiable price', label: 'Цена договорная' }
-      ]
-    },
-    {
-      type: 'input',
-      name: 'lastName',
-      label: 'Last Name',
-      value: ''
-    },
-    {
-      type: 'select',
-      name: 'country',
-      label: 'Country',
-      value: 'in',
-      options: [
-        { key: 'in', label: 'India' },
-        { key: 'us', label: 'USA' }
-      ]
-    },
-    {
-      type: 'radio',
-      name: 'country',
-      label: 'Country',
-      value: 'in',
-      options: [
-        { key: 'm', label: 'Male' },
-        { key: 'f', label: 'Female' }
-      ]
-    },
-    {
-      type: 'checkbox',
-      name: 'hobby',
-      label: 'Hobby',
-      options: [
-        { key: 'f', label: 'Fishing' },
-        { key: 'c', label: 'Cooking' },
-        { key: 'd', label: 'Fishing' },
-        { key: 'q', label: 'Cooking' },
-        { key: 'w', label: 'Fishing' },
-        { key: 'e', label: 'Cooking' },
-        { key: 'r', label: 'Fishing' },
-        { key: 't', label: 'Cooking' }
+        { key: 'Negotiable price', name: 'Цена договорная' }
       ]
     }
   ];
@@ -132,11 +80,12 @@ export class PostsAddComponent implements OnInit {
       click: ''
     };
     this.form = new FormGroup({
-      fields: new FormControl(JSON.stringify(this.fields))
-    })
+      fields: new FormControl(JSON.stringify(this.fields)),
+      fieldsPrice: new FormControl(JSON.stringify(this.fieldsPrice))
+    });
     this.unsubcribe = this.form.valueChanges.subscribe((update) => {
-      console.log(update);
-      this.fields = JSON.parse(update.fields);
+      this.fields = JSON.parse(update.fields),
+      this.fieldsPrice = JSON.parse(update.fieldsPrice);
     });
   }
   openModal(template: TemplateRef<any>) {
@@ -157,11 +106,17 @@ export class PostsAddComponent implements OnInit {
       this.modalRef.hide();
       this.isShowSelectRubrics = false;
     }
+    this.fields = item.itemCategory.customFields;
+    console.log(item.itemCategory.customFields);
+    // debugger
   }
 
 
   getFields() {
     return this.fields;
+  }
+  getFieldsPrice() {
+    return this.fieldsPrice;
   }
 
   ngDistroy() {

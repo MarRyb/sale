@@ -25,9 +25,13 @@
   <button *ngIf="!isShowSelectRubrics" (click)="openModal(template)" class="small">Изменить</button>
   <img src="/assets/img/success.png" class="selected-rubric" *ngIf="!isShowSelectRubrics">
 </div>
-<div class="form-gropup strip">
+<div class="form-gropup strip" *ngIf="!isShowSelectRubrics">
   <app-dynamic-form-builder [fields]="getFields()"></app-dynamic-form-builder>
 </div>
+<div class="form-gropup" *ngIf="!isShowSelectRubrics">
+    <app-dynamic-form-builder [fields]="getFieldsPrice()"></app-dynamic-form-builder>
+</div>
+
 <div class="form-gropup strip">
   <label>Описание</label>
   <textarea placeholder="Ваше описание"></textarea>

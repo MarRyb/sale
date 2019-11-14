@@ -1,6 +1,6 @@
 <div class="form-group-custom" [formGroup]="form">
-  <label [attr.for]="field.label">
-    {{field.label}}
+  <label [attr.for]="field.id">
+    {{field.name}}
     <strong class="text-danger" *ngIf="field.required">*</strong>
   </label>
   <div class="col-md-9" [ngSwitch]="field.type">
@@ -10,6 +10,6 @@
     <app-radio *ngSwitchCase="'radio'" [field]="field" [form]="form"></app-radio>
     <app-textarea *ngSwitchCase="'textarea'" [field]="field" [form]="form"></app-textarea>
     <app-price-custom *ngSwitchCase="'price'" [field]="field" [form]="form"></app-price-custom>
-    <div class="alert alert-danger my-1 p-2 fadeInDown animated" *ngIf="!isValid && isDirty">{{field.label}} is required</div>
+    <div class="alert alert-danger my-1 p-2 fadeInDown animated" *ngIf="!isValid && isDirty">{{field.name}} is required</div>
   </div>
 </div>

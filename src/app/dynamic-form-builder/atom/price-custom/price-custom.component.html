@@ -1,8 +1,8 @@
 <div [formGroup]="form" class="container">
-  <div *ngFor="let opt of field.options" class="container-item" [ngClass]="{flex: opt.params}">
-    <input type="radio" [value]="opt.key" id="input-{{opt.key}}" name="{{field.name}}">
+  <div *ngFor="let opt of field.value" class="container-item" [ngClass]="{flex: opt.params}">
+    <input type="radio" [value]="opt.key" id="input-{{opt.key}}" name="{{field.id}}">
     <label for="input-{{opt.key}}">
-      {{opt.label}}
+      {{opt.name}}
     </label>
     <div *ngIf="opt.params" class="params">
       <app-input [field]="opt.params.input" [form]="form"></app-input>

@@ -1,5 +1,4 @@
 <div [formGroup]="form">
-  <textarea *ngIf="!field.multiline" [attr.type]="field.type" class="form-control"  [id]="field.name" [name]="field.name" [formControlName]="field.name">
-  <textarea *ngIf="field.multiline" [class.is-invalid]="isDirty && !isValid" [formControlName]="field.name" [id]="field.name"
-  rows="9" class="form-control" [placeholder]="field.placeholder"></textarea>
+  <textarea [class.is-invalid]="isDirty && !isValid" [formControlName]="field.id" [id]="field.id"
+  rows="9" class="form-control" [placeholder]="field.name"></textarea>
 </div>
