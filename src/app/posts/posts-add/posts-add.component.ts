@@ -20,7 +20,7 @@ export class PostsAddComponent implements OnInit {
   public form: FormGroup;
   unsubcribe: any;
   public fields: any[];
-  public photo: any;
+  public photo: any = {};
 
   public photos: any[] = [
     {},

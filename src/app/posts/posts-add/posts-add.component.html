@@ -52,7 +52,6 @@
       <div class="plus">+</div>
     </div>
     <input class="upload-photo main file" type="file" (change)="uploadFile($event, photo)" *ngIf="!photo.id">
-    <div>{{photo}}</div>
     <div [ngStyle]="{'background-image': 'url(' + photo + ')'}" class="preview-1" *ngIf="photo.id"></div>
 
     <div class="upload-photo__min-group">
