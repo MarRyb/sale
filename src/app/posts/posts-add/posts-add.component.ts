@@ -1,9 +1,8 @@
 import { PostsService } from './../../core/services/post.service';
 import { ITooltip } from './../../core/interfaces/tooltip.interface';
 import { Component, OnInit, TemplateRef} from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-
+import {FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
 @Component({
   selector: 'app-posts-add',
   templateUrl: './posts-add.component.html',
@@ -21,6 +20,7 @@ export class PostsAddComponent implements OnInit {
   unsubcribe: any;
   public fields: any[];
   public photoItem: any = {};
+  public postForm: FormGroup;
 
   public photos: any[] = [
     {},
@@ -30,7 +30,7 @@ export class PostsAddComponent implements OnInit {
     {},
     {},
     {}
-  ]
+  ];
 
   public fieldsPrice: any[] = [
     {
@@ -111,6 +111,12 @@ export class PostsAddComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.postForm = new FormGroup({
+      title: new FormControl(null, [Validators.required]),
+      content: new FormControl(null, [Validators.required]),
+      category: new FormControl(null),
+      type: new FormControl(1)
+    });
   }
 
 
@@ -120,6 +126,7 @@ export class PostsAddComponent implements OnInit {
       this.modalRef.hide();
       this.isShowSelectRubrics = false;
     }
+    this.postForm.controls['category'].setValue(item.itemCategory.id);
     this.fields = item.itemCategory.customFields;
   }
 
@@ -146,8 +153,14 @@ export class PostsAddComponent implements OnInit {
           return this.photos[index] = data;
         });
       }
-
     }
+  }
+  onSubmit() {
+    this.post.new(this.postForm.value).subscribe(data => {
+      
+      console.log(this.postForm);
+      
 
+    })
   }
 }

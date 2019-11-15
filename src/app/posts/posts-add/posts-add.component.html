@@ -5,108 +5,106 @@
   </div>
 </ng-template>
 
-<div class="posts-add_header">
-  <span>Подать обьявление</span>
-  <div class="border-bottom"></div>
-</div>
-<div class="form-gropup">
-  <label>Заголовок</label>
-  <input type="text" placeholder="Ваш заголовок" (focus)="focusInput()">
-  <app-tooltip class="tooltip-block" [settingsTooltip]="settingsTooltipInfo"></app-tooltip>
-</div>
-<div class="form-gropup">
-  <label>Рубрика</label>
-  <button (click)="openModal(template)" *ngIf="isShowSelectRubrics">Выбрать рубрику</button>
-  <div class="rubric-array">
-    <div *ngFor="let item of selectedCategories" class="rubric-item">
-      <span>{{item}} </span> <span class="item-delimiter"> » &nbsp;</span>
-    </div>
+
+
+
+<form [formGroup]="postForm" (ngSubmit)="postForm.valid && onSubmit()">
+  <div class="posts-add_header">
+    <span>Подать обьявление</span>
+    <div class="border-bottom"></div>
   </div>
-  <button *ngIf="!isShowSelectRubrics" (click)="openModal(template)" class="small">Изменить</button>
-  <img src="/assets/img/success.png" class="selected-rubric" *ngIf="!isShowSelectRubrics">
-</div>
-<div class="form-gropup strip" *ngIf="!isShowSelectRubrics">
-  <app-dynamic-form-builder [fields]="getFields()"></app-dynamic-form-builder>
-</div>
-<div class="form-gropup" *ngIf="!isShowSelectRubrics">
-    <app-dynamic-form-builder [fields]="getFieldsPrice()"></app-dynamic-form-builder>
-</div>
-
-<div class="form-gropup strip">
-  <label>Описание</label>
-  <textarea placeholder="Ваше описание"></textarea>
-  <app-tooltip class="tooltip-block" [settingsTooltip]="settingsTooltipWarning"></app-tooltip>
-</div>
-
-
-
-
-
-<div class="form-gropup">
-  <label>Фото</label>
-  <div class="upload-photo-group">
-    <input class="upload-photo main file-main" >
-    <div class="upload-photo__content" *ngIf="!photos[0]?.id">
-      <img src="/assets/img/photo-path.png">
-      <span>Титульное изображение</span>
-      <div class="plus">+</div>
+  <div class="form-gropup">
+    <label>Заголовок</label>
+    <input type="text" placeholder="Ваш заголовок" (focus)="focusInput()" formControlName="title">
+    <app-tooltip class="tooltip-block" [settingsTooltip]="settingsTooltipInfo"></app-tooltip>
+  </div>
+  <div class="form-gropup">
+    <label>Рубрика</label>
+    <button (click)="openModal(template)" *ngIf="isShowSelectRubrics">Выбрать рубрику</button>
+    <div class="rubric-array">
+      <div *ngFor="let item of selectedCategories; last as isLast" class="rubric-item">
+        <span>{{item}} </span> <span class="item-delimiter"> » &nbsp;</span>
+      </div>
     </div>
-    <input class="upload-photo main file" type="file" (change)="uploadFile($event, 0)" *ngIf="!photos[0]?.id">
-    <div class="upload-photo__content" *ngIf="photos[0]?.id">
-      <div [ngStyle]="{'background-image': 'url(http://test4.vpotoke.com/' + photos[0].path + ')'}" class="preview-1 upload-photo__downloaded"></div>
-    </div>
+    <button *ngIf="!isShowSelectRubrics" (click)="openModal(template)" class="small">Изменить</button>
+    <img src="/assets/img/success.png" class="selected-rubric" *ngIf="!isShowSelectRubrics">
+  </div>
+  <div class="form-gropup strip" *ngIf="!isShowSelectRubrics">
+    <app-dynamic-form-builder [fields]="getFields()"></app-dynamic-form-builder>
+  </div>
+  <div class="form-gropup" *ngIf="!isShowSelectRubrics">
+      <app-dynamic-form-builder [fields]="getFieldsPrice()"></app-dynamic-form-builder>
+  </div>
 
-    <div class="upload-photo__min-group">
-      <div class="upload-photo__min">
-        <div *ngFor="let item of photos.slice(1, 7); index as index">
-          <div class="upload-photo" *ngIf="!item.id">
-            <div class="plus">+</div>
-            <input class="upload-photo file" type="file" (change)="uploadFile($event, index)">
-          </div>
-          <div class="upload-photo" *ngIf="item?.id">
-            <div class="upload-photo__downloaded" [ngStyle]="{'background-image': 'url(http://test4.vpotoke.com/' + item.path + ')'}"></div>
+  <div class="form-gropup strip">
+    <label>Описание</label>
+    <textarea placeholder="Ваше описание" formControlName="content"></textarea>
+    <app-tooltip class="tooltip-block" [settingsTooltip]="settingsTooltipWarning"></app-tooltip>
+  </div>
+
+  <div class="form-gropup">
+    <label>Фото</label>
+    <div class="upload-photo-group">
+      <input class="upload-photo main file-main" >
+      <div class="upload-photo__content" *ngIf="!photos[0]?.id">
+        <img src="/assets/img/photo-path.png">
+        <span>Титульное изображение</span>
+        <div class="plus">+</div>
+      </div>
+      <input class="upload-photo main file" type="file" (change)="uploadFile($event, 0)" *ngIf="!photos[0]?.id">
+      <div class="upload-photo__content" *ngIf="photos[0]?.id">
+        <div [ngStyle]="{'background-image': 'url(http://test4.vpotoke.com/' + photos[0].path + ')'}" class="preview-1 upload-photo__downloaded"></div>
+      </div>
+
+      <div class="upload-photo__min-group">
+        <div class="upload-photo__min">
+          <div *ngFor="let item of photos.slice(1, 7); index as index">
+            <div class="upload-photo" *ngIf="!item.id">
+              <div class="plus">+</div>
+              <input class="upload-photo file" type="file" (change)="uploadFile($event, index)">
+            </div>
+            <div class="upload-photo" *ngIf="item?.id">
+              <div class="upload-photo__downloaded" [ngStyle]="{'background-image': 'url(http://test4.vpotoke.com/' + item.path + ')'}"></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+  <div class="posts-add_header margin-top">
+    <span>Контактные данные</span>
+    <div class="border-bottom"></div>
+  </div>
+  <div class="form-gropup">
+    <span class="descrption">Здесь выводятся Ваши контактные данные, которые будут видны покупателям.</span>
+  </div>
+  <div class="form-gropup">
+    <label class="contact-data">Местоположение</label>
+    <input  class="contact-data" type="text" placeholder="Начните писать город">
+  </div>
+  <div class="form-gropup">
+    <label class="contact-data">Номер телефона</label>
+    <input  class="contact-data" type="text" placeholder="+38 0">
+  </div>
+  <div class="form-gropup">
+    <label class="contact-data">E-mail</label>
+    <input  class="contact-data" type="text" placeholder="Ваш заголовок" disabled>
+  </div>
+  <div class="form-gropup">
+    <label class="contact-data">Контактное лицо</label>
+    <input  class="contact-data" type="text" placeholder="Введите фио">
+  </div>
+  <div class="posts-add_header">
+    <div class="border-bottom br"></div>
+  </div>
+  <div class="button-group">
+    <button class="btn white">Предпросмотр</button>
+    <button class="btn red">Опубликовать</button>
+  </div>
+</form>
 
 
-
-
-
-
-<div class="posts-add_header margin-top">
-  <span>Контактные данные</span>
-  <div class="border-bottom"></div>
-</div>
-<div class="form-gropup">
-  <span class="descrption">Здесь выводятся Ваши контактные данные, которые будут видны покупателям.</span>
-</div>
-<div class="form-gropup">
-  <label class="contact-data">Местоположение</label>
-  <input  class="contact-data" type="text" placeholder="Начните писать город">
-</div>
-<div class="form-gropup">
-  <label class="contact-data">Номер телефона</label>
-  <input  class="contact-data" type="text" placeholder="+38 0">
-</div>
-<div class="form-gropup">
-  <label class="contact-data">E-mail</label>
-  <input  class="contact-data" type="text" placeholder="Ваш заголовок" disabled>
-</div>
-<div class="form-gropup">
-  <label class="contact-data">Контактное лицо</label>
-  <input  class="contact-data" type="text" placeholder="Введите фио">
-</div>
-<div class="posts-add_header">
-  <div class="border-bottom br"></div>
-</div>
-<div class="button-group">
-  <button class="btn white">Предпросмотр</button>
-  <button class="btn red">Дальше</button>
-</div>
 
 
 
