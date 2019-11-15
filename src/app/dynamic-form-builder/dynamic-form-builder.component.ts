@@ -7,7 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./dynamic-form-builder.component.scss']
 })
 export class DynamicFormBuilderComponent implements OnInit {
-  @Output() onSubmit = new EventEmitter();
+  @Output() changeData = new EventEmitter();
   @Input() fields: any[] = [];
   form: FormGroup;
   constructor() { }
@@ -28,8 +28,13 @@ export class DynamicFormBuilderComponent implements OnInit {
     }
 
     this.form = new FormGroup(fieldsCtrls);
-  }
-  ngOnInit() {
 
+    this.form.valueChanges.subscribe(val => {
+      this.changeData.emit(val);
+    });
   }
+
+  ngOnInit() {
+  }
+
 }

@@ -1,6 +1,6 @@
 <div [formGroup]="form" class="container">
   <div *ngFor="let opt of field.value" class="container-item" [ngClass]="{flex: opt.params}">
-    <input type="radio" [value]="opt.key" id="input-{{opt.key}}" name="{{field.id}}">
+    <input type="radio" [value]="opt.key" id="input-{{opt.key}}" name="{{field.id}}" [formControlName]="field.id">
     <label for="input-{{opt.key}}">
       {{opt.name}}
     </label>

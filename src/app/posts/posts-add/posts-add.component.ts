@@ -15,7 +15,6 @@ export class PostsAddComponent implements OnInit {
   public selectedCategories = [];
   public isShowSelectRubrics = true;
   modalRef: BsModalRef;
-  public customFields: [];
   public form: FormGroup;
   unsubcribe: any;
   public fields: any[];
@@ -32,13 +31,13 @@ export class PostsAddComponent implements OnInit {
     {}
   ];
 
-  public fieldsPrice: any[] = [
-    {
+  public fieldsPrice: any = {
       type: 'price',
       name: 'Цена товара',
+      id: 'type',
       value: [
-        { key: 'exchange', name: 'Обмен' },
-        { key: 'Selling for', name: 'Продажа за',
+        { key: '0', name: 'Обмен' },
+        { key: '1', name: 'Продажа за',
           params: {
             input: {
               type: 'input',
@@ -56,17 +55,15 @@ export class PostsAddComponent implements OnInit {
             },
             checkbox: {
               type: 'checkbox',
-              id: 'bargain',
               value: [
-                { value: 'barg', label: 'Возможен торг' }
+                { value: 'bargain', label: 'Возможен торг' }
               ]
             }
           }
         },
-        { key: 'Negotiable price', name: 'Цена договорная' }
+        { key: '2', name: 'Цена договорная' }
       ]
-    }
-  ];
+    };
 
 
   constructor(
@@ -115,7 +112,11 @@ export class PostsAddComponent implements OnInit {
       title: new FormControl(null, [Validators.required]),
       content: new FormControl(null, [Validators.required]),
       category: new FormControl(null),
-      type: new FormControl(1)
+      type: new FormControl(null),
+      price: new FormControl(''),
+      currency: new FormControl(''),
+      bargain: new FormGroup({ barg: new FormControl('') }),
+      postCustomFields: new FormControl('')
     });
   }
 
@@ -157,10 +158,16 @@ export class PostsAddComponent implements OnInit {
   }
   onSubmit() {
     this.post.new(this.postForm.value).subscribe(data => {
-      
       console.log(this.postForm);
-      
-
     })
   }
+
+  getCustomFields(data) {
+    const postCustomFields = [];
+    for (const key in data) {
+      postCustomFields.push({ value: data[key], customField: key });
+    }
+    this.postForm.controls['postCustomFields'].setValue(postCustomFields);
+  }
+
 }

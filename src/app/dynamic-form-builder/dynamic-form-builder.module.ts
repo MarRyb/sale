@@ -40,7 +40,8 @@ import { PriceCustomComponent } from './atom/price-custom/price-custom.component
     MultiselectComponent,
     RangeComponent,
     SelectComponent,
-    RadioComponent
+    RadioComponent,
+    PriceCustomComponent
   ],
   providers: []
 })

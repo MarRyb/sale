@@ -30,10 +30,10 @@
     <img src="/assets/img/success.png" class="selected-rubric" *ngIf="!isShowSelectRubrics">
   </div>
   <div class="form-gropup strip" *ngIf="!isShowSelectRubrics">
-    <app-dynamic-form-builder [fields]="getFields()"></app-dynamic-form-builder>
+    <app-dynamic-form-builder [fields]="getFields()" (changeData)="getCustomFields($event)"></app-dynamic-form-builder>
   </div>
   <div class="form-gropup" *ngIf="!isShowSelectRubrics">
-      <app-dynamic-form-builder [fields]="getFieldsPrice()"></app-dynamic-form-builder>
+    <app-price-custom [form]="postForm" [field]="fieldsPrice"></app-price-custom>
   </div>
 
   <div class="form-gropup strip">

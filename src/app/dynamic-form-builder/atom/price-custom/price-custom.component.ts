@@ -16,12 +16,6 @@ export class PriceCustomComponent implements OnInit {
   get isDirty() { return this.form.controls[this.field.name].dirty; }
 
   ngOnInit() {
-    const bargainControl = { barg: new FormControl('') };
-    const currencyControl = new FormControl('');
-    const priceControl = new FormControl('');
-    this.form.controls.bargain = new FormGroup(bargainControl);
-    this.form.controls.currency = currencyControl;
-    this.form.controls.price = priceControl;
   }
 
 }
