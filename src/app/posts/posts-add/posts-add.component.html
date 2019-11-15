@@ -46,23 +46,25 @@
   <label>Фото</label>
   <div class="upload-photo-group">
     <input class="upload-photo main file-main" >
-    <div class="upload-photo__content" *ngIf="!photo.id">
+    <div class="upload-photo__content" *ngIf="!photos[0]?.id">
       <img src="/assets/img/photo-path.png">
       <span>Титульное изображение</span>
       <div class="plus">+</div>
     </div>
-    <input class="upload-photo main file" type="file" (change)="uploadFile($event, photo)" *ngIf="!photo.id">
-    <div [ngStyle]="{'background-image': 'url(' + photo + ')'}" class="preview-1" *ngIf="photo.id"></div>
+    <input class="upload-photo main file" type="file" (change)="uploadFile($event, 0)" *ngIf="!photos[0]?.id">
+    <div class="upload-photo__content" *ngIf="photos[0]?.id">
+      <div [ngStyle]="{'background-image': 'url(http://test4.vpotoke.com/' + photos[0].path + ')'}" class="preview-1 upload-photo__downloaded"></div>
+    </div>
 
     <div class="upload-photo__min-group">
       <div class="upload-photo__min">
-        <div *ngFor="let item of photos">
+        <div *ngFor="let item of photos.slice(1, 7); index as index">
           <div class="upload-photo" *ngIf="!item.id">
             <div class="plus">+</div>
-            <input class="upload-photo file" type="file" (change)="uploadFile($event, item)">
+            <input class="upload-photo file" type="file" (change)="uploadFile($event, index)">
           </div>
-          <div class="upload-photo" *ngIf="item.id">
-            <div [ngStyle]="{'background-image': 'url(' + item + ')'}"></div>
+          <div class="upload-photo" *ngIf="item?.id">
+            <div class="upload-photo__downloaded" [ngStyle]="{'background-image': 'url(http://test4.vpotoke.com/' + item.path + ')'}"></div>
           </div>
         </div>
       </div>

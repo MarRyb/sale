@@ -20,9 +20,10 @@ export class PostsAddComponent implements OnInit {
   public form: FormGroup;
   unsubcribe: any;
   public fields: any[];
-  public photo: any = {};
+  public photoItem: any = {};
 
   public photos: any[] = [
+    {},
     {},
     {},
     {},
@@ -134,7 +135,7 @@ export class PostsAddComponent implements OnInit {
     this.unsubcribe();
   }
 
-  uploadFile(event, item) {
+  uploadFile(event, index) {
     if (event.target.files) {
       const fileList: FileList = event.target.files;
       if (fileList.length > 0) {
@@ -142,7 +143,7 @@ export class PostsAddComponent implements OnInit {
         const formData = new FormData();
         formData.append('path', file, file.name);
         this.post.postFiles(formData).subscribe(data => {
-          item = data.path;
+          return this.photos[index] = data;
         });
       }
 

@@ -128,6 +128,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
     }
     .upload-photo__content {
       position: absolute;
@@ -213,7 +214,6 @@
       .item-delimiter {
         display: none;
       }
-      
     }
   }
 }
@@ -223,4 +223,12 @@
 .selected-rubric {
   width: 30px;
   margin: 0 10px;
+}
+
+.upload-photo__downloaded {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50%;
 }
