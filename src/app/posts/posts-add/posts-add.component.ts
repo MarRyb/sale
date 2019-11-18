@@ -31,45 +31,10 @@ export class PostsAddComponent implements OnInit {
     {}
   ];
 
-  public fieldsPrice: any = {
-      type: 'price',
-      name: 'Цена товара',
-      id: 'type',
-      value: [
-        { key: '0', name: 'Обмен' },
-        { key: '1', name: 'Продажа за',
-          params: {
-            input: {
-              type: 'input',
-              id: 'price',
-              name: 'Цена'
-            },
-            select: {
-              type: 'select',
-              id: 'currency',
-              name: 'грн',
-              value: [
-                { value: 'uan', label: 'грн.' },
-                { value: 'doll', label: 'долл.' }
-              ]
-            },
-            checkbox: {
-              type: 'checkbox',
-              value: [
-                { value: 'bargain', label: 'Возможен торг' }
-              ]
-            }
-          }
-        },
-        { key: '2', name: 'Цена договорная' }
-      ]
-    };
-
-
   constructor(
     private modalService: BsModalService,
     public post: PostsService
-    ) {
+  ) {
     this.settingsTooltipInfo = {
       imgUrl: 'assets/img/icon Инфо.png',
       placement: 'right',
@@ -91,12 +56,10 @@ export class PostsAddComponent implements OnInit {
       click: ''
     };
     this.form = new FormGroup({
-      fields: new FormControl(JSON.stringify(this.fields)),
-      fieldsPrice: new FormControl(JSON.stringify(this.fieldsPrice))
+      fields: new FormControl(JSON.stringify(this.fields))
     });
     this.unsubcribe = this.form.valueChanges.subscribe((update) => {
-      this.fields = JSON.parse(update.fields),
-      this.fieldsPrice = JSON.parse(update.fieldsPrice);
+      this.fields = JSON.parse(update.fields)
     });
   }
   openModal(template: TemplateRef<any>) {
@@ -113,10 +76,10 @@ export class PostsAddComponent implements OnInit {
       content: new FormControl(null, [Validators.required]),
       category: new FormControl(null),
       type: new FormControl(null),
-      price: new FormControl(''),
-      currency: new FormControl(''),
-      bargain: new FormGroup({ barg: new FormControl('') }),
-      postCustomFields: new FormControl('')
+      price: new FormControl(null),
+      currency: new FormControl(null),
+      // bargain: new FormGroup({ barg: new FormControl('') }),
+      postCustomFields: new FormControl(null)
     });
   }
 
@@ -134,9 +97,6 @@ export class PostsAddComponent implements OnInit {
 
   getFields() {
     return this.fields;
-  }
-  getFieldsPrice() {
-    return this.fieldsPrice;
   }
 
   ngDistroy() {

@@ -9,7 +9,6 @@
     <app-checkbox *ngSwitchCase="'checkbox'" [field]="field" [form]="form"></app-checkbox>
     <app-radio *ngSwitchCase="'radio'" [field]="field" [form]="form"></app-radio>
     <app-textarea *ngSwitchCase="'textarea'" [field]="field" [form]="form"></app-textarea>
-    <app-price-custom *ngSwitchCase="'price'" [field]="field" [form]="form"></app-price-custom>
     <div class="alert alert-danger my-1 p-2 fadeInDown animated" *ngIf="!isValid && isDirty">{{field.name}} is required</div>
   </div>
 </div>

@@ -20,7 +20,7 @@ export class DynamicFormBuilderComponent implements OnInit {
         } else {
           const opts = {};
           for (const opt of f.value) {
-            opts[opt.key] = new FormControl(opt.value);
+            opts[opt.key] = new FormControl(null);
           }
           fieldsCtrls[f.id] = new FormGroup(opts);
         }

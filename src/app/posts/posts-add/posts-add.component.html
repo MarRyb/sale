@@ -33,7 +33,7 @@
     <app-dynamic-form-builder [fields]="getFields()" (changeData)="getCustomFields($event)"></app-dynamic-form-builder>
   </div>
   <div class="form-gropup" *ngIf="!isShowSelectRubrics">
-    <app-price-custom [form]="postForm" [field]="fieldsPrice"></app-price-custom>
+    <app-price-custom [form]="postForm"></app-price-custom>
   </div>
 
   <div class="form-gropup strip">

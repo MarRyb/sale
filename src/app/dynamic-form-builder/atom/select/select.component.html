@@ -1,6 +1,6 @@
 <div [formGroup]="form" class="selected">
   <select class="form-control" [id]="field.id" [formControlName]="field.id">
-    <option hidden value="">{{field.name}}</option>
+    <option hidden>{{field.name}}</option>
     <option *ngFor="let opt of field.value" [value]="opt.value">{{opt.label}}</option>
   </select>
 </div>
