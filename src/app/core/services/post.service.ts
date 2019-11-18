@@ -21,5 +21,10 @@ export class PostsService {
   postFiles(formData) {
     return this.api.post('api/v1/posts/files', formData);
   }
+
+  attachPostFile(postId: number, fileId: number) {
+    return this.api.post(`api/v1/posts/${postId}/files/${fileId}`);
+  }
+
 }
 

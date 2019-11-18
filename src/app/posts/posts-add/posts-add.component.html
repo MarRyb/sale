@@ -61,7 +61,7 @@
           <div *ngFor="let item of photos.slice(1, 7); index as index">
             <div class="upload-photo" *ngIf="!item.id">
               <div class="plus">+</div>
-              <input class="upload-photo file" type="file" (change)="uploadFile($event, index)">
+              <input class="upload-photo file" type="file" (change)="uploadFile($event, index + 1)">
             </div>
             <div class="upload-photo" *ngIf="item?.id">
               <div class="upload-photo__downloaded" [ngStyle]="{'background-image': 'url(http://test4.vpotoke.com/' + item.path + ')'}"></div>

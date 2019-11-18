@@ -119,6 +119,15 @@ export class PostsAddComponent implements OnInit {
   onSubmit() {
     this.post.new(this.postForm.value).subscribe(data => {
       console.log(this.postForm);
+    }, (err) => {
+      const photos = this.photos.filter(i => {return i.id });
+      photos.forEach((photo) => {
+        this.post.attachPostFile(51, photo.id).subscribe(
+          data => {
+            console.log(data);
+          })
+      });
+      alert(err.error.error.exception[0].message);
     })
   }
 
