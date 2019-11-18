@@ -99,7 +99,7 @@ export class PostsAddComponent implements OnInit {
     return this.fields;
   }
 
-  ngDistroy() {
+  ngOnDestroy() {
     this.unsubcribe();
   }
 
