@@ -1,6 +1,6 @@
 import { PostsService } from './../../core/services/post.service';
 import { ITooltip } from './../../core/interfaces/tooltip.interface';
-import { Component, OnInit, TemplateRef} from '@angular/core';
+import { Component, OnInit, TemplateRef, Output, EventEmitter } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import {FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
 @Component({
@@ -16,20 +16,15 @@ export class PostsAddComponent implements OnInit {
   public isShowSelectRubrics = true;
   modalRef: BsModalRef;
   public form: FormGroup;
-  unsubcribe: any;
   public fields: any[];
   public photoItem: any = {};
   public postForm: FormGroup;
 
   public photos: any[] = [
-    {},
-    {},
-    {},
-    {},
-    {},
-    {},
-    {}
+    {}, {}, {}, {}, {}, {}, {}
   ];
+
+  @Output() onClose: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private modalService: BsModalService,
@@ -57,9 +52,6 @@ export class PostsAddComponent implements OnInit {
     };
     this.form = new FormGroup({
       fields: new FormControl(JSON.stringify(this.fields))
-    });
-    this.unsubcribe = this.form.valueChanges.subscribe((update) => {
-      this.fields = JSON.parse(update.fields)
     });
   }
   openModal(template: TemplateRef<any>) {
@@ -90,17 +82,13 @@ export class PostsAddComponent implements OnInit {
       this.modalRef.hide();
       this.isShowSelectRubrics = false;
     }
-    this.postForm.controls['category'].setValue(item.itemCategory.id);
+    this.postForm.controls.category.setValue(item.itemCategory.id);
     this.fields = item.itemCategory.customFields;
   }
 
 
   getFields() {
     return this.fields;
-  }
-
-  ngOnDestroy() {
-    this.unsubcribe();
   }
 
   uploadFile(event, index) {
@@ -118,25 +106,27 @@ export class PostsAddComponent implements OnInit {
   }
   onSubmit() {
     this.post.new(this.postForm.value).subscribe(data => {
-      console.log(this.postForm);
-    }, (err) => {
-      const photos = this.photos.filter(i => {return i.id });
+      const postId = data.id;
+      const photos = this.photos.filter(i => i.id);
+      this.onClose.emit();
       photos.forEach((photo) => {
-        this.post.attachPostFile(51, photo.id).subscribe(
+        this.post.attachPostFile(postId, photo.id).subscribe(
           data => {
             console.log(data);
-          })
+          });
       });
+    }, (err) => {
       console.log(err.error.error.exception[0].message);
-    })
+      this.modalRef.hide();
+    });
   }
 
-  getCustomFields(data) {
+  getCustomFields(data: any) {
     const postCustomFields = [];
     for (const key in data) {
       postCustomFields.push({ value: data[key], customField: key });
     }
-    this.postForm.controls['postCustomFields'].setValue(postCustomFields);
+    this.postForm.controls.postCustomFields.setValue(postCustomFields);
   }
 
 }

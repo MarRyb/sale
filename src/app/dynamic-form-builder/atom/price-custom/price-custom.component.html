@@ -1,13 +1,22 @@
-<div [formGroup]="form" class="container">
-  <div *ngFor="let opt of field.value" class="container-item" [ngClass]="{flex: opt.params}">
-    <input type="radio" [value]="opt.key" id="input-{{opt.key}}" name="{{field.id}}" [formControlName]="field.id">
-    <label for="input-{{opt.key}}">
-      {{opt.name}}
+<div class="container">
+  <div class="form-group-custom" [formGroup]="form">
+    <label [attr.for]="field.id" class="main-label">
+      {{field.name}}
+      <strong class="text-danger" *ngIf="field.required">*</strong>
     </label>
-    <div *ngIf="opt.params" class="params">
-      <app-input [field]="opt.params.input" [form]="form"></app-input>
-      <app-select [field]="opt.params.select" [form]="form"></app-select>
-      <app-checkbox [field]="opt.params.checkbox" [form]="form"></app-checkbox>
+    <div class="col-md-9">
+      <div *ngFor="let opt of field.value" class="container-item" [ngClass]="{flex: opt.params}">
+        <input type="radio" [value]="opt.key" id="input-{{opt.key}}" name="{{field.id}}" [formControlName]="field.id">
+        <label for="input-{{opt.key}}">
+          {{opt.name}}
+        </label>
+        <div *ngIf="opt.params" class="params">
+          <app-input [field]="opt.params.input" [form]="form"></app-input>
+          <app-select [field]="opt.params.select" [form]="form"></app-select>
+          <!-- <app-checkbox [field]="opt.params.checkbox" [form]="form"></app-checkbox> -->
+        </div>
+      </div>
     </div>
   </div>
+
 </div>

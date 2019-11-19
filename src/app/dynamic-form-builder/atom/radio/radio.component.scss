@@ -13,6 +13,7 @@
     font-size: 18px;
     line-height: 21px;
     color: #474747;
+    white-space: nowrap;
   }
 
   input {
@@ -33,6 +34,7 @@
       margin: 0 15px 0 0;
       border: 2px solid #474747;
       border-radius: 50px;
+      flex-shrink: 0;
     }
     &[type="radio"]:checked + label::before {
       content: "";

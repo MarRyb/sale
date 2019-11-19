@@ -57,3 +57,22 @@
     }
   }
 }
+
+.container {
+  .form-group-custom {
+    display: flex;
+    align-items: flex-start;
+    margin: 25px 0;
+    label {
+      width: 160px;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 21px;
+      color: #474747;
+    }
+  }
+  .main-label {
+    font-weight: 500 !important;
+  }
+}
