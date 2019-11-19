@@ -15,6 +15,11 @@ const routes: Routes = [
         loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
         data: { showAdmin: true,  showElemToAuth: false }
     },
+    {
+        path: 'profile',
+        loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
+        data: { showProfile: true }
+    }
 ];
 
 @NgModule({

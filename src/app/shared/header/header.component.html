@@ -12,7 +12,7 @@
       <div class="user-menu" (appClickOutside)="showSettings = false">
         <span class="user-settings" (click)="showSettings = !showSettings"></span>
         <app-dropdown *ngIf="showSettings">
-          <a>Мой профиль</a>
+          <a [routerLink] = "'/profile'">Мой профиль</a>
           <a>Настройки профиля</a>
           <a [routerLink] = "'/vp-admin'">Администрирование</a>
           <a (click)="currentUserService.logout()">Выйти</a>

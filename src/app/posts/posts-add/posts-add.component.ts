@@ -127,7 +127,7 @@ export class PostsAddComponent implements OnInit {
             console.log(data);
           })
       });
-      alert(err.error.error.exception[0].message);
+      console.log(err.error.error.exception[0].message);
     })
   }
 
