@@ -5,6 +5,8 @@
   </div>
 </ng-template>
 
+<div class="loading" *ngIf="loadingPostCreate">Loading..</div>
+
 <form [formGroup]="postForm" (ngSubmit)="postForm.valid && onSubmit()">
   <div class="posts-add_header">
     <span>Подать обьявление</span>
@@ -43,15 +45,15 @@
     <label>Фото</label>
     <div class="upload-photo-group">
       <div class="upload-photo__content">
-        <div class="upload-photo main file-main" *ngIf="!photos[0]?.file?.id && !photos[0].uploadStatus.isUploading">
+        <div class="upload-photo main file-main" *ngIf="!photos[0]?.file?.id && !photos[0].uploadStatus?.isUploading">
           <img src="/assets/img/photo-path.png">
           <span>Титульное изображение</span>
           <div class="plus">+</div>
           <div class="upload-photo main file" (ngxf-select)="uploadFile($event, 0)" *ngIf="!photos[0]?.id"></div>
         </div>
 
-        <div class="upload-photo main file-main" *ngIf="!photos[0]?.file?.id && photos[0].uploadStatus.isUploading">
-            <div class="line-progress" [ngStyle]="{'width': photos[0].uploadStatus.progress + '%'}">{{photos[0].uploadStatus.progress}}%</div>
+        <div class="upload-photo main file-main" *ngIf="!photos[0]?.file?.id && photos[0].uploadStatus?.isUploading">
+            <div class="line-progress" [ngStyle]="{'width': photos[0].uploadStatus?.progress + '%'}">{{photos[0].uploadStatus?.progress}}%</div>
         </div>
         <div class="upload-photo main file-main" *ngIf="photos[0]?.file?.id">
             <div [ngStyle]="{'background-image': 'url(http://test4.vpotoke.com/' + photos[0]?.file?.path + ')'}" class="preview-1 upload-photo__downloaded"></div>
@@ -61,15 +63,15 @@
       <div class="upload-photo__min-group">
         <div class="upload-photo__min">
           <div *ngFor="let item of photos.slice(1, 7); index as index">
-            <div class="upload-photo" *ngIf="!item?.file?.id && !item.uploadStatus.isUploading">
+            <div class="upload-photo" *ngIf="!item?.file?.id && !item.uploadStatus?.isUploading">
               <div class="plus">+</div>
               <div class="upload-photo file" (ngxf-select)="uploadFile($event, index + 1)"></div>
             </div>
             <div class="upload-photo" *ngIf="item?.file?.id">
               <div class="upload-photo__downloaded" [ngStyle]="{'background-image': 'url(http://test4.vpotoke.com/' + item?.file?.path + ')'}"></div>
             </div>
-            <div class="upload-photo text-center" *ngIf="!item?.file?.id && item.uploadStatus.isUploading">
-              <div class="line-progress" [ngStyle]="{'width': item.uploadStatus.progress + '%'}">{{ item.uploadStatus.progress }}%</div>
+            <div class="upload-photo text-center" *ngIf="!item?.file?.id && item.uploadStatus?.isUploading">
+              <div class="line-progress" [ngStyle]="{'width': item.uploadStatus?.progress + '%'}">{{ item.uploadStatus?.progress }}%</div>
             </div>
           </div>
         </div>

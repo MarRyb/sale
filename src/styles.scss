@@ -430,3 +430,10 @@ input.ng-touched.ng-invalid {
         cursor: pointer;
     }
 }
+
+.modal-sm {
+    max-width: 500px !important;
+    .modal-content {
+        max-width: 100% !important;
+    }
+}

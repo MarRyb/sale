@@ -26,7 +26,7 @@ export class PostsAddComponent implements OnInit, OnDestroy {
     isUploading: boolean = true;
     progress: number = 0;
     public photos: any[] = [
-        { uploadStatus: {} }, { uploadStatus: {} }, { uploadStatus: {} }, { uploadStatus: {} }, { uploadStatus: {} }, { uploadStatus: {} }, { uploadStatus: {} }
+        {}, {}, {}, {}, {}, {}, {}
     ];
 
     @Output() onClose: EventEmitter<any> = new EventEmitter();
@@ -70,6 +70,7 @@ export class PostsAddComponent implements OnInit, OnDestroy {
 
     uploadFile(file: File | FileError, index: number): void {
         const photo = this.photos[index];
+        photo.uploadStatus = {};
         photo.uploadStatus.isUploading = true;
         if (!(file instanceof File)) {
             photo.uploadStatus.isUploading = false;
@@ -98,7 +99,7 @@ export class PostsAddComponent implements OnInit, OnDestroy {
 
 
     openModal(template: TemplateRef<any>) {
-        this.modalRef = this.modalService.show(template, { animated: true });
+        this.modalRef = this.modalService.show(template, { animated: true, class: 'modal-sm' });
     }
     focusInput() {
         this.isFocus = true;
@@ -152,9 +153,10 @@ export class PostsAddComponent implements OnInit, OnDestroy {
     }
 
     attachPhotosToPost(postId: number): Observable<any> {
-        const photos = this.photos.filter(i => i.file && i.file.id);
-        return from(photos).pipe(
-            concatMap(file => this.postService.attachPostFile(postId, file.file.id)));
+
+      const photos = this.photos.filter(i => i.file && i.file.id);
+      return from(photos).pipe(
+          concatMap(file => this.postService.attachPostFile(postId, file.file.id)));
     }
 
     getCustomFields(data: any) {
@@ -167,23 +169,17 @@ export class PostsAddComponent implements OnInit, OnDestroy {
     }
 
     createPost(data: any) {
-        // цельный поток данных. Можно обработать err еще 
-        // catchError()
         this.postService.new(this.postForm.value)
             .pipe(
-                // можно тут поставить начало загрузки поста
-                // или начало загрузки файлов
-                // tap(() => {
-                //     this.loadingPostCreate = true;
-                // }),
-                switchMap(post => this.attachPhotosToPost(post.id)),
-                tap(() => this.loadingPostCreate = false),
+                tap(() => this.loadingPostCreate = true),
+                concatMap(post => this.attachPhotosToPost(post.id)),
                 takeUntil(this.ngOnDestroy$) // должен быть последним, отписка!
             )
-            .subscribe(endPost => {
-                console.log(endPost);
-                this.onClose.emit(/* endPost */);
-                this.modalRef.hide();
+            .subscribe({
+              complete: () => {
+                this.loadingPostCreate = false;
+                this.onClose.emit();
+              }
             });
     }
 
