@@ -9,7 +9,7 @@ import { RubricsComponent } from './rubrics/rubrics.component';
 import { RubricItemComponent } from './rubrics/rubric-item/rubric-item.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DynamicFormBuilderModule } from './../dynamic-form-builder/dynamic-form-builder.module';
-import { NgxUploaderModule } from 'ngx-uploader';
+// import { NgxUploaderModule } from 'ngx-uploader';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -20,7 +20,7 @@ import { FormsModule } from '@angular/forms';
     SharedModule,
     DynamicFormBuilderModule,
     ReactiveFormsModule,
-    NgxUploaderModule,
+    // NgxUploaderModule,
     FormsModule
   ],
   exports: [
