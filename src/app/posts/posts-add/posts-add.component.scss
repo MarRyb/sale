@@ -119,6 +119,8 @@
       &.main {
         width: 168px;
         height: 168px;
+        display: flex;
+        flex-direction: column;
       }
     }
     .upload-photo__min .upload-photo {
@@ -131,14 +133,12 @@
 
     }
     .upload-photo__content {
-      position: absolute;
       text-align: center;
       width: 168px;
       height: 168px;
       img {
         width: 36px;
         height: 36px;
-        margin-top: 35px;
       }
       span {
         font-style: normal;
@@ -231,4 +231,14 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 50%;
+}
+
+
+.line-progress {
+  display: block;
+  background: #B70305;
+  height: 3px;
+  width: 0;
+  color: #B70305;
+  font-size: 12px;
 }

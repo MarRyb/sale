@@ -2,7 +2,12 @@ import { PostsService } from './../../core/services/post.service';
 import { ITooltip } from './../../core/interfaces/tooltip.interface';
 import { Component, OnInit, TemplateRef, Output, EventEmitter } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import {FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
+import { FileError, NgxfUploaderService, UploadEvent, UploadStatus } from 'ngxf-uploader';
+
+
+
+
 @Component({
   selector: 'app-posts-add',
   templateUrl: './posts-add.component.html',
@@ -19,16 +24,18 @@ export class PostsAddComponent implements OnInit {
   public fields: any[];
   public photoItem: any = {};
   public postForm: FormGroup;
-
+  isUploading: boolean = true;
+  progress: number = 0;
   public photos: any[] = [
-    {}, {}, {}, {}, {}, {}, {}
+    {uploadStatus: {}}, {uploadStatus: {}}, {uploadStatus: {}}, {uploadStatus: {}}, {uploadStatus: {}}, {uploadStatus: {}}, {uploadStatus: {}}
   ];
 
   @Output() onClose: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private modalService: BsModalService,
-    public post: PostsService
+    public post: PostsService,
+    private Upload: NgxfUploaderService
   ) {
     this.settingsTooltipInfo = {
       imgUrl: 'assets/img/icon Инфо.png',
@@ -51,9 +58,47 @@ export class PostsAddComponent implements OnInit {
       click: ''
     };
     this.form = new FormGroup({
-      fields: new FormControl(JSON.stringify(this.fields))
+      fields: new FormControl(this.fields)
     });
   }
+
+
+// START
+
+
+  uploadFile(file: File | FileError, index: number): void {
+    var photo = this.photos[index];
+    photo.uploadStatus.isUploading = true;
+    if (!(file instanceof File)) {
+      photo.uploadStatus.isUploading = false;
+      return;
+    }
+    this.Upload.upload({
+      url: 'http://test4.vpotoke.com/api/v1/posts/files',
+      filesKey: 'path', // Option
+      files: file,
+      process: true
+    }).subscribe(
+      (event: UploadEvent) => {
+        console.log(event);
+        photo.uploadStatus.progress = event.percent;
+        if (event.status === UploadStatus.Completed) {
+          console.log('This file upload success!', event);
+          photo.file = event.data;
+        }
+      },
+      (err) => {
+        console.log(err);
+      },
+      () => {
+        photo.uploadStatus.isUploading = false;
+        console.log('complete');
+      });
+  }
+
+// END
+
+
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, {animated: true});
   }
@@ -91,19 +136,6 @@ export class PostsAddComponent implements OnInit {
     return this.fields;
   }
 
-  uploadFile(event, index) {
-    if (event.target.files) {
-      const fileList: FileList = event.target.files;
-      if (fileList.length > 0) {
-        const file = fileList[0];
-        const formData = new FormData();
-        formData.append('path', file, file.name);
-        this.post.postFiles(formData).subscribe(data => {
-          return this.photos[index] = data;
-        });
-      }
-    }
-  }
   onSubmit() {
     this.post.new(this.postForm.value).subscribe(data => {
       const postId = data.id;
