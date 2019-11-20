@@ -4,9 +4,8 @@ import { Component, OnInit, TemplateRef, Output, EventEmitter } from '@angular/c
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { FileError, NgxfUploaderService, UploadEvent, UploadStatus } from 'ngxf-uploader';
-
-
-
+import { Observable, from } from 'rxjs';
+import { concatMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-posts-add',
@@ -34,7 +33,7 @@ export class PostsAddComponent implements OnInit {
 
   constructor(
     private modalService: BsModalService,
-    public post: PostsService,
+    public postService: PostsService,
     private Upload: NgxfUploaderService
   ) {
     this.settingsTooltipInfo = {
@@ -80,19 +79,15 @@ export class PostsAddComponent implements OnInit {
       process: true
     }).subscribe(
       (event: UploadEvent) => {
-        console.log(event);
         photo.uploadStatus.progress = event.percent;
         if (event.status === UploadStatus.Completed) {
-          console.log('This file upload success!', event);
           photo.file = event.data;
         }
       },
       (err) => {
-        console.log(err);
       },
       () => {
         photo.uploadStatus.isUploading = false;
-        console.log('complete');
       });
   }
 
@@ -137,20 +132,20 @@ export class PostsAddComponent implements OnInit {
   }
 
   onSubmit() {
-    this.post.new(this.postForm.value).subscribe(data => {
-      const postId = data.id;
-      const photos = this.photos.filter(i => i.id);
+    this.postService.new(this.postForm.value).subscribe(data => {
       this.onClose.emit();
-      photos.forEach((photo) => {
-        this.post.attachPostFile(postId, photo.id).subscribe(
-          data => {
-            console.log(data);
-          });
+      this.attachPhotosToPost(data.id).subscribe(data => {
+        console.log(data);
       });
     }, (err) => {
-      console.log(err.error.error.exception[0].message);
       this.modalRef.hide();
     });
+  }
+
+  attachPhotosToPost(postId: number): Observable<any> {
+    const photos = this.photos.filter(i => i.file && i.file.id);
+    return from(photos).pipe(
+        concatMap(file => this.postService.attachPostFile(postId, file.file.id)));
   }
 
   getCustomFields(data: any) {
