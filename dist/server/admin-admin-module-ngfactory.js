@@ -1078,7 +1078,7 @@ var ngx_bootstrap_modal = __webpack_require__("LqlI");
 
 
 
-const ɵ0 = () => Promise.all(/* import() | pages-category-category-module-ngfactory */[__webpack_require__.e(4), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, "+Knr")).then(m => m.CategoryManagmentModuleNgFactory);
+const ɵ0 = () => Promise.all(/* import() | pages-category-category-module-ngfactory */[__webpack_require__.e(5), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, "+Knr")).then(m => m.CategoryManagmentModuleNgFactory);
 const routes = [
     {
         path: '',
