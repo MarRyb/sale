@@ -1,3 +1,5 @@
+import { ActivatedRoute } from '@angular/router';
+import { PostsService } from './../../core/services/post.service';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 @Component({
@@ -29,11 +31,21 @@ export class PostsShowComponent implements OnInit {
     { key: 'Растаможена:', value: 'Да' }
   ];
 
+  public post: any;
+
   modalRef: BsModalRef;
   config = {
     animated: true
   };
-  constructor(private modalService: BsModalService) {}
+  constructor(
+    private modalService: BsModalService,
+    private postsService: PostsService,
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe((data) => {
+      this.reloadPost(data.id);
+    });
+  }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, this.config);
@@ -44,6 +56,10 @@ export class PostsShowComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  reloadPost(id: number) {
+    this.postsService.getById(id).subscribe(data => this.post = data)
   }
 
 }

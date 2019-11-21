@@ -134,6 +134,8 @@ h1 {
 
 .post-header {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .post-header__avatar {

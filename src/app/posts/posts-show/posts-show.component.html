@@ -7,9 +7,7 @@
 
 <button class="btn btn-outline-primary mb-2 mr-2" (click)="openModal(template)">Modal vertically centered</button>
 
-
-
-<div class="post">
+<div class="post" *ngIf="post">
   <div class="post__left">
 
     <div class="post-header">
@@ -18,13 +16,16 @@
           <img src="https://www.stickpng.com/assets/images/585e4bcdcb11b227491c3396.png">
         </div>
         <div>
-          <div class="post-header__user-name">Артем Иванов</div>
-          <div class="post-header__time">22 мая 2019 в 17:33</div>
-          <div class="post-header__category">Транспорт, б/у автомобили</div>
+          <div class="post-header__user-name">{{ post.user.firstName }} {{ post.user.lastName }}</div>
+          <div class="post-header__time">{{ post.created | date: 'dd MMMM yyyy в HH:mm' }}</div>
+          <div class="post-header__category">{{ post.category.name }}</div>
         </div>
       </div>
       <div class="post-header__actions">
-
+        <div class="data-user__shared">
+          <img src="../../../../assets/img/star.png" class="star">
+          <img src="../../../../assets/img/shared.png" class="shared">
+        </div>
       </div>
     </div>
 
@@ -35,14 +36,14 @@
         </div>
       </div>
       <h1>
-        Продам Toyota Corolla 2019 года
+        {{ post.title }}
       </h1>
       <div class="post__about">
-        Двигатель только после ремонта и ходовка, есть нюансы по кузову на фото видно, резина лето на титанах, салон ухоженный, ГБО-4поколение, новый АКБ. Акустическая система пионер, динамики мощные, фронтальные усилители звука музыка.
+        {{ post.content }}
       </div>
       <div class="post__params">
-        <div class="param" *ngFor="let item of params">
-          <div class="param__key">{{ item.key }}</div>
+        <div class="param" *ngFor="let item of post.postCustomFields">
+          <div class="param__key">{{ item.customField.name }}</div>
           <div class="param__value">{{ item.value }}</div>
         </div>
       </div>
@@ -65,7 +66,7 @@
 
   <div class="post__filter">
     <div class="post-info">
-      <div class="post-info__price">109 245 грн</div>
+      <div class="post-info__price">{{ post.price }} {{ post.currency.symbol }}</div>
       <div class="post-info__actions">
         <button class="btn btn__red">Написать автору</button>
         <button class="btn btn__bordered">Показать номер</button>

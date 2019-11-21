@@ -18,6 +18,10 @@ export class PostsService {
     return this.api.post('api/v1/posts/new', body);
   }
 
+  getById(id: number) {
+    return this.api.get(`open_api/v1/posts/show/${id}`);
+  }
+
   postFiles(formData) {
     return this.api.post('api/v1/posts/files', formData);
   }
