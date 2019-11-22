@@ -1,3 +1,4 @@
+import { BreadcrumbsService } from './../../shared/breadcrumbs/breadcrumbs.service';
 import { ActivatedRoute } from '@angular/router';
 import { PostsService } from './../../core/services/post.service';
 import { Component, OnInit, TemplateRef } from '@angular/core';
@@ -14,24 +15,8 @@ export class PostsShowComponent implements OnInit {
     {id: 3, url: 'https://www.utiama.com/wp-content/uploads/2016/01/BM-6701.jpg'}
   ];
 
-  params = [
-    { key: 'Объявление от:', value: 'Частного лица' },
-    { key: 'Марка:', value: 'Toyota' },
-    { key: 'Модель:', value: 'Corolla' },
-    { key: 'Год выпуска:', value: '2019' },
-    { key: 'Тип кузова:', value: 'Седан' },
-    { key: 'Цвет:', value: 'Белый' },
-    { key: 'Вид топлива:', value: 'Бензин, 95' },
-    { key: 'Обьем двигателя:', value: '1 500 см2' },
-    { key: 'Коробка передач:', value: 'АКПП' },
-    { key: 'Состояние машины:', value: 'Не бит; Крашено 2 элемента' },
-    { key: 'Мультимедиа:', value: 'СD; USB; Аккустика' },
-    { key: 'Безопасность:', value: 'Сигнализация; Центральный замок' },
-    { key: 'Прочее:', value: 'Газовая установка (ГБО)' },
-    { key: 'Растаможена:', value: 'Да' }
-  ];
-
   public post: any;
+  private breadcrumbs: any = [];
 
   modalRef: BsModalRef;
   config = {
@@ -40,7 +25,8 @@ export class PostsShowComponent implements OnInit {
   constructor(
     private modalService: BsModalService,
     private postsService: PostsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private breadcrumbsService: BreadcrumbsService
   ) {
     this.route.params.subscribe((data) => {
       this.reloadPost(data.id);
@@ -59,7 +45,20 @@ export class PostsShowComponent implements OnInit {
   }
 
   reloadPost(id: number) {
-    this.postsService.getById(id).subscribe(data => this.post = data)
+    this.postsService.getById(id).subscribe(data => {
+      this.post = data;
+      this.breadcrumbs = [];
+      this.loadBreadcrumbForCategory(data.category);
+      this.breadcrumbs.push({ label: data.title, url: `posts/${data.id}` });
+      this.breadcrumbsService.breadcrumbsSubject.next(this.breadcrumbs);
+    });
+  }
+
+  loadBreadcrumbForCategory(category) {
+    if (typeof(category.parent) === 'object' && category.parent.id) {
+      this.loadBreadcrumbForCategory(category.parent);
+    }
+    this.breadcrumbs.push({ label: category.name, url: `categories/${category.slug}` });
   }
 
 }

@@ -14,7 +14,7 @@ export class CategoriesShowComponent implements OnInit {
   category: string;
   posts: Array<any> = [];
 
-  params = {
+  params: { page: number, category?: number } = {
     page: 1
   };
   constructor(
@@ -22,22 +22,38 @@ export class CategoriesShowComponent implements OnInit {
     private categoryService: CategoryService,
     private router: ActivatedRoute,
     private postsService: PostsService
-    ) {
-      this.router.params.subscribe(routeParams => {
-        this.category = routeParams.category;
-      });
+  ) {
+    this.router.params.subscribe(routeParams => {
+      this.category = routeParams.category;
+      this.reloadPage();
+    });
+  }
+
+  reloadPage() {
+    this.categoryService.get(this.category).subscribe(data => {
+      this.breadcrumbs = [];
+      this.loadBreadcrumbForCategory(data);
+      this.breadcrumbsService.breadcrumbsSubject.next(this.breadcrumbs);
+      this.posts = [];
+      this.params = {
+        page: 1,
+        category: data.id
+      };
       this.getPosts();
-      this.categoryService.get(this.category).subscribe(data => {
-        this.breadcrumbs = [];
-        this.breadcrumbs.push({ label: data.parent.name, url: `categories/${data.parent.slug}` });
-        this.breadcrumbs.push({ label: data.name, url: `categories/${data.slug}` });
-        this.breadcrumbsService.breadcrumbsSubject.next(this.breadcrumbs);
-      });
+    });
+  }
+
+  loadBreadcrumbForCategory(category) {
+    if (typeof(category.parent) === 'object' && category.parent.id) {
+      this.loadBreadcrumbForCategory(category.parent);
     }
-    onScroll() {
-      this.params.page += 1;
-      this.getPosts();
-    }
+    this.breadcrumbs.push({ label: category.name, url: `categories/${category.slug}` });
+  }
+
+  onScroll() {
+    this.params.page += 1;
+    this.getPosts();
+  }
 
   ngOnInit() {
   }

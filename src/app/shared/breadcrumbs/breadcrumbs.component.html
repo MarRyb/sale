@@ -1,7 +1,7 @@
 <ol class="breadcrumb">
-  <li *ngFor="let breadcrumb of breadcrumbs"
+  <li *ngFor="let breadcrumb of breadcrumbs; last as isLast"
       class="breadcrumb-item">
-    <a [routerLink]="breadcrumb.url">
+    <a [routerLink]="breadcrumb.url" [class.ellipsis]="!isLast">
       {{ breadcrumb.label }}
     </a>
   </li>
