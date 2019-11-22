@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-categories-all-item',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categories-all-item.component.scss']
 })
 export class CategoriesAllItemComponent implements OnInit {
+
+  @Input() post: any;
 
   constructor() { }
 

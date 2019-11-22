@@ -1,7 +1,7 @@
-<div class="post">
+<div class="post" [routerLink]="['/posts', post.id]">
   <img src="/assets/img/post.jpg">
-  <h4>Кеды Converse All Star II Low Mono (Конверс)</h4>
-  <div class="post__availability">В наличии</div>
-  <div class="post__price">512.90 грн</div>
+  <h4>{{ post.title }}</h4>
+  <div class="post__availability" *ngIf="post.count > 0">В наличии</div>
+  <div class="post__price">{{ post.price }} {{ post.currency.symbol }}</div>
   <button>В корзину</button>
 </div>

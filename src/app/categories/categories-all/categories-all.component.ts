@@ -1,4 +1,9 @@
+import { PostsService } from './../../core/services/post.service';
+import { CategoryService } from './../../core/services/category.service';
 import { Component, OnInit } from '@angular/core';
+import { concatMap } from 'rxjs/operators'
+import { from, Observable } from 'rxjs';
+import { ICategory } from '../../core/interfaces/categories.interface';
 
 @Component({
   selector: 'app-categories-all',
@@ -7,22 +12,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriesAllComponent implements OnInit {
 
-  categories = [
-    {
-      title: 'Одежда и обувь',
-      posts: [1, 2, 3, 4, 5, 6, 7, 8]
-    },
-    {
-      title: 'Электроника',
-      posts: [1, 2, 3, 4, 5, 6, 7, 8]
-    },
-    {
-      title: 'Аксессуары',
-      posts: [1, 2, 3, 4, 5, 6, 7, 8]
-    }
-  ]
+  public categories: any = [];
+  private limitPosts = 8;
 
-  constructor() { }
+  constructor(
+    private categoryService: CategoryService,
+    private postsService: PostsService
+  ) {
+    this.categoryService.getList().subscribe(
+      data => {
+        this.loadPosts(data.slice(-4, -1));
+      }
+    )
+  }
+
+  loadPosts(data: ICategory[]) {
+    from(data).pipe(
+      concatMap(category => this.loadPostsForCategory(category))
+    ).subscribe(data => {
+      let item: { category?: any, posts?: [] } = {};
+      item.category = data.items[0].category;
+      item.posts = data.items;
+      this.categories.push(item);
+    })
+  }
+
+  loadPostsForCategory(category: ICategory): Observable<any> {
+    return this.postsService.getList({ categoryId: category.id, limit: this.limitPosts });
+  }
 
   ngOnInit() {
   }

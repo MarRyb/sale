@@ -21,12 +21,12 @@
 }
 
 .category__posts {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+  grid-gap: 0 10px;
 
   app-categories-all-item {
-    width: 185px;
+    width: 100%;
   }
 }
 

@@ -1,12 +1,12 @@
 <div class="category-group">
   <div class="category-group__categories">
-    <div *ngFor="let category of categories" class="category">
-      <h3>{{ category.title }}</h3>
+    <div *ngFor="let item of categories" class="category">
+      <h3>{{ item.category.name }}</h3>
       <div class="category__posts">
-        <app-categories-all-item *ngFor="let post of category.posts"></app-categories-all-item>
+        <app-categories-all-item [post]="post" *ngFor="let post of item.posts"></app-categories-all-item>
       </div>
       <div class="category__show-more">
-        <a href="#">Показать больше</a>
+        <a href="#" [routerLink]="['/categories', item.category.slug]">Показать больше</a>
       </div>
     </div>
   </div>
