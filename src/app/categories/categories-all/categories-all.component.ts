@@ -1,10 +1,7 @@
 import { BreadcrumbsService } from './../../shared/breadcrumbs/breadcrumbs.service';
 import { PostsService } from './../../core/services/post.service';
-import { CategoryService } from './../../core/services/category.service';
 import { Component, OnInit } from '@angular/core';
-import { concatMap } from 'rxjs/operators'
-import { from, Observable } from 'rxjs';
-import { ICategory } from '../../core/interfaces/categories.interface';
+import { Observable, merge } from 'rxjs';
 @Component({
   selector: 'app-categories-all',
   templateUrl: './categories-all.component.html',
@@ -12,37 +9,40 @@ import { ICategory } from '../../core/interfaces/categories.interface';
 })
 export class CategoriesAllComponent implements OnInit {
 
-  public categories: any = [];
+  public popularPosts: any = [];
+  public recentPosts: any = [];
   private limitPosts = 8;
 
   constructor(
-    private categoryService: CategoryService,
     private postsService: PostsService,
     private breadcrumbsService: BreadcrumbsService
   ) {
-    this.categoryService.getList().subscribe(
-      data => {
-        this.loadPosts(data.slice(-4, -1));
+    merge(this.getRecentPosts(), this.getPopularPosts()).subscribe(
+      (data) => {
+        console.log(data);
+        if (data.params.orderBy == 'countViewed') {
+          this.popularPosts = data.items;
+        } else {
+          this.recentPosts = data.items;
+        }
       }
-    )
-    this.breadcrumbsService.breadcrumbsSubject.next([]);
+    );
   }
 
-  loadPosts(data: ICategory[]) {
-    from(data).pipe(
-      concatMap(category => this.loadPostsForCategory(category))
-    ).subscribe(data => {
-      if (data.items.length > 0) {
-        let item: { category?: any, posts?: [] } = {};
-        item.category = data.items[0].category;
-        item.posts = data.items;
-        this.categories.push(item);
-      }
-    })
+  getRecentPosts(): Observable<any> {
+    const params = {
+      limit: this.limitPosts,
+      orderBy: 'countViewed'
+    };
+    return this.postsService.getList(params);
   }
 
-  loadPostsForCategory(category: ICategory): Observable<any> {
-    return this.postsService.getList({ category: category.id, limit: this.limitPosts });
+  getPopularPosts(): Observable<any> {
+    const params = {
+      limit: this.limitPosts,
+      orderBy: 'created'
+    };
+    return this.postsService.getList(params);
   }
 
   ngOnInit() {
