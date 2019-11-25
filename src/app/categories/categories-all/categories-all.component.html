@@ -21,6 +21,6 @@
     </div>
   </div>
   <div class="category-group__filter">
-    <app-categories-all-filter></app-categories-all-filter>
+    <app-categories-all-filter (changeData)="applyFilters($event)"></app-categories-all-filter>
   </div>
 </div>

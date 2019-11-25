@@ -9,7 +9,7 @@ export class PostsService {
   }
 
   getList(params: {limit?: number, page?: number, category?: number}) {
-    return this.api.get('open_api/v1/posts/', params);
+    return this.api.get('open_api/v1/posts', params);
   }
   get(slug: string) {
     return this.api.get(`open_api/v1/posts/${slug}`);

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
+import { FormGroup, FormControl } from '@angular/forms';
+import { CategoryService } from './../../../core/services/category.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-categories-all-filter',
   templateUrl: './categories-all-filter.component.html',
@@ -7,7 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriesAllFilterComponent implements OnInit {
 
-  constructor() { }
+  public categories: any = [];
+  public form: FormGroup;
+
+  @Output() changeData = new EventEmitter();
+
+  constructor(
+    private categoryService: CategoryService
+  ) {
+    this.categoryService.getList().subscribe(
+      data => this.categories = data
+    );
+    this.form = new FormGroup({
+      startPrice: new FormControl(null),
+      endPrice: new FormControl(null),
+      category: new FormControl('')
+    });
+  }
+
+  submit() {
+    this.changeData.emit(this.form.getRawValue());
+  }
 
   ngOnInit() {
   }

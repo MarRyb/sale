@@ -1,68 +1,71 @@
-<div class="filter">
-  
-  <div class="filter__header">Фильтры</div>
+<form [formGroup]="form">
+  <div class="filter">
 
-  <div class="filter__block">
-    <div class="filter-block filter-block__inline">
-      <label class="filter-block__label">Регион:</label>
-      <div class="filter-block__value">
-        <select class="select-transparent">
-          <option>Украина, Киев</option>
-        </select>
-      </div>
-    </div>
-    <div class="filter-block filter-block__checkbox filter-block__margin">
-      <input type="checkbox" id="delivery">
-      <label class="checkbox" for="delivery">
-        Доставка из других регионов
-      </label>
-    </div>
-  </div>
+    <div class="filter__header">Фильтры</div>
 
-  <div class="filter__block">
-    <select class="select-bordered">
-      <option>Категория</option>
-    </select>
-
-    <div class="filter-block filter-block__margin">
-      <label class="filter-block__label">Диапазон цен, грн:</label>
-      <div class="filter-block-range">
-        <div class="filter-block-range__input">
-          <input type="text" placeholder="от">
-        </div>
-        <div class="filter-block-range__delimiter">
-          -
-        </div>
-        <div class="filter-block-range__input">
-          <input type="text" placeholder="до">
-        </div>
-        <div class="filter-block-range__units">
-          грн
-        </div>
-        <div class="filter-block-range__button">
-          <button>Ок</button>
+    <div class="filter__block">
+      <div class="filter-block filter-block__inline">
+        <label class="filter-block__label">Регион:</label>
+        <div class="filter-block__value">
+          <select class="select-transparent">
+            <option>Украина, Киев</option>
+          </select>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="filter__block">
-    <div class="filter-block__checkboxes">
-      <label class="filter-block__label">Состояние</label>
-      
-      <div class="filter-block filter-block__checkbox">
-        <input type="checkbox" id="new">
-        <label class="checkbox" for="new">
-          Новый
-        </label>
-      </div>
-      <div class="filter-block filter-block__checkbox">
-        <input type="checkbox" id="used">
-        <label class="checkbox" for="used">
-          Б/у
+      <div class="filter-block filter-block__checkbox filter-block__margin">
+        <input type="checkbox" id="delivery">
+        <label class="checkbox" for="delivery">
+          Доставка из других регионов
         </label>
       </div>
     </div>
-  </div>
 
-</div>
+    <div class="filter__block">
+      <select class="select-bordered" formControlName="category" (change)="submit()">
+        <option value="">Категория</option>
+        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+      </select>
+
+      <div class="filter-block filter-block__margin">
+        <label class="filter-block__label">Диапазон цен, грн:</label>
+        <div class="filter-block-range">
+          <div class="filter-block-range__input">
+            <input type="text" placeholder="от" formControlName="startPrice">
+          </div>
+          <div class="filter-block-range__delimiter">
+            -
+          </div>
+          <div class="filter-block-range__input">
+            <input type="text" placeholder="до" formControlName="endPrice">
+          </div>
+          <div class="filter-block-range__units">
+            грн
+          </div>
+          <div class="filter-block-range__button">
+            <button (click)="submit()">Ок</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter__block">
+      <div class="filter-block__checkboxes">
+        <label class="filter-block__label">Состояние</label>
+        
+        <div class="filter-block filter-block__checkbox">
+          <input type="checkbox" id="new">
+          <label class="checkbox" for="new">
+            Новый
+          </label>
+        </div>
+        <div class="filter-block filter-block__checkbox">
+          <input type="checkbox" id="used">
+          <label class="checkbox" for="used">
+            Б/у
+          </label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>

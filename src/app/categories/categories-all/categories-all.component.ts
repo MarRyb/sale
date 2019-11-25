@@ -12,11 +12,33 @@ export class CategoriesAllComponent implements OnInit {
   public popularPosts: any = [];
   public recentPosts: any = [];
   private limitPosts = 8;
+  private filters: any = {};
 
   constructor(
     private postsService: PostsService,
     private breadcrumbsService: BreadcrumbsService
   ) {
+    this.reloadPosts();
+  }
+
+  getRecentPosts(): Observable<any> {
+    const params = {
+      limit: this.limitPosts,
+      orderBy: 'countViewed'
+    };
+
+    return this.postsService.getList(Object.assign(this.filters, params));
+  }
+
+  getPopularPosts(): Observable<any> {
+    const params = {
+      limit: this.limitPosts,
+      orderBy: 'created'
+    };
+    return this.postsService.getList(Object.assign(this.filters, params));
+  }
+
+  reloadPosts() {
     merge(this.getRecentPosts(), this.getPopularPosts()).subscribe(
       (data) => {
         console.log(data);
@@ -29,23 +51,13 @@ export class CategoriesAllComponent implements OnInit {
     );
   }
 
-  getRecentPosts(): Observable<any> {
-    const params = {
-      limit: this.limitPosts,
-      orderBy: 'countViewed'
-    };
-    return this.postsService.getList(params);
-  }
-
-  getPopularPosts(): Observable<any> {
-    const params = {
-      limit: this.limitPosts,
-      orderBy: 'created'
-    };
-    return this.postsService.getList(params);
-  }
-
   ngOnInit() {
+  }
+
+  applyFilters(data: any) {
+    Object.keys(data).forEach((key) => (data[key] == null || data[key] === '') && delete data[key]);
+    this.filters = data;
+    this.reloadPosts();
   }
 
 }
