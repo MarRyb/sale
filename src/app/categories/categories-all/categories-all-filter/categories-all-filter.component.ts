@@ -22,7 +22,11 @@ export class CategoriesAllFilterComponent implements OnInit {
     this.form = new FormGroup({
       startPrice: new FormControl(null),
       endPrice: new FormControl(null),
-      category: new FormControl('')
+      category: new FormControl(''),
+      state: new FormGroup({
+        new: new FormControl(''),
+        used: new FormControl('')
+      })
     });
   }
 

@@ -49,17 +49,17 @@
     </div>
 
     <div class="filter__block">
-      <div class="filter-block__checkboxes">
+      <div class="filter-block__checkboxes" formGroupName="state">
         <label class="filter-block__label">Состояние</label>
         
         <div class="filter-block filter-block__checkbox">
-          <input type="checkbox" id="new">
+          <input type="checkbox" id="new" formControlName="new" (change)="submit()">
           <label class="checkbox" for="new">
             Новый
           </label>
         </div>
         <div class="filter-block filter-block__checkbox">
-          <input type="checkbox" id="used">
+          <input type="checkbox" id="used" formControlName="used" (change)="submit()">
           <label class="checkbox" for="used">
             Б/у
           </label>

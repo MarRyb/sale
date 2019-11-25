@@ -41,7 +41,6 @@ export class CategoriesAllComponent implements OnInit {
   reloadPosts() {
     merge(this.getRecentPosts(), this.getPopularPosts()).subscribe(
       (data) => {
-        console.log(data);
         if (data.params.orderBy == 'countViewed') {
           this.popularPosts = data.items;
         } else {
@@ -56,6 +55,15 @@ export class CategoriesAllComponent implements OnInit {
 
   applyFilters(data: any) {
     Object.keys(data).forEach((key) => (data[key] == null || data[key] === '') && delete data[key]);
+    if ((data.state.used && data.state.new) || (!data.state.used && !data.state.new)) {
+      data.state = 'all';
+    } else {
+      if (data.state.new) {
+        data.state = 'new';
+      } else {
+        data.state = 'used';
+      }
+    }
     this.filters = data;
     this.reloadPosts();
   }
