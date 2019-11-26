@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="data-product">
-    <img src="https://www.avtovzglyad.ru/media/article/470fe986b4955ce9faf8b06818c79f841bd73c.jpg.740x555_q85_box-0%2C0%2C1024%2C768_crop_detail_upscale.jpg">
+    <img src="http://test4.vpotoke.com/{{ item.preview.path }}" *ngIf="item.preview.path">
     <div class="data-product_params">
       <div class="header">
         <div class="title" [routerLink]="['/posts', item.id]">{{ item.title }}</div>
@@ -37,6 +37,3 @@
     </div>
   </div>
 </div>
-
-
-{{posts[0] | json}}

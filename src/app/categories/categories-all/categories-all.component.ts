@@ -19,6 +19,7 @@ export class CategoriesAllComponent implements OnInit {
     private breadcrumbsService: BreadcrumbsService
   ) {
     this.reloadPosts();
+    this.breadcrumbsService.breadcrumbsSubject.next([]);
   }
 
   getRecentPosts(): Observable<any> {

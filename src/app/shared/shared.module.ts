@@ -1,3 +1,4 @@
+import { PostsAddComponent } from './posts-add/posts-add.component';
 
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,7 +14,11 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { CarouselComponent } from './carousel/carousel.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
+import { NgxfUploaderModule } from 'ngxf-uploader';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RubricsComponent } from './rubrics/rubrics.component';
+import { RubricItemComponent } from './rubrics/rubric-item/rubric-item.component';
+import { DynamicFormBuilderModule } from './../dynamic-form-builder/dynamic-form-builder.module';
 @NgModule({
     declarations: [
         HeaderComponent,
@@ -22,7 +27,10 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
         ShowAuthedDirective,
         CategoriesMenuComponent,
         BreadcrumbsComponent,
-        CarouselComponent
+        CarouselComponent,
+        PostsAddComponent,
+        RubricsComponent,
+        RubricItemComponent
     ],
     imports: [
         CommonModule,
@@ -30,7 +38,11 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
         UiElementModule,
         RouterModule,
         InfiniteScrollModule,
-        MDBBootstrapModule.forRoot()
+        MDBBootstrapModule.forRoot(),
+        NgxfUploaderModule,
+        ReactiveFormsModule,
+        FormsModule,
+        DynamicFormBuilderModule
     ],
     schemas: [ NO_ERRORS_SCHEMA ],
     exports: [
@@ -41,7 +53,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
         BreadcrumbsComponent,
         InfiniteScrollModule,
         CarouselComponent,
-        UiElementModule
+        UiElementModule,
+        PostsAddComponent
     ]
 })
 export class SharedModule { }

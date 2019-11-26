@@ -59,10 +59,27 @@
   }
 }
 
-.ellipsis {
-  max-width: 110px;
-  display: block !important;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.breadcrumb {
+  ol {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    a {
+      max-width: 110px;
+      display: block !important;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &:last-child {
+      a {
+        max-width: 100%;
+      }
+    }
+  }
 }

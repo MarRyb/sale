@@ -179,6 +179,9 @@ export class PostsAddComponent implements OnInit, OnDestroy {
               complete: () => {
                 this.loadingPostCreate = false;
                 this.onClose.emit();
+              },
+              error: () => {
+                this.loadingPostCreate = false;
               }
             });
     }

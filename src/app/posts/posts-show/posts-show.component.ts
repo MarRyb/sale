@@ -9,11 +9,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
   styleUrls: ['./posts-show.component.scss']
 })
 export class PostsShowComponent implements OnInit {
-  sliderArray = [
-    {id: 1, url: 'http://www.moto-net.com/sites/default/files/bmw-moto-coloris-2020_s.jpg'},
-    {id: 2, url: 'http://minsk-moto.ru/uploads/product/000/77/mins_moto_ru_1-(6)_2019-07-04_18-36-18.jpg'},
-    {id: 3, url: 'https://www.utiama.com/wp-content/uploads/2016/01/BM-6701.jpg'}
-  ];
+  sliderArray = [];
 
   public post: any;
   private breadcrumbs: any = [];
@@ -49,6 +45,9 @@ export class PostsShowComponent implements OnInit {
       this.post = data;
       this.breadcrumbs = [];
       this.loadBreadcrumbForCategory(data.category);
+      this.sliderArray = data.data.map(item => {
+        return {id: item.id, url: `http://test4.vpotoke.com/${item.path}` }
+      });
       this.breadcrumbs.push({ label: data.title, url: `posts/${data.id}` });
       this.breadcrumbsService.breadcrumbsSubject.next(this.breadcrumbs);
     });

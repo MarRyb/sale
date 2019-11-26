@@ -4,6 +4,7 @@
 .user-menu {
   position: relative;
   user-select: none;
+  margin-top: 40px;
 
   app-dropdown {
     position: absolute;
@@ -49,9 +50,9 @@
       display: flex;
       flex: 0 0 20%;
       justify-content: flex-end;
-      align-items: flex-end;
+      align-items: center;
 
-      img {
+      .avatar {
         width: 48px;
         height: 48px;
         border-radius: 50%;
@@ -105,5 +106,22 @@
     font-size: 18px;
     line-height: 21px;
     cursor: pointer;
+  }
+}
+
+.btn-add-post {
+  background: #B70305;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 13px;
+  height: 32px;
+  padding: 0 10px;
+  white-space: nowrap;
+  margin-right: 25px;
+  border: none;
+
+  img {
+    margin-right: 5px;
   }
 }

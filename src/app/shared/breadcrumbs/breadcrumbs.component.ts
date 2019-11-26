@@ -8,15 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./breadcrumbs.component.scss']
 })
 export class BreadcrumbsComponent implements OnInit {
-  breadcrumbs = [];
+  breadcrumbs: any;
   breadcrumbsLink: { title?: string; url?: string; };
+  subscription: any;
+  homeBreadcrumb = HOME_PAGE_BREADCRUMB;
+
   constructor(private breadcrumbsService: BreadcrumbsService) {
-    this.breadcrumbsService.breadcrumbs
-      .subscribe(data => {
-        this.breadcrumbs = data;
-        this.breadcrumbs.unshift(HOME_PAGE_BREADCRUMB);
-      }
-    );
+    this.breadcrumbs = this.breadcrumbsService.breadcrumbs;
     this.breadcrumbsService.breadcrumbsLink
       .subscribe(data => {
         this.breadcrumbsLink = data;

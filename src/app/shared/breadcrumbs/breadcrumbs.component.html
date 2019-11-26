@@ -1,9 +1,16 @@
-<ol class="breadcrumb">
-  <li *ngFor="let breadcrumb of breadcrumbs; last as isLast"
-      class="breadcrumb-item">
-    <a [routerLink]="breadcrumb.url" [class.ellipsis]="!isLast">
-      {{ breadcrumb.label }}
-    </a>
-  </li>
+<div class="breadcrumb">
+  <ol >
+    <li class="breadcrumb-item">
+      <a [routerLink]="homeBreadcrumb.url">
+          {{ homeBreadcrumb.label }}
+        </a>
+    </li>
+    <li *ngFor="let breadcrumb of breadcrumbs | async"
+        class="breadcrumb-item">
+      <a [routerLink]="breadcrumb.url">
+        {{ breadcrumb.label }}
+      </a>
+    </li>
+  </ol>
   <span [routerLink]="breadcrumbsLink.url">{{breadcrumbsLink.title}}</span>
-</ol>
+</div>

@@ -13,6 +13,7 @@ export class CategoriesShowComponent implements OnInit {
   breadcrumbs: Array<any> = [];
   category: string;
   posts: Array<any> = [];
+  filters: any = {};
 
   params: { page: number, category?: number } = {
     page: 1
@@ -59,9 +60,28 @@ export class CategoriesShowComponent implements OnInit {
   }
 
   getPosts() {
-    this.postsService.getList(this.params).subscribe(data => {
+    console.log(this.filters);
+    this.postsService.getList(Object.assign(this.filters, this.params)).subscribe(data => {
       this.posts = [...this.posts, ...data.items] ;
     });
+  }
+
+  applyFilters(data: any) {
+    Object.keys(data).forEach((key) => (data[key] == null || data[key] === '') && delete data[key]);
+    if ((data.state.used && data.state.new) || (!data.state.used && !data.state.new)) {
+      data.state = 'all';
+    } else {
+      if (data.state.new) {
+        data.state = 'new';
+      } else {
+        data.state = 'used';
+      }
+    }
+    this.filters = data;
+    this.posts = [];
+    this.params.page = 1;
+    this.getPosts();
+    console.log('assign filters', this.filters);
   }
 
 }

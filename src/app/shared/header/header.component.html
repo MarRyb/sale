@@ -1,3 +1,10 @@
+<ng-template #template let-modal>
+  <div class="modal-container">
+    <img src="/assets/img/Shape.png" (click)="closeModal()" class="modal-close">
+    <app-posts-add (onClose)="closeModal()"></app-posts-add>
+  </div>
+</ng-template>
+
 <div class="header-wrapper">
   <div class="header-wrapper__container">
     <div class="header_logo"><app-logo class="logo"></app-logo></div>
@@ -8,7 +15,11 @@
     </div>
 
     <div class="header_user" *appShowAuthed="true">
-      <img src="https://vpotoke.com/assets/img/astronaut.svg">
+      <button class="btn-add-post" (click)="openModal(template)">
+        <img src="/assets/img/add_post.svg">
+        Добавить обьявление
+      </button>
+      <img src="https://vpotoke.com/assets/img/astronaut.svg" class="avatar">
       <div class="user-menu" (appClickOutside)="showSettings = false">
         <span class="user-settings" (click)="showSettings = !showSettings"></span>
         <app-dropdown *ngIf="showSettings">
