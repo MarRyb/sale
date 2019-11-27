@@ -28,7 +28,7 @@ var common = __webpack_require__("SVse");
 
 
 
-var ProfileModuleNgFactory = core["Sb" /* ɵcmf */](ProfileModule, [], function (_l) { return core["fc" /* ɵmod */]([core["gc" /* ɵmpd */](512, core["p" /* ComponentFactoryResolver */], core["Bb" /* ɵCodegenComponentFactoryResolver */], [[8, []], [3, core["p" /* ComponentFactoryResolver */]], core["N" /* NgModuleRef */]]), core["gc" /* ɵmpd */](4608, common["o" /* NgLocalization */], common["n" /* NgLocaleLocalization */], [core["H" /* LOCALE_ID */], [2, common["F" /* ɵangular_packages_common_common_a */]]]), core["gc" /* ɵmpd */](1073742336, common["c" /* CommonModule */], common["c" /* CommonModule */], []), core["gc" /* ɵmpd */](1073742336, ProfileModule, ProfileModule, [])]); });
+var ProfileModuleNgFactory = core["Rb" /* ɵcmf */](ProfileModule, [], function (_l) { return core["ec" /* ɵmod */]([core["fc" /* ɵmpd */](512, core["p" /* ComponentFactoryResolver */], core["Bb" /* ɵCodegenComponentFactoryResolver */], [[8, []], [3, core["p" /* ComponentFactoryResolver */]], core["N" /* NgModuleRef */]]), core["fc" /* ɵmpd */](4608, common["n" /* NgLocalization */], common["m" /* NgLocaleLocalization */], [core["H" /* LOCALE_ID */], [2, common["F" /* ɵangular_packages_common_common_a */]]]), core["fc" /* ɵmpd */](1073742336, common["c" /* CommonModule */], common["c" /* CommonModule */], []), core["fc" /* ɵmpd */](1073742336, ProfileModule, ProfileModule, [])]); });
 
 
 
