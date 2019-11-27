@@ -56,6 +56,10 @@ export class PriceCustomComponent implements OnInit {
           return { value: i.id, label: i.name };
         });
         this.field.value[1].params.select.value = currencies;
+        const uah = currencies.find(currency => currency.label === 'uah' )
+        if (uah) {
+          this.form.controls.currency.setValue(uah.value);
+        }
       }
     );
   }
