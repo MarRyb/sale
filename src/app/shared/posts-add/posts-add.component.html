@@ -7,7 +7,7 @@
 
 <div class="loading" *ngIf="loadingPostCreate">Loading..</div>
 
-<form [formGroup]="postForm" (ngSubmit)="postForm.valid && onSubmit()">
+<form [formGroup]="postForm" (ngSubmit)="postForm.valid && onSubmit()" [class.hidden]="isShowPreview">
   <div class="posts-add_header">
     <span>Подать обьявление</span>
     <div class="border-bottom"></div>
@@ -19,13 +19,13 @@
   </div>
   <div class="form-gropup">
     <label>Рубрика</label>
-    <button (click)="openModal(template)" *ngIf="isShowSelectRubrics">Выбрать рубрику</button>
+    <button type="button" (click)="openModal(template)" *ngIf="isShowSelectRubrics">Выбрать рубрику</button>
     <div class="rubric-array">
       <div *ngFor="let item of selectedCategories; last as isLast" class="rubric-item">
         <span>{{item}} </span> <span class="item-delimiter"> » &nbsp;</span>
       </div>
     </div>
-    <button *ngIf="!isShowSelectRubrics" (click)="openModal(template)" class="small">Изменить</button>
+    <button type="button" *ngIf="!isShowSelectRubrics" (click)="openModal(template)" class="small">Изменить</button>
     <img src="/assets/img/success.png" class="selected-rubric" *ngIf="!isShowSelectRubrics">
   </div>
   <div class="form-gropup strip" *ngIf="!isShowSelectRubrics">
@@ -56,7 +56,7 @@
             <div class="line-progress" [ngStyle]="{'width': photos[0].uploadStatus?.progress + '%'}">{{photos[0].uploadStatus?.progress}}%</div>
         </div>
         <div class="upload-photo main file-main" *ngIf="photos[0]?.file?.id">
-            <div [ngStyle]="{'background-image': 'url(http://test4.vpotoke.com/' + photos[0]?.file?.path + ')'}" class="preview-1 upload-photo__downloaded"></div>
+            <div [ngStyle]="{'background-image': 'url(' + env.apiUrl + photos[0]?.file?.path + ')'}" class="preview-1 upload-photo__downloaded"></div>
         </div>
       </div>
 
@@ -68,7 +68,7 @@
               <div class="upload-photo file" (ngxf-select)="uploadFile($event, index + 1)"></div>
             </div>
             <div class="upload-photo" *ngIf="item?.file?.id">
-              <div class="upload-photo__downloaded" [ngStyle]="{'background-image': 'url(http://test4.vpotoke.com/' + item?.file?.path + ')'}"></div>
+              <div class="upload-photo__downloaded" [ngStyle]="{'background-image': 'url(' + env.apiUrl + item?.file?.path + ')'}"></div>
             </div>
             <div class="upload-photo text-center" *ngIf="!item?.file?.id && item.uploadStatus?.isUploading">
               <div class="line-progress" [ngStyle]="{'width': item.uploadStatus?.progress + '%'}">{{ item.uploadStatus?.progress }}%</div>
@@ -106,7 +106,9 @@
     <div class="border-bottom br"></div>
   </div>
   <div class="button-group">
-    <button class="btn white">Предпросмотр</button>
+    <button type="button" class="btn white" (click)="togglePreview()">Предпросмотр</button>
     <button class="btn red">Опубликовать</button>
   </div>
 </form>
+
+<app-posts-add-preview *ngIf="isShowPreview" [photos]="photos" [form]="postForm.getRawValue()" (closePreview)="togglePreview()"></app-posts-add-preview>

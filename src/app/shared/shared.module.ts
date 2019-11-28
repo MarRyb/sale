@@ -19,6 +19,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RubricsComponent } from './rubrics/rubrics.component';
 import { RubricItemComponent } from './rubrics/rubric-item/rubric-item.component';
 import { DynamicFormBuilderModule } from './../dynamic-form-builder/dynamic-form-builder.module';
+import { PostPreviewComponent } from './post-preview/post-preview.component';
+import { PostsAddPreviewComponent } from './posts-add/posts-add-preview/posts-add-preview.component';
 @NgModule({
     declarations: [
         HeaderComponent,
@@ -30,7 +32,9 @@ import { DynamicFormBuilderModule } from './../dynamic-form-builder/dynamic-form
         CarouselComponent,
         PostsAddComponent,
         RubricsComponent,
-        RubricItemComponent
+        RubricItemComponent,
+        PostPreviewComponent,
+        PostsAddPreviewComponent
     ],
     imports: [
         CommonModule,
@@ -54,7 +58,8 @@ import { DynamicFormBuilderModule } from './../dynamic-form-builder/dynamic-form
         InfiniteScrollModule,
         CarouselComponent,
         UiElementModule,
-        PostsAddComponent
+        PostsAddComponent,
+        PostPreviewComponent
     ]
 })
 export class SharedModule { }

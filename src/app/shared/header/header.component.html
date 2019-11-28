@@ -1,7 +1,7 @@
 <ng-template #template let-modal>
-  <div class="modal-container">
+  <div class="modal-container {{ modalClass }}">
     <img src="/assets/img/Shape.png" (click)="closeModal()" class="modal-close">
-    <app-posts-add (onClose)="closeModal()"></app-posts-add>
+    <app-posts-add (onClose)="closeModal()" (toggleModalType)="toggleModalType($event)"></app-posts-add>
   </div>
 </ng-template>
 

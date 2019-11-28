@@ -53,6 +53,7 @@
     line-height: 21px;
     color: #474747;
     width: 130px;
+    margin-top: 8px;
     &.contact-data {
       width: 150px;
       margin-right: 15px;
@@ -78,9 +79,12 @@
     background: #B70305;
     border-radius: 4px;
     outline: none;
-    &.small {
-      width: 120px;
-    }
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+    // &.small {
+    //   width: 120px;
+    // }
   }
   textarea {
     width: 500px;
@@ -207,6 +211,7 @@
 .rubric-array{
   display: flex;
   margin-right: 10px;
+  padding: 2.5px;
   .rubric-item {
     font-weight: 500;
     color: #b70305;
@@ -256,4 +261,8 @@
   z-index: 2;
   font-size: 25px;
   font-weight: 500;
+}
+
+.hidden {
+  display: none;
 }

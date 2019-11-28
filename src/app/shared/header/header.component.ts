@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   config = {
     animated: true
   };
+  modalClass = '';
 
   constructor(
     public currentUserService: CurrentUserService,
@@ -36,6 +37,14 @@ export class HeaderComponent implements OnInit {
 
   closeModal() {
     this.modalRef.hide();
+  }
+
+  toggleModalType(isShowPreview) {
+    if (isShowPreview) {
+      this.modalClass = 'transparent';
+    } else {
+      this.modalClass = '';
+    }
   }
 
 

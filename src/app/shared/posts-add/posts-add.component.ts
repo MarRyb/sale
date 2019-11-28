@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment.prod';
 import { PostsService } from './../../core/services/post.service';
 import { ITooltip } from './../../core/interfaces/tooltip.interface';
 import { Component, OnInit, TemplateRef, Output, EventEmitter, OnDestroy } from '@angular/core';
@@ -13,6 +14,7 @@ import { concatMap, takeUntil, switchMap, tap, catchError } from 'rxjs/operators
     styleUrls: ['./posts-add.component.scss']
 })
 export class PostsAddComponent implements OnInit, OnDestroy {
+    public isShowPreview: boolean = false;
     public isFocus: boolean = false;
     public settingsTooltipInfo: ITooltip;
     public settingsTooltipWarning: ITooltip;
@@ -30,14 +32,16 @@ export class PostsAddComponent implements OnInit, OnDestroy {
     ];
 
     @Output() onClose: EventEmitter<any> = new EventEmitter();
+    @Output() toggleModalType: EventEmitter<any> = new EventEmitter();
 
     private ngOnDestroy$: ReplaySubject<null> = new ReplaySubject<null>();
     loadingPostCreate: boolean;
+    public env = environment;
 
     constructor(
         private modalService: BsModalService,
         public postService: PostsService,
-        private Upload: NgxfUploaderService
+        private Upload: NgxfUploaderService,
     ) {
         this.settingsTooltipInfo = {
             imgUrl: 'assets/img/icon Инфо.png',
@@ -45,8 +49,7 @@ export class PostsAddComponent implements OnInit, OnDestroy {
             contentHtml: `
         <div>Введите наименование товара или услуги.</div>
         <br>
-        <div>Чем точнее будет заголовок, тем больше вероятность что на Ваше обьявление отреагируют</div>
-      `,
+        <div>Чем точнее будет заголовок, тем больше вероятность что на Ваше обьявление отреагируют</div>`,
             click: ''
         };
         this.settingsTooltipWarning = {
@@ -77,7 +80,7 @@ export class PostsAddComponent implements OnInit, OnDestroy {
             return;
         }
         this.Upload.upload({
-            url: 'http://test4.vpotoke.com/api/v1/posts/files',
+            url: `${environment.apiUrl}api/v1/posts/files`,
             filesKey: 'path', // Option
             files: file,
             process: true
@@ -136,18 +139,7 @@ export class PostsAddComponent implements OnInit, OnDestroy {
     }
 
     onSubmit() {
-        // this.postService.new(this.postForm.value).subscribe(data => {
-        //     this.onClose.emit();
-        //     this.attachPhotosToPost(data.id).subscribe(data => {
-        //         console.log(data);
-        //     });
-        // }, (err) => {
-        //     this.modalRef.hide();
-        // });
-
         const payload = this.postForm.getRawValue();
-        console.log(payload);
-        // можно тут при сабмите сразу
         this.loadingPostCreate = true;
         this.createPost(payload);
     }
@@ -184,6 +176,11 @@ export class PostsAddComponent implements OnInit, OnDestroy {
                 this.loadingPostCreate = false;
               }
             });
+    }
+
+    togglePreview() {
+        this.isShowPreview = !this.isShowPreview;
+        this.toggleModalType.emit(this.isShowPreview);
     }
 
     ngOnDestroy() {
