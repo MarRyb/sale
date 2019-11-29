@@ -19,6 +19,7 @@ export class PostsAddComponent implements OnInit, OnDestroy {
     public settingsTooltipInfo: ITooltip;
     public settingsTooltipWarning: ITooltip;
     public selectedCategories = [];
+    public postCategory = {};
     public isShowSelectRubrics = true;
     modalRef: BsModalRef;
     public form: FormGroup;
@@ -129,8 +130,10 @@ export class PostsAddComponent implements OnInit, OnDestroy {
             this.modalRef.hide();
             this.isShowSelectRubrics = false;
         }
+        console.log(item);
         this.postForm.controls.category.setValue(item.itemCategory.id);
         this.fields = item.itemCategory.customFields;
+        this.postCategory = item.itemCategory;
     }
 
 

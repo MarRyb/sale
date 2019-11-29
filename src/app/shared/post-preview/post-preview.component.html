@@ -10,7 +10,6 @@
           <div class="post-header__user-name">{{ post.user?.firstName?.name }} {{ post.user?.lastName?.name }}</div>
           <div class="post-header__time">{{ post.created | date: 'dd MMMM yyyy в HH:mm' }}</div>
           <div class="post-header__category">
-            <span *ngIf="post.category?.parent">{{ post.category?.parent?.name}}, </span>
             {{ post.category?.name }}
           </div>
         </div>

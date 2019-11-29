@@ -111,4 +111,9 @@
   </div>
 </form>
 
-<app-posts-add-preview *ngIf="isShowPreview" [photos]="photos" [form]="postForm.getRawValue()" (closePreview)="togglePreview()"></app-posts-add-preview>
+<app-posts-add-preview *ngIf="isShowPreview"
+                       [photos]="photos"
+                       [form]="postForm.getRawValue()"
+                       [category]="postCategory"
+                       (closePreview)="togglePreview()"
+></app-posts-add-preview>
