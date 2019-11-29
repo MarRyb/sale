@@ -10,14 +10,17 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
   styleUrls: ['./categories-show.component.scss']
 })
 export class CategoriesShowComponent implements OnInit {
-  breadcrumbs: Array<any> = [];
+
   category: string;
+
+  breadcrumbs: Array<any> = [];
   posts: Array<any> = [];
   filters: any = {};
 
   params: { page: number, category?: number } = {
     page: 1
   };
+  
   constructor(
     private breadcrumbsService: BreadcrumbsService,
     private categoryService: CategoryService,

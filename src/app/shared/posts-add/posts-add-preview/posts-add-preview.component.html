@@ -3,7 +3,6 @@
 <app-post-preview [post]="post"></app-post-preview>
 
 <div class="footer">
-  <p>{{ post | json }}</p>
-  <button type="button" (click)="togglePreview()">Назад к форме</button>
-  <button type="button" (click)="togglePreview()">Опубликовать</button>
+  <button type="button" (click)="togglePreview()" class="btn-back">Назад к форме</button>
+  <button type="button" (click)="togglePreview()" class="btn-submit">Опубликовать</button>
 </div>

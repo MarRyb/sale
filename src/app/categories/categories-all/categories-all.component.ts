@@ -25,7 +25,7 @@ export class CategoriesAllComponent implements OnInit {
   getRecentPosts(): Observable<any> {
     const params = {
       limit: this.limitPosts,
-      orderBy: 'countViewed'
+      orderBy: 'created'
     };
 
     return this.postsService.getList(Object.assign(this.filters, params));
@@ -34,7 +34,7 @@ export class CategoriesAllComponent implements OnInit {
   getPopularPosts(): Observable<any> {
     const params = {
       limit: this.limitPosts,
-      orderBy: 'created'
+      orderBy: 'countViewed'
     };
     return this.postsService.getList(Object.assign(this.filters, params));
   }

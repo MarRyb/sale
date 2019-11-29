@@ -44,7 +44,7 @@
         <button class="btn btn__red">Написать автору</button>
         <button class="btn btn__bordered">Позвонить автору</button>
       </div>
-      <div class="post__actions">
+      <div class="post__actions" *ngIf="post.id">
         <div class="post__like">
           <img src="/assets/img/like.svg">
           5

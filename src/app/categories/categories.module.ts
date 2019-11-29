@@ -9,6 +9,8 @@ import { CategoriesFilterComponent } from './categories-show/categories-filter/c
 import { CategoriesAllComponent } from './categories-all/categories-all.component';
 import { CategoriesAllFilterComponent } from './categories-all/categories-all-filter/categories-all-filter.component';
 import { CategoriesAllItemComponent } from './categories-all/categories-all-item/categories-all-item.component';
+import { CategoriesLastComponent } from './categories-last/categories-last.component';
+import { CategoriesPopularComponent } from './categories-popular/categories-popular.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { CategoriesAllItemComponent } from './categories-all/categories-all-item
     CategoriesFilterComponent,
     CategoriesAllComponent,
     CategoriesAllFilterComponent,
-    CategoriesAllItemComponent
+    CategoriesAllItemComponent,
+    CategoriesLastComponent,
+    CategoriesPopularComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,22 @@
+<div class="category-group">
+  <div class="category-group__categories">
+    <div class="category">
+      <h3>Новые обьявления</h3>
+      <div class="category__posts">
+        <app-categories-all-item [post]="post" *ngFor="let post of posts"></app-categories-all-item>
+      </div>
+
+      <div
+        class="search-results"
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        (scrolled)="onScroll()"
+      ></div>
+
+    </div>
+  </div>
+  <div class="category-group__filter">
+    <app-categories-all-filter (changeData)="applyFilters($event)"></app-categories-all-filter>
+  </div>
+</div>

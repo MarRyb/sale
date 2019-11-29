@@ -6,7 +6,7 @@
         <app-categories-all-item [post]="post" *ngFor="let post of popularPosts"></app-categories-all-item>
       </div>
       <div class="category__show-more">
-        <a href="#" [routerLink]="['/categories']">Показать больше</a>
+        <a href="#" [routerLink]="['/categories/popular']">Показать больше</a>
       </div>
     </div>
 
@@ -16,7 +16,7 @@
         <app-categories-all-item [post]="post" *ngFor="let post of recentPosts"></app-categories-all-item>
       </div>
       <div class="category__show-more">
-        <a href="#" [routerLink]="['/categories']">Показать больше</a>
+        <a href="#" [routerLink]="['/categories/recent']">Показать больше</a>
       </div>
     </div>
   </div>
