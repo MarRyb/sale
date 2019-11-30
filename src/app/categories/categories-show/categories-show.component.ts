@@ -20,7 +20,7 @@ export class CategoriesShowComponent implements OnInit {
   params: { page: number, category?: number } = {
     page: 1
   };
-  
+
   constructor(
     private breadcrumbsService: BreadcrumbsService,
     private categoryService: CategoryService,

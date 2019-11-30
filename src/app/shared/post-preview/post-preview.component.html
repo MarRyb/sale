@@ -45,9 +45,10 @@
         <button class="btn btn__bordered">Позвонить автору</button>
       </div>
       <div class="post__actions" *ngIf="post.id">
-        <div class="post__like">
-          <img src="/assets/img/like.svg">
-          5
+        <div class="post__like" (click)="like()">
+          <img src="/assets/img/like.svg" *ngIf="!post.selfLike">
+          <img src="/assets/img/like_active.svg" *ngIf="post.selfLike">
+          {{ post.countLikes }}
         </div>
         <div class="post__views">
           <img src="/assets/img/eye.svg">

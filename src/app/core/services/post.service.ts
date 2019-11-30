@@ -30,5 +30,9 @@ export class PostsService {
     return this.api.post(`api/v1/posts/${postId}/files/${fileId}`);
   }
 
+  like(postId: number) {
+    return this.api.post(`api/v1/posts/${postId}/likes`);
+  }
+
 }
 
